@@ -16,6 +16,12 @@ export function fmtHm(seconds: number | null | undefined): string {
   return `${String(Math.floor(s / 3600)).padStart(2, '0')}:${String(Math.floor((s % 3600) / 60)).padStart(2, '0')}`;
 }
 
+/** Employee ID as shown on the admin staff profile: first three letters of the business name + staff id ("TES1"). */
+export function employeeCode(businessName: string | null | undefined, staffId: number | null | undefined): string {
+  if (staffId == null) return '';
+  return `${(businessName ?? '').slice(0, 3).toUpperCase()}${staffId}`;
+}
+
 /** "14:05:09" → "2:05 PM" */
 export function fmtClock(t: string | null | undefined): string {
   if (!t) return '—';

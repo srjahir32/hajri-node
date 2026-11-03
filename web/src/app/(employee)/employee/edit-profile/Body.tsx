@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { staffApi } from '@/lib/api';
 import { useStaffSession } from '@/lib/auth';
+import { employeeCode } from '@/lib/format';
 import { useAction, useStaff } from '@/lib/query';
 import { BackCrumb } from '@/components/shell/BackCrumb';
 import { PRIMARY_BTN } from '@/components/settings/SettingsCard';
@@ -49,6 +50,7 @@ export default function Body() {
               <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
                 <form id="staff_personal_info" onSubmit={submit}>
                   <h2 className="proxima_nova_semibold staff-pay-title mt-0">Personal Information</h2>
+                  <p className="text-muted mb-3" style={{ fontSize: 14 }}>Employee ID: <span className="text-dark proxima_nova_semibold">{employeeCode(staff.business?.name, staff.id)}</span></p>
                   {row(field(<>First Name <Star /></>, <>{inp('name', 'Enter your first name')}<Err k="name" /></>), field(<>Last Name <Star /></>, inp('last_name', 'Enter your last name')))}
                   {row(field(<>Middle Name</>, inp('middle_name', 'Enter your middle name')), field(<>Phone Number <Star /></>, <input type="text" className="form-control shift-edit-input" value={staff.phone_number} readOnly />))}
                   {row(field(<>Email</>, <>{inp('email', 'Enter your email', staff.email ? { readOnly: true } : {})}<Err k="email" /></>), field('Date of Birth', <DatePicker id="date_of_birth" className="input-group-addon form-control shift-edit-input calender-picker view_profile_date_ofbirth" format="dd M yyyy" max={new Date().toISOString().slice(0, 10)} value={f.dob} onChange={(d) => setF((c) => ({ ...c, dob: d }))} />))}
