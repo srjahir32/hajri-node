@@ -204,3 +204,10 @@
   .custom-logout-btn { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 }
 @media (max-width: 1040px) { .header_user_dropdown span { display: block !important; } }
+
+/* Button loader gifs: Laravel kept them hidden and showed them from JS while a request ran.
+   Buttons that show one set an inline `display` while busy; the rest must stay hidden,
+   otherwise the gif wraps under the label and pushes the text to the top of the button. */
+img.loader {
+  display: none;
+}

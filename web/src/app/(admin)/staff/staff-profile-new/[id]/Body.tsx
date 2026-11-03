@@ -301,18 +301,14 @@ export default function Body() {
                                 </div>
                                 <div className="staff-action-btns">
                                     <div className="staff_edit_profile theme_btn_hover_color">
-                                        <a href={`/view_profile_new/${id}`} className="staff-edit-btn section_sub_title">Edit Profile</a>
+                                        <a href={`/staff/view_profile_new/${id}`} className="staff-edit-btn section_sub_title">Edit Profile</a>
                                     </div>
                                     {!deactivated ? (<>
-                                        <button name="" className="reject-btn staff-profile-deactivate-btn proxima_nova_semibold" data-bs-toggle="offcanvas" data-bs-target="#deactivateModal" aria-controls="deactivateModal" style={{ height: '30px' }}>Deactivate Staff
-                                            <img className="loader" src={'/assets/admin/images/white_loader.gif'} alt="" />
-                                        </button>
+                                        <button name="" className="reject-btn staff-profile-deactivate-btn proxima_nova_semibold" data-bs-toggle="offcanvas" data-bs-target="#deactivateModal" aria-controls="deactivateModal">Deactivate Staff</button>
                                     </>) : (<>
                                         <button type="button" className="staff-profile-activate-btn proxima_nova_semibold activate_staff_action_btn" data-staff-id={id} onClick={activate}>Activate Staff
                                         </button>
-                                        <button name="" className="reject-btn staff-profile-delete-btn proxima_nova_semibold" data-bs-toggle="offcanvas" data-bs-target="#deleteModal" aria-controls="deleteModal" style={{ height: '30px' }}>Delete Staff
-                                            <img className="loader" src={'/assets/admin/images/white_loader.gif'} alt="" />
-                                        </button>
+                                        <button name="" className="reject-btn staff-profile-delete-btn proxima_nova_semibold" data-bs-toggle="offcanvas" data-bs-target="#deleteModal" aria-controls="deleteModal">Delete Staff</button>
                                     </>)}
                                 </div>
                             </div>

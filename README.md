@@ -25,7 +25,7 @@ With `OTP_DEV_MODE=true` every OTP is `1234` and no WhatsApp message is sent.
 ### Web
 ```bash 
 cd web
-echo 'NEXT_PUBLIC_API_URL=http://localhost:4000/api/v1' > .env.local
+echo 'NEXT_PUBLIC_API_URL=http://localhost:4000' > .env.local
 npm install
 npm run dev                 # http://localhost:3000
 npm run build && npm start  # production
