@@ -1,0 +1,809 @@
+// Hajri – attendance & payroll platform (fresh schema, MySQL)
+// All timestamps are stored in UTC. Business-local calendar dates are stored as DATE columns.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// ───────────────────────────── Reference data ─────────────────────────────
+
+model Country {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  businesses Business[]
+}
+
+model BusinessCategory {
+  id         Int        @id @default(autoincrement())
+  name       String     @unique
+  businesses Business[]
+}
+
+model ShiftType {
+  id           Int            @id // 1 = Fixed, 2 = Rotational, 3 = Flexible
+  name         String
+  description  String?
+  workingShifts WorkingShift[]
+}
+
+// ───────────────────────────── Accounts ─────────────────────────────
+
+/// Business owners and sub-admins ("admin users"). Sub-admins have isSubAdmin = true and point at the owner.
+model User {
+  id           Int       @id @default(autoincrement())
+  isSubAdmin   Boolean   @default(false)
+  ownerId      Int?
+  roleId       Int?
+  name         String?
+  email        String?
+  countryCode  String?   @db.VarChar(10)
+  phoneNumber  String    @db.VarChar(20)
+  otp          String?   @db.VarChar(10)
+  otpExpiresAt DateTime?
+  /// set when an OTP was verified; lets the legacy mobile registration flow create a business without a token
+  otpVerifiedAt DateTime?
+  isActive     Boolean   @default(true)
+  trialEndsAt  DateTime?
+  fcmId        String?   @db.Text
+  photoUrl     String?
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  deletedAt    DateTime?
+
+  owner         User?          @relation("OwnerSubAdmins", fields: [ownerId], references: [id], onDelete: Cascade)
+  subAdmins     User[]         @relation("OwnerSubAdmins")
+  role          Role?          @relation(fields: [roleId], references: [id], onDelete: SetNull)
+  businessUsers BusinessUser[]
+  subscriptions Subscription[]
+  notifications Notification[]
+  paymentLogs   PaymentLog[]
+  staffLogs     StaffLog[]
+
+  @@unique([countryCode, phoneNumber, ownerId])
+  @@index([phoneNumber])
+}
+
+model SuperAdmin {
+  id           Int      @id @default(autoincrement())
+  name         String?
+  email        String   @unique
+  passwordHash String
+  phoneNumber  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Role {
+  id          Int      @id @default(autoincrement())
+  businessId  Int?     // null = global template (e.g. "admin")
+  name        String
+  permissions Json     // string[] of permission keys
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  business Business? @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  users    User[]
+
+  @@unique([businessId, name])
+}
+
+model Business {
+  id              Int       @id @default(autoincrement())
+  name            String
+  categoryId      Int?
+  businessAddress String?
+  street          String?
+  city            String?
+  state           String?
+  countryId       Int?
+  latitude        Decimal?  @db.Decimal(10, 7)
+  longitude       Decimal?  @db.Decimal(10, 7)
+  bankAccount     String?
+  logoUrl         String?
+  /// 'daily' = pay per present day, 'monthly' = pay per worked hour
+  salaryDuration  String?   @default("monthly")
+  salaryCalculation String?
+  shiftHourSeconds Int      @default(28800)
+  isActive        Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  deletedAt       DateTime?
+
+  category BusinessCategory? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  country  Country?          @relation(fields: [countryId], references: [id], onDelete: SetNull)
+
+  users            BusinessUser[]
+  roles            Role[]
+  departments      Department[]
+  staff            Staff[]
+  workingShifts    WorkingShift[]
+  holidayPolicies  HolidayPolicy[]
+  weeklyHolidays   WeeklyHolidayBusiness[]
+  leavePolicies    LeavePolicy[]
+  overtimeRules    OvertimeRule[]
+  breakRules       BreakRule[]
+  lateEntryRules   LateEntryRule[]
+  earlyExitRules   EarlyExitRule[]
+  attendanceSetting AttendanceSetting?
+  systemSetting    SystemSetting?
+  pf               BusinessPf?
+  payruns          Payrun[]
+  payrolls         Payroll[]
+  liveLocations    LiveLocation[]
+}
+
+model BusinessUser {
+  id         Int       @id @default(autoincrement())
+  businessId Int
+  userId     Int
+  createdAt  DateTime  @default(now())
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([businessId, userId])
+}
+
+model SystemSetting {
+  id                      Int      @id @default(autoincrement())
+  businessId              Int      @unique
+  locationUpdateInterval  Int?     @default(600)
+  locationApiCallInterval Int?     @default(600)
+  staffAllowedRadius      Int?     @default(100)
+  timezone                String?  @default("UTC")
+  updatedAt               DateTime @updatedAt
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+}
+
+model AttendanceSetting {
+  id                    Int      @id @default(autoincrement())
+  businessId            Int      @unique
+  punchInTimeTolerance  Int      @default(30) // minutes after shift start still counted "Regular"
+  updatedAt             DateTime @updatedAt
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+}
+
+model BusinessPf {
+  id                     Int      @id @default(autoincrement())
+  businessId             Int      @unique
+  employeePercentage     Decimal  @default(12) @db.Decimal(5, 2)
+  employerEpsPercentage  Decimal  @default(8.33) @db.Decimal(5, 2)
+  employerEpfPercentage  Decimal  @default(3.67) @db.Decimal(5, 2)
+  cappedAmount           Int?
+  isEnabled              Boolean  @default(false)
+  updatedAt              DateTime @updatedAt
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+}
+
+// ───────────────────────────── Staff ─────────────────────────────
+
+model Department {
+  id         Int       @id @default(autoincrement())
+  businessId Int?      // null = shared department visible to every business
+  name       String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  deletedAt  DateTime?
+
+  business Business?            @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  staff    Staff[]
+  history  DepartmentHistory[]
+
+  @@index([businessId])
+}
+
+model Staff {
+  id             Int       @id @default(autoincrement())
+  businessId     Int
+  departmentId   Int?
+  name           String
+  middleName     String?
+  lastName       String?
+  email          String?
+  countryCode    String?   @db.VarChar(10)
+  phoneNumber    String    @db.VarChar(20)
+  timezone       String?
+  salaryAmount   Decimal?  @db.Decimal(12, 2)
+  salaryCycle    Int?
+  otp            String?   @db.VarChar(10)
+  otpExpiresAt   DateTime?
+  /// set when the OTP was verified; allows picking a business without re-entering the OTP
+  otpVerifiedAt  DateTime?
+  fcmId          String?   @db.Text
+  /// Face descriptor bytes (JSON) + reference photo for on-device face match
+  imgBytes       Json?
+  photoFace      String?
+  isRemote       Boolean   @default(false) // remote staff punches need approval
+  autoApproveAttendance Boolean @default(false)
+  isGeoFencing   Boolean   @default(false)
+  overtimeRule   Boolean   @default(false)
+  breakRule      Boolean   @default(false)
+  lateEntryRule  Boolean   @default(false)
+  earlyExitRule  Boolean   @default(false)
+  isDeactivated  Boolean   @default(false)
+  deactivatedAt  DateTime? @db.Date
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  deletedAt      DateTime?
+
+  business   Business    @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  department Department? @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+
+  profile        StaffProfile?
+  info           StaffInfo?
+  bank           StaffBankDetail?
+  photos         StaffPhoto[]
+  documents      StaffDocument[]
+  attendances    Attendance[]
+  attendanceRequests AttendanceRequest[]
+  logs           StaffLog[]
+  leaves         StaffLeave[]
+  leavePolicies  StaffLeavePolicy[]
+  holidayPolicies HolidayPolicyStaff[]
+  weeklyHolidays WeeklyHolidayStaff[]
+  shiftUser      WorkingShiftUser?
+  shiftHistory   WorkingShiftHistory[]
+  rotationalShifts RotationalShift[]
+  departmentHistory DepartmentHistory[]
+  liveLocations  LiveLocation[]
+  payrolls       Payroll[]
+  attendanceReviews PayrollAttendanceReview[]
+  totalPayReviews PayrollTotalPayReview[]
+  notifications  Notification[]
+
+  @@index([businessId, isDeactivated])
+  @@index([phoneNumber])
+}
+
+model StaffProfile {
+  id          Int       @id @default(autoincrement())
+  staffId     Int       @unique
+  dateOfBirth DateTime? @db.Date
+  gender      String?
+  address1    String?   @db.Text
+  address2    String?   @db.Text
+  city        String?
+  state       String?
+  countryId   Int?
+  pincode     String?
+  /// home/office coordinates used for geo-fencing this staff member
+  latitude    Decimal?  @db.Decimal(10, 7)
+  longitude   Decimal?  @db.Decimal(10, 7)
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+}
+
+model StaffInfo {
+  id            Int       @id @default(autoincrement())
+  staffId       Int       @unique
+  dateOfJoining DateTime? @db.Date
+  designation   String?
+  uanNumber     String?
+  esiNumber     String?
+  panNumber     String?
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+}
+
+model StaffBankDetail {
+  id                Int     @id @default(autoincrement())
+  staffId           Int     @unique
+  bankName          String?
+  accountHolderName String?
+  accountNumber     String?
+  ifscCode          String?
+  upiId             String?
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+}
+
+model StaffPhoto {
+  id        Int      @id @default(autoincrement())
+  staffId   Int
+  url       String
+  createdAt DateTime @default(now())
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+}
+
+model StaffDocument {
+  id        Int      @id @default(autoincrement())
+  staffId   Int
+  url       String
+  name      String?
+  createdAt DateTime @default(now())
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+}
+
+model DepartmentHistory {
+  id           Int       @id @default(autoincrement())
+  staffId      Int
+  departmentId Int
+  startDate    DateTime  @db.Date
+  endDate      DateTime? @db.Date
+
+  staff      Staff      @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  department Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+}
+
+/// Audit trail shown on the attendance/staff screens ("X has added Punch In Entry at ...")
+model StaffLog {
+  id        Int      @id @default(autoincrement())
+  staffId   Int
+  logBy     Int?
+  detail    String
+  createdAt DateTime @default(now())
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  user  User? @relation(fields: [logBy], references: [id], onDelete: SetNull)
+
+  @@index([staffId, createdAt])
+}
+
+// ───────────────────────────── Shifts ─────────────────────────────
+
+model WorkingShift {
+  id          Int       @id @default(autoincrement())
+  businessId  Int
+  shiftTypeId Int
+  name        String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  business Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  type     ShiftType @relation(fields: [shiftTypeId], references: [id])
+  details  WorkingShiftDetail[]
+  users    WorkingShiftUser[]
+  history  WorkingShiftHistory[]
+}
+
+/// Times are "HH:mm:ss" strings in the business timezone; durations are seconds.
+model WorkingShiftDetail {
+  id                   Int     @id @default(autoincrement())
+  workingShiftId       Int
+  name                 String?
+  shiftStartTime       String? @db.VarChar(8)
+  shiftEndTime         String? @db.VarChar(8)
+  breakSeconds         Int     @default(0)
+  totalPayableSeconds  Int     @default(28800)
+  position             Int     @default(0)
+
+  shift      WorkingShift      @relation(fields: [workingShiftId], references: [id], onDelete: Cascade)
+  rotations  RotationalShift[]
+}
+
+model WorkingShiftUser {
+  id             Int  @id @default(autoincrement())
+  staffId        Int  @unique
+  workingShiftId Int
+  /// rotational shifts: index of the detail the staff member starts with
+  startIndex     Int?
+  /// rotational shifts: 0 = daily, 1 = weekly, 2 = monthly rotation
+  workingType    Int?
+
+  staff Staff        @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  shift WorkingShift @relation(fields: [workingShiftId], references: [id], onDelete: Cascade)
+}
+
+model WorkingShiftHistory {
+  id             Int       @id @default(autoincrement())
+  staffId        Int
+  workingShiftId Int
+  startDate      DateTime  @db.Date
+  endDate        DateTime? @db.Date
+
+  staff Staff        @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  shift WorkingShift @relation(fields: [workingShiftId], references: [id], onDelete: Cascade)
+}
+
+model RotationalShift {
+  id                   Int       @id @default(autoincrement())
+  staffId              Int
+  workingShiftDetailId Int
+  startDate            DateTime  @db.Date
+  endDate              DateTime  @db.Date
+  startTime            String?   @db.VarChar(8)
+  endTime              String?   @db.VarChar(8)
+
+  staff  Staff              @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  detail WorkingShiftDetail @relation(fields: [workingShiftDetailId], references: [id], onDelete: Cascade)
+
+  @@index([staffId, startDate, endDate])
+}
+
+// ───────────────────────────── Attendance ─────────────────────────────
+
+/// One row = one punch pair (in/out). A day can have several rows (breaks). `date` is the business-local date.
+model Attendance {
+  id               Int       @id @default(autoincrement())
+  staffId          Int
+  date             DateTime  @db.Date
+  inAt             DateTime?
+  outAt            DateTime?
+  /// 'Present' | 'Absent' | 'Half Day' | 'Paid Leave'
+  status           String    @default("Absent")
+  /// 0 = pending, 1 = approved, 2 = rejected
+  approval         Int       @default(1)
+  /// true when the punch came from a remote/manual flow that needs approval
+  isManual         Boolean   @default(false)
+  /// 'Early' | 'Regular' | 'Late'
+  behavior         String?
+  /// seconds between inAt and outAt for this row
+  totalSeconds     Int       @default(0)
+  /// gap since the previous punch-out of the same day (set when punching in again)
+  breakSeconds     Int       @default(0)
+  /// snapshot of the staff member's payable shift seconds when the row was created
+  payableSeconds   Int       @default(0)
+  note             String?   @db.Text
+  latitude         Decimal?  @db.Decimal(10, 7)
+  longitude        Decimal?  @db.Decimal(10, 7)
+  accuracy         Float?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  deletedAt        DateTime?
+
+  staff    Staff               @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  requests AttendanceRequest[]
+
+  @@index([staffId, date])
+  @@index([date])
+}
+
+model AttendanceRequest {
+  id           Int      @id @default(autoincrement())
+  staffId      Int
+  attendanceId Int
+  createdAt    DateTime @default(now())
+
+  staff      Staff      @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  attendance Attendance @relation(fields: [attendanceId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, attendanceId])
+}
+
+model LiveLocation {
+  id         Int      @id @default(autoincrement())
+  staffId    Int
+  businessId Int
+  date       DateTime @db.Date
+  /// array of { latitude, longitude, accuracy, type, timestamp }
+  points     Json
+  updatedAt  DateTime @updatedAt
+
+  staff    Staff    @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, date])
+  @@index([businessId, date])
+}
+
+// ───────────────────────────── Leave & holidays ─────────────────────────────
+
+model LeavePolicy {
+  id               Int      @id @default(autoincrement())
+  businessId       Int
+  templateName     String
+  /// 'monthly' | 'yearly'
+  cycle            String
+  startPeriod      String?  // e.g. "Jan 2026" (monthly cycles)
+  endPeriod        String?
+  accrualType      String   @default("fixed")
+  numberOfLeaves   Float
+  isCarryForward   Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  deletedAt        DateTime?
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  staff    StaffLeavePolicy[]
+}
+
+model StaffLeavePolicy {
+  id            Int @id @default(autoincrement())
+  staffId       Int
+  leavePolicyId Int
+
+  staff  Staff       @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  policy LeavePolicy @relation(fields: [leavePolicyId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, leavePolicyId])
+}
+
+model StaffLeave {
+  id          Int      @id @default(autoincrement())
+  staffId     Int
+  /// policy that covers this leave; null when the leave is unpaid
+  leavePolicyId Int?
+  isUnpaid    Boolean  @default(false)
+  /// 'Full Day' | 'Half Day'
+  leaveType   String
+  /// for half days: 'First Half' | 'Last Half'
+  shiftType   String?
+  reason      String?
+  startDate   DateTime @db.Date
+  endDate     DateTime @db.Date
+  /// 0 = pending, 1 = approved, 2 = rejected
+  status      Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  deletedAt   DateTime?
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@index([staffId, startDate, endDate])
+}
+
+model HolidayPolicy {
+  id         Int      @id @default(autoincrement())
+  businessId Int
+  name       String
+  year       Int
+  /// first / last month the template covers (stored as the 1st of the month); Laravel's "shift time"
+  startsOn   DateTime? @db.Date
+  endsOn     DateTime? @db.Date
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  holidays HolidayList[]
+  staff    HolidayPolicyStaff[]
+}
+
+model HolidayList {
+  id          Int      @id @default(autoincrement())
+  policyId    Int
+  name        String
+  date        DateTime @db.Date
+
+  policy HolidayPolicy @relation(fields: [policyId], references: [id], onDelete: Cascade)
+
+  @@index([policyId, date])
+}
+
+model HolidayPolicyStaff {
+  id       Int @id @default(autoincrement())
+  policyId Int
+  staffId  Int
+
+  policy HolidayPolicy @relation(fields: [policyId], references: [id], onDelete: Cascade)
+  staff  Staff         @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@unique([policyId, staffId])
+}
+
+/// 0 = Sunday … 6 = Saturday
+model WeeklyHolidayBusiness {
+  id         Int @id @default(autoincrement())
+  businessId Int
+  day        Int
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@unique([businessId, day])
+}
+
+model WeeklyHolidayStaff {
+  id      Int @id @default(autoincrement())
+  staffId Int
+  day     Int
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, day])
+}
+
+// ───────────────────────────── Automation rules ─────────────────────────────
+// ruleType: 1 = per-minute (multiple/fixed amount), 2 = half-day salary, 3 = full-day salary
+// thresholdSeconds is the minimum overtime/break/late/early duration at which the rule kicks in.
+
+model OvertimeRule {
+  id               Int     @id @default(autoincrement())
+  businessId       Int
+  ruleType         Int
+  thresholdSeconds Int     @default(0)
+  multiples        Float?
+  fixedAmount      Int?
+  isEnabled        Boolean @default(true)
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  @@index([businessId])
+}
+
+model BreakRule {
+  id               Int     @id @default(autoincrement())
+  businessId       Int
+  ruleType         Int
+  thresholdSeconds Int     @default(0)
+  multiples        Float?
+  fixedAmount      Int?
+  isEnabled        Boolean @default(true)
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  @@index([businessId])
+}
+
+model LateEntryRule {
+  id               Int     @id @default(autoincrement())
+  businessId       Int
+  ruleType         Int
+  thresholdSeconds Int     @default(0)
+  multiples        Float?
+  fixedAmount      Int?
+  isEnabled        Boolean @default(true)
+  /// first N occurrences are tracked separately from the "extra" occurrences
+  occurrences      Int     @default(0)
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  @@index([businessId])
+}
+
+model EarlyExitRule {
+  id               Int     @id @default(autoincrement())
+  businessId       Int
+  ruleType         Int
+  thresholdSeconds Int     @default(0)
+  multiples        Float?
+  fixedAmount      Int?
+  isEnabled        Boolean @default(true)
+  occurrences      Int     @default(0)
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  @@index([businessId])
+}
+
+// ───────────────────────────── Payroll ─────────────────────────────
+
+model Payrun {
+  id          Int      @id @default(autoincrement())
+  businessId  Int
+  month       Int
+  year        Int
+  createdAt   DateTime @default(now())
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  payrolls Payroll[]
+
+  @@unique([businessId, month, year])
+}
+
+model Payroll {
+  id               Int      @id @default(autoincrement())
+  businessId       Int
+  staffId          Int
+  payrunId         Int
+  month            Int
+  year             Int
+  workingDays      Int      @default(0)
+  presentDays      Float    @default(0)
+  paidLeaveDays    Float    @default(0)
+  workedSeconds    Int      @default(0)
+  overtimeSeconds  Int      @default(0)
+  baseSalary       Decimal  @default(0) @db.Decimal(12, 2)
+  overtimeSalary   Decimal  @default(0) @db.Decimal(12, 2)
+  deduction        Decimal  @default(0) @db.Decimal(12, 2)
+  breakDeduction   Decimal  @default(0) @db.Decimal(12, 2)
+  lateDeduction    Decimal  @default(0) @db.Decimal(12, 2)
+  earlyDeduction   Decimal  @default(0) @db.Decimal(12, 2)
+  pfCut            Decimal  @default(0) @db.Decimal(12, 2)
+  epsAmount        Decimal  @default(0) @db.Decimal(12, 2)
+  epfAmount        Decimal  @default(0) @db.Decimal(12, 2)
+  netSalary        Decimal  @default(0) @db.Decimal(12, 2)
+  createdAt        DateTime @default(now())
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  staff    Staff    @relation(fields: [staffId], references: [id], onDelete: Cascade)
+  payrun   Payrun   @relation(fields: [payrunId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, month, year])
+  @@index([businessId, month, year])
+}
+
+/// "review" = reviewed/approved flag for a staff member's attendance in a payroll month
+model PayrollAttendanceReview {
+  id      Int     @id @default(autoincrement())
+  staffId Int
+  month   Int
+  year    Int
+  reviewed Boolean @default(false)
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, month, year])
+}
+
+model PayrollTotalPayReview {
+  id      Int     @id @default(autoincrement())
+  staffId Int
+  month   Int
+  year    Int
+  reviewed Boolean @default(false)
+
+  staff Staff @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@unique([staffId, month, year])
+}
+
+// ───────────────────────────── Notifications ─────────────────────────────
+
+model Notification {
+  id        Int      @id @default(autoincrement())
+  userId    Int?
+  staffId   Int?
+  title     String   @db.Text
+  message   String?  @db.Text
+  action    String?
+  actionId  Int?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user  User?  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  staff Staff? @relation(fields: [staffId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@index([staffId, isRead])
+}
+
+// ───────────────────────────── Subscriptions ─────────────────────────────
+
+model Subscription {
+  id                       Int       @id @default(autoincrement())
+  userId                   Int
+  plan                     String    // 'monthly' | 'yearly'
+  billingCycle             String
+  seats                    Int
+  pricePerSeat             Decimal   @db.Decimal(10, 2)
+  totalAmount              Decimal   @db.Decimal(10, 2)
+  /// 'pending' | 'active' | 'cancelled' | 'failed' | 'expired'
+  status                   String    @default("pending")
+  paymentMethod            String    @default("cashfree")
+  customerId               String?
+  cashfreePlanId           String?
+  cashfreeSubscriptionId   String?   @unique
+  cashfreeAuthLink         String?   @db.Text
+  cashfreeSubscriptionStatus String?
+  cashfreeResponse         Json?
+  kelviqSessionId          String?
+  kelviqCheckoutUrl        String?   @db.Text
+  kelviqResponse           Json?
+  startsAt                 DateTime?
+  expiresAt                DateTime?
+  paidAt                   DateTime?
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+
+  user User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  logs PaymentLog[]
+
+  @@index([userId, status])
+}
+
+model PaymentLog {
+  id             Int      @id @default(autoincrement())
+  userId         Int?
+  subscriptionId Int?
+  eventType      String
+  orderId        String?
+  paymentId      String?
+  linkId         String?
+  amount         Decimal? @db.Decimal(10, 2)
+  currency       String   @default("INR")
+  status         String?
+  payload        Json?
+  createdAt      DateTime @default(now())
+
+  user         User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  subscription Subscription? @relation(fields: [subscriptionId], references: [id], onDelete: SetNull)
+
+  @@index([subscriptionId])
+}

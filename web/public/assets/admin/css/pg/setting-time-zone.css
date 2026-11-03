@@ -1,0 +1,84 @@
+
+        .select2-container .select2-selection--single {
+            height: 42px !important;
+            border: 1px solid #e2e8f0 !important;
+            border-radius: 8px !important;
+            display: flex !important;
+            align-items: center !important;
+            padding-left: 8px !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .custom-dropdown {
+            width: 100% !important;
+            max-width: 100% !important;
+            position: relative !important;
+        }
+
+        #timezone-options-list {
+            max-height: 250px !important;
+            overflow-y: auto !important;
+            margin-bottom: 0 !important;
+            padding: 0 !important;
+            list-style: none !important;
+        }
+
+        /* Custom scrollbar styling for the options list */
+        #timezone-options-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #timezone-options-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #timezone-options-list::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        #timezone-options-list::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Keep dropdown menu visually consistent with design specs */
+        .custom-dropdown .dropdown-options {
+            width: 100% !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 10px !important;
+            margin-top: 5px !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+            background-color: white !important;
+            position: absolute !important;
+            z-index: 999 !important;
+        }
+
+        .search-container {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+            padding: 10px 14px !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+            background-color: #f8fafc !important;
+        }
+
+        #timezone-search {
+            width: 100% !important;
+            border: none !important;
+            outline: none !important;
+            background: transparent !important;
+            padding: 4px 0 !important;
+            font-size: 14px !important;
+            box-shadow: none !important;
+        }
+
+        #timezone-options-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    

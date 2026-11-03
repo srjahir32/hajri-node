@@ -1,0 +1,118 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+/* ───────── Design tokens ───────── */
+:root {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #f1f3f9;
+  --line: #e4e7f0;
+  --text: #151a2d;
+  --muted: #6b7390;
+  --brand: #4f46e5;
+  --brand-600: #4338ca;
+  --brand-soft: #eef0ff;
+  --success: #16a34a;
+  --success-soft: #e7f7ee;
+  --warning: #d97706;
+  --warning-soft: #fdf3e1;
+  --danger: #dc2626;
+  --danger-soft: #fdecec;
+  --info: #0284c7;
+  --info-soft: #e5f4fc;
+  --shadow: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.06);
+  --shadow-lg: 0 12px 32px rgb(16 24 40 / 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1120;
+    --surface: #161a2e;
+    --surface-2: #1d2238;
+    --line: #2a3050;
+    --text: #e8ebf7;
+    --muted: #98a1c2;
+    --brand: #8b86ff;
+    --brand-600: #a09cff;
+    --brand-soft: #25275a;
+    --success: #4ade80;
+    --success-soft: #11301f;
+    --warning: #fbbf24;
+    --warning-soft: #36280d;
+    --danger: #f87171;
+    --danger-soft: #3a1517;
+    --info: #38bdf8;
+    --info-soft: #0c2a3a;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+    --shadow-lg: 0 12px 32px rgb(0 0 0 / 0.5);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--text);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand600: var(--brand-600);
+  --color-brandsoft: var(--brand-soft);
+  --color-success: var(--success);
+  --color-successsoft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warningsoft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-dangersoft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-infosoft: var(--info-soft);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --shadow-card: var(--shadow);
+  --shadow-pop: var(--shadow-lg);
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--line);
+}
+
+::selection {
+  background: var(--brand-soft);
+}
+
+/* leaflet needs an explicit stacking context under our sticky header */
+.leaflet-container {
+  font-family: inherit;
+  z-index: 0;
+}
+
+/* tabular numbers for money/time columns */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(6px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.animate-pop { animation: pop 0.16s ease-out; }
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+.skeleton { position: relative; overflow: hidden; background: var(--surface-2); }
+.skeleton::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--line) 70%, transparent), transparent);
+  animation: shimmer 1.4s infinite;
+}

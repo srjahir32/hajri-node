@@ -1,0 +1,153 @@
+
+        .permission-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            border: 1px solid #f3f4f6;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .permission-card:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-color: #e5e7eb;
+        }
+
+        .permission-group-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .permission-group-title h4 {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: #94a3b8;
+            text-transform: uppercase;
+        }
+
+        .custom-checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .custom-checkbox-wrapper input {
+            display: none;
+        }
+
+        .custom-box {
+            width: 18px;
+            height: 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            background: #fff;
+        }
+
+        .custom-checkbox-wrapper input:checked+.custom-box {
+            background-color: #000;
+            border-color: #000;
+        }
+
+        .custom-box svg {
+            width: 12px;
+            height: 12px;
+            color: #fff;
+            display: none;
+        }
+
+        .custom-checkbox-wrapper input:checked+.custom-box svg {
+            display: block;
+        }
+
+        .permission-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .permission-item span {
+            font-size: 0.875rem;
+            color: #4b5563;
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+
+        .select-all-header {
+            background: #f9fafb;
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #f3f4f6;
+        }
+
+        .select-all-header h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0px;
+        }
+
+        .select-all-header p {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0px;
+        }
+
+        .error_message {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        .permission-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.5rem;
+        }
+        .iti__country-list {
+            width: 320px !important;
+            max-width: 90vw !important;
+            max-height: 200px !important;
+            z-index: 9999 !important;
+            overflow-x: hidden !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-container {
+            position: sticky !important;
+            top: 0 !important;
+            background-color: #fff !important;
+            padding: 8px 10px !important;
+            z-index: 100 !important;
+            border-bottom: 1px solid #e5e7eb !important;
+            list-style: none !important;
+            margin: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-input {
+            width: 100% !important;
+            padding: 6px 12px !important;
+            font-size: 13px !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 6px !important;
+            outline: none !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-input:focus {
+            border-color: #2F8CFF !important;
+        }
+    

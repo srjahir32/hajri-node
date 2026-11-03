@@ -1,0 +1,44 @@
+
+        .shift-main-sub-edit {
+            margin-bottom: 22px !important;
+        }
+        .iti__selected-flag::after {
+            margin-left: 10px !important;
+        }
+        .phone_input {
+            padding-left: 100px !important;
+        }
+        .iti__country-list {
+            width: 320px !important;
+            max-width: 90vw !important;
+            max-height: 200px !important;
+            z-index: 9999 !important;
+            overflow-x: hidden !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-container {
+            position: sticky !important;
+            top: 0 !important;
+            background-color: #fff !important;
+            padding: 8px 10px !important;
+            z-index: 100 !important;
+            border-bottom: 1px solid #e5e7eb !important;
+            list-style: none !important;
+            margin: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-input {
+            width: 100% !important;
+            padding: 6px 12px !important;
+            font-size: 13px !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 6px !important;
+            outline: none !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-input:focus {
+            border-color: #2F8CFF !important;
+            box-shadow: 0 0 0 2px rgba(47, 140, 255, 0.2) !important;
+        }
+    

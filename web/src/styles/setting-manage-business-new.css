@@ -1,0 +1,56 @@
+
+        .select2-container--bootstrap-5 .select2-selection {
+            height: 2.75rem !important;
+            padding: 0.5rem 0.75rem !important;
+            font-size: 0.875rem !important;
+            border-color: #e5e7eb !important;
+            background-color: rgba(249, 250, 251, 0.5) !important;
+            border-radius: 0.75rem !important;
+        }
+
+        .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+            line-height: 1.75rem !important;
+            color: #374151 !important;
+            padding-left: 0 !important;
+            font-size: 16px !important;
+        }
+
+        .select2-container--bootstrap-5 .select2-selection--single .select2-selection__arrow {
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            right: 0.75rem !important;
+        }
+
+        .select2-dropdown {
+            border-color: #e5e7eb !important;
+            border-radius: 0.75rem !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+            z-index: 9999 !important;
+        }
+
+        .select2-search__field {
+            border-radius: 0.5rem !important;
+        }
+
+        /* Ensure highlighted and selected options have white text */
+        .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--highlighted,
+        .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--selected,
+        .select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true] {
+            color: #ffffff !important;
+            background-color: #007bff !important;
+        }
+
+        /* Style for custom dropdown items on hover and active state */
+        .custom-dropdown-list li:hover,
+        .custom-dropdown-list li.active-item {
+            background-color: #007bff !important;
+            color: #ffffff !important;
+        }
+
+        .custom-dropdown-list li:hover span,
+        .custom-dropdown-list li.active-item span,
+        .custom-dropdown-list li:hover .text-primary,
+        .custom-dropdown-list li.active-item .text-primary {
+            color: #ffffff !important;
+        }
+    

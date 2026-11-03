@@ -1,0 +1,446 @@
+
+        .staff-profile-activate-btn {
+            background-color: #2F8CFF !important;
+            color: #ffffff !important;
+            border-radius: 10px !important;
+            width: auto !important;
+            min-width: 120px !important;
+            height: 32px !important;
+            padding: 0 14px !important;
+            border: none !important;
+            white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 14px !important;
+            cursor: pointer;
+        }
+        .staff-profile-activate-btn:hover {
+            background-color: #136DDC !important;
+            color: #ffffff !important;
+        }
+        .custom-select-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .select-selected {
+            display: flex;
+            align-items: center;
+            padding: 5px 8px 5px 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #fff;
+            cursor: pointer;
+            gap: 4px;
+            min-width: 105px;
+        }
+
+        .select-selected:after {
+            content: '';
+            border: solid #666;
+            border-width: 0 2px 2px 0;
+            padding: 3px;
+            transform: rotate(45deg);
+            position: absolute;
+            right: 10px;
+            top: 12px;
+        }
+
+        .select-items {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            z-index: 99;
+            display: none;
+        }
+
+        .select-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 10px;
+            cursor: pointer;
+            gap: 8px;
+        }
+
+        .select-item:hover {
+            background-color: #f6f6f6;
+        }
+
+        .select-item img,
+        .select-selected img {
+            width: 15px;
+            height: 15px;
+            object-fit: contain;
+        }
+
+        .original-select {
+            display: none;
+        }
+
+        .view-log-content {
+            margin-left: 0px !important;
+            margin-top: 0px !important;
+        }
+
+        .view-log-content p {
+            margin-left: 0px !important;
+        }
+
+        ul {
+            padding-left: 0px !important;
+        }
+
+        .nav-tabs .nav-item.show .nav-link,
+        .nav-tabs .nav-link.active {
+            background-color: transparent;
+        }
+
+        .staff-profile-main {
+            box-sizing: border-box;
+            overflow: hidden;
+            width: 100%;
+            padding: 20px !important;
+            border-radius: 20px;
+        }
+
+        .staff-main-header {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            justify-content: center !important;
+            gap: 6px !important;
+            padding-left: 0 !important;
+        }
+
+        .staff-action-btns {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 8px !important;
+            margin-top: 6px !important;
+        }
+
+        .staff_edit_profile {
+            margin: 0 !important;
+            display: inline-flex !important;
+        }
+
+        .staff-action-btns button,
+        .staff-action-btns a {
+            margin: 0 !important;
+        }
+
+        .staff-profile-details {
+            border-left: none !important;
+            padding-left: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        .staff-profile-num {
+            margin-top: 0 !important;
+        }
+
+        .approve_staff_data {
+            overflow-x: auto;
+            width: 100%;
+        }
+
+        .view_log_model_inner {
+            min-height: calc(100vh - 180px) !important;
+        }
+
+        /* ==========================================================================
+           1. DESKTOP & LARGE LAPTOP (min-width: 992px)
+           - Left section & Right section sit side-by-side in 1 row (NO overflow)
+           - All 5 Stat Cards sit in 1 horizontal row (20% each)
+           ========================================================================== */
+        @media (min-width: 992px) {
+            .staff-profile {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                gap: 16px !important;
+                width: 100% !important;
+            }
+
+            .staff-left-header {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                flex-wrap: nowrap !important;
+                gap: 16px !important;
+                flex: 0 1 auto !important;
+                padding-right: 0 !important;
+            }
+
+            .staff-right-header {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                flex-wrap: nowrap !important;
+                gap: 24px !important;
+                flex: 0 0 auto !important;
+                margin-left: auto !important;
+                padding-right: 0 !important;
+            }
+
+            .staff-profile-details,
+            .staff-profile-details-sec {
+                border-left: 2px solid #DFDFDF !important;
+                padding-left: 18px !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                height: auto !important;
+            }
+
+            .atten-status-sub {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+                justify-content: space-between !important;
+                gap: 12px !important;
+                width: 100% !important;
+            }
+
+            .atten-third-section-box {
+                flex: 1 1 0 !important;
+                min-width: 0 !important;
+                width: 20% !important;
+            }
+        }
+
+        /* Screen 992px to 1180px gap tightening */
+        @media (min-width: 992px) and (max-width: 1180px) {
+            .staff-right-header {
+                gap: 16px !important;
+            }
+            .staff-profile-details,
+            .staff-profile-details-sec {
+                padding-left: 12px !important;
+            }
+        }
+
+        /* ==========================================================================
+           2. TABLET & SMALL LAPTOP (min-width: 576px) and (max-width: 991px)
+           - Overrides media.css flex-direction: row on staff-main-header
+           - Places buttons UNDER name so Deactivate Staff button NEVER clips
+           - Displays Left Section on top, Right Details below with divider
+           ========================================================================== */
+        @media (min-width: 576px) and (max-width: 991px) {
+            .staff-profile {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 16px !important;
+                width: 100% !important;
+            }
+
+            .staff-left-header {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 16px !important;
+                width: 100% !important;
+            }
+
+            .staff-main-header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 6px !important;
+            }
+
+            .staff-action-btns {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+            }
+
+            .staff-right-header {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: flex-start !important;
+                gap: 24px !important;
+                width: 100% !important;
+                margin-left: 0 !important;
+                border-top: 1px solid #EEF2F6 !important;
+                padding-top: 16px !important;
+            }
+
+            .staff-profile-details {
+                border-left: none !important;
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+                flex: 1 !important;
+            }
+
+            .staff-profile-details-sec {
+                border-left: 2px solid #DFDFDF !important;
+                padding-left: 16px !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                flex: 1 !important;
+            }
+
+            .atten-status-sub {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+
+            .atten-third-section-box {
+                flex: 1 1 calc(33.33% - 10px) !important;
+                width: auto !important;
+            }
+
+            .staff_profile_atten {
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+            }
+
+            .staff_profile_atten .approve-right-data {
+                justify-content: flex-end !important;
+                flex-wrap: wrap !important;
+                gap: 12px !important;
+            }
+        }
+
+        /* ==========================================================================
+           3. MOBILE LAYOUT (< 575px)
+           - Centered layout for small phones
+           - Stat cards 2 per row
+           ========================================================================== */
+        @media (max-width: 575px) {
+            .staff-profile-main {
+                padding: 16px !important;
+            }
+
+            .staff-profile {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 16px !important;
+                width: 100% !important;
+            }
+
+            .staff-left-header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+                gap: 12px !important;
+            }
+
+            .staff-main-header {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                width: 100% !important;
+            }
+
+            .staff-action-btns {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                flex-wrap: wrap !important;
+                gap: 8px !important;
+            }
+
+            .staff-right-header {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: space-around !important;
+                align-items: flex-start !important;
+                width: 100% !important;
+                margin-left: 0 !important;
+                gap: 12px !important;
+                border-top: 1px solid #EEF2F6 !important;
+                padding-top: 16px !important;
+            }
+
+            .staff-profile-details {
+                border-left: none !important;
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                text-align: left !important;
+                align-items: flex-start !important;
+                flex: 1 !important;
+            }
+
+            .staff-profile-details-sec {
+                border-left: 2px solid #DFDFDF !important;
+                padding-left: 10px !important;
+                padding-right: 0 !important;
+                margin-left: 0 !important;
+                text-align: left !important;
+                align-items: flex-start !important;
+                flex: 1 !important;
+            }
+
+            .salary-main-salary {
+                justify-content: flex-start !important;
+            }
+
+            .atten-status-sub {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                gap: 10px !important;
+                width: 100% !important;
+            }
+
+            .atten-third-section-box {
+                flex: 1 1 calc(50% - 10px) !important;
+                width: auto !important;
+            }
+
+            .staff_profile_atten {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 12px !important;
+            }
+
+            .staff_profile_atten .approve-right-data {
+                width: 100% !important;
+                flex-direction: column !important;
+                align-items: stretch !important;
+                gap: 10px !important;
+            }
+
+            .staff_profile_datepicker {
+                flex-direction: column !important;
+                gap: 8px !important;
+                align-items: stretch !important;
+                width: 100% !important;
+            }
+
+            .staff_profile_datepicker input {
+                width: 100% !important;
+                text-align: center !important;
+            }
+
+            .date_range_to {
+                text-align: center !important;
+                margin: 0 !important;
+            }
+        }
+    

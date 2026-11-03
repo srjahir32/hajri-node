@@ -1,0 +1,16 @@
+
+        @media (max-width: 480px) {
+            .approve-data-download {
+                 margin-top: 0px !important;
+            }
+            .inner-row{
+                margin-bottom: 15px!important;
+            }
+        }
+        @media (max-width: 991px) {
+
+            .inner-row{
+                margin-bottom: 15px!important;
+            }
+        }
+    

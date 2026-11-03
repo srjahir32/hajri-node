@@ -1,0 +1,84 @@
+
+        .select2-container--default .select2-selection--single {
+            border-radius: 10px !important;
+            border: 1px solid #BBC6D8 !important;
+            font-size: 14px !important;
+            height: 40px !important;
+            padding-left: 10px !important;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 38px !important;
+            right: 10px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #050E17 !important;
+            line-height: normal !important;
+            padding-left: 0 !important;
+        }
+        .select2-dropdown {
+            border: 1px solid #BBC6D8 !important;
+            border-radius: 10px !important;
+            padding: 5px;
+        }
+        .select2-results__options {
+            max-height: 200px !important;
+            overflow-y: auto !important;
+        }
+        #step-2 {
+            max-width: 600px !important;
+            padding: 0 15px;
+            /* Fix for horizontal scroll on mobile */
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .hajri-busi-field .input_form-fields {
+            width: 100% !important;
+        }
+        .hajri-busi-field .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .hajri-busi-field .business-info-field {
+            width: 100% !important;
+            margin-bottom: 5px;
+            margin-top: 0;
+            text-align: left;
+        }
+        .logo_txt {
+            font-size: 28px;
+            font-family: "proxima-bold";
+            color: #050E17;
+            vertical-align: middle;
+            padding-left: 15px;
+        }
+
+        .iti__country-list {
+            max-height: 200px !important;
+        }
+        .iti__search-container {
+            position: sticky !important;
+            top: 0 !important;
+            background-color: #fff !important;
+            padding: 8px 10px !important;
+            z-index: 100 !important;
+            border-bottom: 1px solid #e5e7eb !important;
+            list-style: none !important;
+            margin: 0 !important;
+        }
+        .iti__search-input {
+            width: 100% !important;
+            padding: 6px 12px !important;
+            font-size: 13px !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 6px !important;
+            outline: none !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-input:focus {
+            border-color: #2F8CFF !important;
+            box-shadow: 0 0 0 2px rgba(47, 140, 255, 0.2) !important;
+        }
+    

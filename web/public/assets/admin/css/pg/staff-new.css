@@ -1,0 +1,24 @@
+
+        .H_ib_body{
+            width: 140px!important;
+        }
+        .download-btn{
+            width: 100%!important;
+        }
+        .deactivated-staff-btn {
+            width: auto !important;
+            min-width: 160px !important;
+            padding: 0 16px !important;
+            white-space: nowrap !important;
+            background-color: #6c757d !important;
+        }
+        .deactivated-staff-btn a {
+            white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+        .deactivated-staff-btn:hover {
+            background-color: #5a6268 !important;
+        }
+    

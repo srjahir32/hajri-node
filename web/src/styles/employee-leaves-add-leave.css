@@ -1,0 +1,15 @@
+
+        #leave_type ,#leave_type_btn ,#leave_duration_btn ,#start_date , #end_date{
+            height: 40px !important;
+            width: 100% !important;
+            border-radius: 10px !important;
+            border: 1px solid #BBC6D8 !important;
+            background: #FFF !important;
+            color: #808080 !important;
+            font-size: 14px !important;
+            background-image: url(../../../../../images/dashboard/arrow2.svg)!important;
+            background-repeat: no-repeat !important;
+            padding-left: 20px!important;
+            background-position: right 0.75rem center!important;
+        }
+    

@@ -1,0 +1,1730 @@
+{
+"landing": [
+"/",
+"GET|HEAD"
+],
+"ignition.executeSolution": [
+"_ignition/execute-solution",
+"POST"
+],
+"ignition.healthCheck": [
+"_ignition/health-check",
+"GET|HEAD"
+],
+"ignition.updateConfig": [
+"_ignition/update-config",
+"POST"
+],
+"login": [
+"a_admin/login",
+"GET|HEAD"
+],
+"admin_user_list": [
+"admin_user_list",
+"POST"
+],
+"admin_users": [
+"admin_users",
+"GET|HEAD"
+],
+"add_admin_user": [
+"admin_users/add_admin_user",
+"GET|HEAD"
+],
+"delete_admin_user": [
+"admin_users/delete_admin_user",
+"POST"
+],
+"edit_admin_user": [
+"admin_users/edit_admin_user/{id}",
+"GET|HEAD"
+],
+"save_admin_user": [
+"admin_users/save_admin_user",
+"POST"
+],
+"api.add-attendance": [
+"api/add_attendance",
+"POST"
+],
+"api.add-business": [
+"api/add_business",
+"POST"
+],
+"api.add-department": [
+"api/add_edit_department",
+"POST"
+],
+"api.add-staff": [
+"api/add_edit_staff",
+"POST"
+],
+"api.add_edit_timezone": [
+"api/add_edit_timezone",
+"POST"
+],
+"api.add-staff-attendance": [
+"api/add_staff_attendance",
+"POST"
+],
+"api.add-staff-attendance-new": [
+"api/add_staff_attendance_new",
+"POST"
+],
+"api.check_holiday": [
+"api/check_holiday",
+"POST"
+],
+"api.delete-department": [
+"api/delete_department",
+"POST"
+],
+"api.delete-staff": [
+"api/delete_staff",
+"POST"
+],
+"api.delete_user": [
+"api/delete_user",
+"POST"
+],
+"api.edit_business": [
+"api/edit_business",
+"POST"
+],
+"api.edit-staff-info": [
+"api/edit_staff_info",
+"POST"
+],
+"api.get-all-attendance": [
+"api/get_all_attendance",
+"POST"
+],
+"api.get-attendance": [
+"api/get_attendance",
+"POST"
+],
+"api.get-attendance-request": [
+"api/get_attendance_request",
+"POST"
+],
+"api.get-attendance-request-new": [
+"api/get_attendance_request_new",
+"POST"
+],
+"api.get_category": [
+"api/get_category",
+"POST"
+],
+"api.get_country": [
+"api/get_country",
+"POST"
+],
+"api.get-department": [
+"api/get_department",
+"POST"
+],
+"api.get_last_attendance": [
+"api/get_last_attendance",
+"POST"
+],
+"api.get_live_location": [
+"api/get_live_location",
+"POST"
+],
+"api.get_live_location_count": [
+"api/get_live_location_count",
+"POST"
+],
+"api.get_shift": [
+"api/get_shift",
+"POST"
+],
+"api.get-staff": [
+"api/get_staff",
+"POST"
+],
+"api.get-staff-attendance": [
+"api/get_staff_attendance",
+"POST"
+],
+"api.get-staff-data": [
+"api/get_staff_data",
+"POST"
+],
+"api.get-staff-leave-cards": [
+"api/get_staff_leave_cards",
+"POST"
+],
+"api.get_staff_live_location": [
+"api/get_staff_live_location",
+"POST"
+],
+"api.get_timezones": [
+"api/get_timezones",
+"POST"
+],
+"api.get_user": [
+"api/get_user",
+"POST"
+],
+"api.live_location": [
+"api/live_location",
+"POST"
+],
+"api.live_location_setting": [
+"api/live_location_setting",
+"POST"
+],
+"api.login": [
+"api/login",
+"POST"
+],
+"api.logout": [
+"api/logout",
+"GET|HEAD"
+],
+"api.mark_as_read": [
+"api/mark_as_read",
+"POST"
+],
+"api.months_attendance_chart": [
+"api/months_attendance_chart",
+"POST"
+],
+"api.notification_list": [
+"api/notification_list",
+"POST"
+],
+"api.notifications": [
+"api/notifications",
+"POST"
+],
+"api.read_notification": [
+"api/read_notification",
+"POST"
+],
+"api.set-business": [
+"api/set_business",
+"POST"
+],
+"api.staff-logout": [
+"api/staff-logout",
+"GET|HEAD"
+],
+"api.staff_add_edit_timezone": [
+"api/staff_add_edit_timezone",
+"POST"
+],
+"api.staff-applied-leave": [
+"api/staff_applied_leave",
+"POST"
+],
+"api.staff-businesses": [
+"api/staff_businesses",
+"POST"
+],
+"staff_company": [
+"api/staff_company",
+"POST"
+],
+"api.staff-holiday-list": [
+"api/staff_holiday_list",
+"POST"
+],
+"api.staff-leave-attendance": [
+"api/staff_leave_attendance",
+"POST"
+],
+"api.staff_login": [
+"api/staff_login",
+"POST"
+],
+"api.staff_mark_as_read": [
+"api/staff_mark_as_read",
+"POST"
+],
+"api.staff_read_notification": [
+"api/staff_read_notification",
+"POST"
+],
+"api.staff_records": [
+"api/staff_records",
+"POST"
+],
+"api.staff_verify_otp": [
+"api/staff_verify_otp",
+"POST"
+],
+"api.adminuser": [
+"api/v1/adminuser",
+"GET|HEAD"
+],
+"api.locations": [
+"api/v1/locations",
+"GET|HEAD"
+],
+"api.payroll": [
+"api/v1/payroll",
+"GET|HEAD"
+],
+"api.report": [
+"api/v1/report",
+"GET|HEAD"
+],
+"api.rolepermission": [
+"api/v1/rolepermission",
+"GET|HEAD"
+],
+"api.subscriptions": [
+"api/v1/subscriptions",
+"GET|HEAD"
+],
+"api.verify_otp": [
+"api/verify_otp",
+"POST"
+],
+"attendance": [
+"attendance",
+"GET|HEAD"
+],
+"attendance-new": [
+"attendance-new",
+"GET|HEAD"
+],
+"add_attendance": [
+"attendance/add_attendance",
+"GET|HEAD"
+],
+"add_note": [
+"attendance/add_note",
+"POST"
+],
+"all_attendance_approve_decline": [
+"attendance/all_attendance_approve_decline",
+"POST"
+],
+"all_attendance_request_approve_decline": [
+"attendance/all_attendance_request_approve_decline",
+"POST"
+],
+"attendance-details": [
+"attendance/attendance-details",
+"GET|HEAD"
+],
+"attendance_approve_decline": [
+"attendance/attendance_approve_decline",
+"POST"
+],
+"attendance_approve_select": [
+"attendance/attendance_approve_select",
+"POST"
+],
+"attendance_leave": [
+"attendance/attendance_leave",
+"GET|HEAD"
+],
+"attendance_leave_new": [
+"attendance/attendance_leave_new",
+"GET|HEAD"
+],
+"attendance_list": [
+"attendance/attendance_list",
+"POST"
+],
+"attendance_on_date_change": [
+"attendance/attendance_on_date_change",
+"POST"
+],
+"attendance_punches": [
+"attendance/attendance_punches",
+"GET|HEAD"
+],
+"attendance_punches_list": [
+"attendance/attendance_punches_list",
+"POST"
+],
+"attendance_punches_new": [
+"attendance/attendance_punches_new",
+"GET|HEAD"
+],
+"attendance_reject_select": [
+"attendance/attendance_reject_select",
+"POST"
+],
+"attendance_requests": [
+"attendance/attendance_requests",
+"GET|HEAD"
+],
+"attendance_requests_list": [
+"attendance/attendance_requests_list",
+"POST"
+],
+"attendance_requests_new": [
+"attendance/attendance_requests_new",
+"GET|HEAD"
+],
+"attendance_settings": [
+"attendance/attendance_settings",
+"GET|HEAD"
+],
+"change_attendance_status": [
+"attendance/change_attendance_status",
+"POST"
+],
+"check_approve_decline": [
+"attendance/check_approve_decline",
+"POST"
+],
+"delete_check_punches": [
+"attendance/delete_check_punches",
+"POST"
+],
+"display_note_and_log_data": [
+"attendance/display_note_and_log_data",
+"POST"
+],
+"locations_get_live_location": [
+"attendance/get_live_location",
+"POST"
+],
+"leave_approve_and_decline": [
+"attendance/leave_approve_and_decline",
+"POST"
+],
+"leaves_approve_select": [
+"attendance/leaves_approve_select",
+"POST"
+],
+"leaves_reject_select": [
+"attendance/leaves_reject_select",
+"POST"
+],
+"admin_locations": [
+"attendance/location",
+"GET|HEAD"
+],
+"match-gps-trace": [
+"attendance/match-gps-trace",
+"POST"
+],
+"review_fine_list": [
+"attendance/review_fine_list",
+"POST"
+],
+"review_fines": [
+"attendance/review_fines",
+"GET|HEAD"
+],
+"review_overtime": [
+"attendance/review_overtime",
+"GET|HEAD"
+],
+"staff_leave_attendance": [
+"attendance/staff_leave_attendance",
+"POST"
+],
+"staff_live_location": [
+"attendance/staff_live_location",
+"POST"
+],
+"check-geofencing": [
+"check-geofencing",
+"GET|HEAD"
+],
+"dashboard": [
+"dashboard",
+"GET|HEAD"
+],
+"dashboard-new": [
+"dashboard-new",
+"GET|HEAD"
+],
+"absent": [
+"dashboard/absent",
+"GET|HEAD"
+],
+"approve_overtime": [
+"dashboard/approve-overtime",
+"GET|HEAD"
+],
+"approve_punches": [
+"dashboard/approve-punches",
+"GET|HEAD"
+],
+"attendance-daily-work-entries": [
+"dashboard/attendance-daily-work-entries",
+"GET|HEAD"
+],
+"attendance-upcoming-leaves": [
+"dashboard/attendance-upcoming-leaves",
+"GET|HEAD"
+],
+"detailed_attendance_view": [
+"dashboard/detailed-attendance-view",
+"GET|HEAD"
+],
+"edit-profile": [
+"dashboard/edit-profile",
+"POST"
+],
+"get_live_location": [
+"dashboard/get_live_location",
+"POST"
+],
+"late": [
+"dashboard/late",
+"GET|HEAD"
+],
+"leave": [
+"dashboard/leave",
+"GET|HEAD"
+],
+"logout": [
+"dashboard/logout",
+"GET|HEAD"
+],
+"manage_leave": [
+"dashboard/manage-leave",
+"GET|HEAD"
+],
+"months_attendance_chart": [
+"dashboard/months_attendance_chart",
+"POST"
+],
+"notification": [
+"dashboard/notification",
+"GET|HEAD"
+],
+"mark_all_read": [
+"dashboard/notification/read-all",
+"GET|HEAD"
+],
+"read_notification": [
+"dashboard/notification/read/{id}",
+"GET|HEAD"
+],
+"on_time": [
+"dashboard/on_time",
+"GET|HEAD"
+],
+"profile": [
+"dashboard/profile",
+"GET|HEAD"
+],
+"profile-new": [
+"dashboard/profile-new",
+"GET|HEAD"
+],
+"review_fine": [
+"dashboard/review-fine",
+"GET|HEAD"
+],
+"set-session": [
+"dashboard/set-session",
+"POST"
+],
+"staff_attendance_status": [
+"dashboard/staff_attendance_status",
+"POST"
+],
+"deactivated-staff": [
+"deactivated-staff",
+"GET|HEAD"
+],
+"deactivated-staff-new": [
+"deactivated-staff-new",
+"GET|HEAD"
+],
+"download_invoice_pdf": [
+"download-invoice-pdf",
+"GET|HEAD"
+],
+"user-attendance": [
+"employee/attendance",
+"GET|HEAD"
+],
+"user_attendance_list": [
+"employee/attendance-list",
+"POST"
+],
+"attendance-request": [
+"employee/attendance-request",
+"GET|HEAD"
+],
+"attendance_request_list": [
+"employee/attendance-request-list",
+"POST"
+],
+"add-attendance-request": [
+"employee/attendance-request/add-attendance-request",
+"GET|HEAD"
+],
+"user_attendance_details": [
+"employee/attendance/details",
+"GET|HEAD"
+],
+"user-dashboard": [
+"employee/dashboard",
+"GET|HEAD"
+],
+"user-edit-profile": [
+"employee/edit-profile",
+"GET|HEAD"
+],
+"user-holidays": [
+"employee/holidays",
+"GET|HEAD"
+],
+"user-leaves": [
+"employee/leaves",
+"GET|HEAD"
+],
+"add-leave": [
+"employee/leaves/add-leave",
+"GET|HEAD"
+],
+"get-leave-balance": [
+"employee/leaves/get-leave-balance",
+"POST"
+],
+"user_leaves_list": [
+"employee/leaves/leaves-list",
+"POST"
+],
+"store-leave": [
+"employee/leaves/store-leave",
+"POST"
+],
+"user-login": [
+"employee/login",
+"GET|HEAD"
+],
+"staff-login": [
+"employee/login",
+"POST"
+],
+"staff.notification": [
+"employee/notifications",
+"GET|HEAD"
+],
+"staff.mark_all_read": [
+"employee/notifications/read-all",
+"GET|HEAD"
+],
+"staff.read_notification": [
+"employee/notifications/read/{id}",
+"GET|HEAD"
+],
+"reports": [
+"employee/reports",
+"GET|HEAD"
+],
+"attendance-report": [
+"employee/reports/attendance-report",
+"GET|HEAD"
+],
+"front.attendance_report_excel": [
+"employee/reports/attendance-report-excel",
+"GET|HEAD"
+],
+"attendance-report-list": [
+"employee/reports/attendance-report-list",
+"POST"
+],
+"staff-login-success": [
+"employee/staff-login",
+"POST"
+],
+"staff-punch-in-punch-out": [
+"employee/staff-punch-in-punch-out",
+"POST"
+],
+"store-attendance-request": [
+"employee/store-attendance-request",
+"POST"
+],
+"employee-trial-expired": [
+"employee/trial-expired",
+"GET|HEAD"
+],
+"user-update-profile": [
+"employee/update-profile",
+"POST"
+],
+"staff-verify-otp": [
+"employee/verify-otp",
+"POST"
+],
+"get-live-location": [
+"get_live_location",
+"POST"
+],
+"global_search": [
+"global_search",
+"POST"
+],
+"kelviq_subscribe": [
+"kelviq-checkout",
+"POST"
+],
+"kelviq-payment-success": [
+"kelviq-payment-success",
+"GET|HEAD"
+],
+"user-logout": [
+"logout",
+"GET|HEAD"
+],
+"passport.authorizations.authorize": [
+"oauth/authorize",
+"GET|HEAD"
+],
+"passport.authorizations.approve": [
+"oauth/authorize",
+"POST"
+],
+"passport.authorizations.deny": [
+"oauth/authorize",
+"DELETE"
+],
+"passport.clients.index": [
+"oauth/clients",
+"GET|HEAD"
+],
+"passport.clients.store": [
+"oauth/clients",
+"POST"
+],
+"passport.clients.update": [
+"oauth/clients/{client_id}",
+"PUT"
+],
+"passport.clients.destroy": [
+"oauth/clients/{client_id}",
+"DELETE"
+],
+"passport.personal.tokens.index": [
+"oauth/personal-access-tokens",
+"GET|HEAD"
+],
+"passport.personal.tokens.store": [
+"oauth/personal-access-tokens",
+"POST"
+],
+"passport.personal.tokens.destroy": [
+"oauth/personal-access-tokens/{token_id}",
+"DELETE"
+],
+"passport.scopes.index": [
+"oauth/scopes",
+"GET|HEAD"
+],
+"passport.token": [
+"oauth/token",
+"POST"
+],
+"passport.token.refresh": [
+"oauth/token/refresh",
+"POST"
+],
+"passport.tokens.index": [
+"oauth/tokens",
+"GET|HEAD"
+],
+"passport.tokens.destroy": [
+"oauth/tokens/{token_id}",
+"DELETE"
+],
+"cashfree.callback": [
+"payment/callback",
+"GET|HEAD"
+],
+"cashfree.subscription.callback": [
+"payment/subscription-callback",
+"GET|POST|HEAD"
+],
+"cashfree.webhook": [
+"payment/webhook",
+"POST"
+],
+"payroll": [
+"payroll",
+"GET|HEAD"
+],
+"add-payroll-record": [
+"payroll/add-payroll-record",
+"POST"
+],
+"all-approval-punches": [
+"payroll/all-approval-punches",
+"POST"
+],
+"all-attendance-review": [
+"payroll/all-attendance-review",
+"POST"
+],
+"all-download-payroll": [
+"payroll/all-download-payroll",
+"POST"
+],
+"all-process-payroll": [
+"payroll/all-process-payroll",
+"POST"
+],
+"all-total-pay-review": [
+"payroll/all-total-pay-review",
+"POST"
+],
+"bulk_approval_processed": [
+"payroll/bulk_approval_processed",
+"POST"
+],
+"payroll-page": [
+"payroll/payroll",
+"GET|HEAD"
+],
+"approval-punches-new": [
+"payroll/payroll-approval-punches",
+"GET|HEAD"
+],
+"payroll-review": [
+"payroll/payroll-approval-review",
+"GET|HEAD"
+],
+"payroll-approvals": [
+"payroll/payroll-approvals",
+"GET|HEAD"
+],
+"payroll-approvals-new": [
+"payroll/payroll-approvals-new",
+"GET|HEAD"
+],
+"approval-leaves": [
+"payroll/payroll-approve-leaves",
+"GET|HEAD"
+],
+"approval-leaves-new": [
+"payroll/payroll-approve-leaves-new",
+"GET|HEAD"
+],
+"approval-overtime": [
+"payroll/payroll-approve-overtime",
+"GET|HEAD"
+],
+"payroll-summary": [
+"payroll/payroll-approve-summary",
+"GET|HEAD"
+],
+"payroll-summary-new": [
+"payroll/payroll-approve-summary-new",
+"GET|HEAD"
+],
+"payroll-attendance_review": [
+"payroll/payroll-attendance_review",
+"POST"
+],
+"payroll-list": [
+"payroll/payroll-list",
+"POST"
+],
+"payroll-review-detail-new": [
+"payroll/payroll-review-details",
+"GET|HEAD"
+],
+"payroll-totalpay-new": [
+"payroll/payroll-total-pay",
+"GET|HEAD"
+],
+"payroll_export": [
+"payroll/payroll_export",
+"GET|HEAD"
+],
+"payroll_leave_approve": [
+"payroll/payroll_leave_approve",
+"POST"
+],
+"payroll_total_pay_review": [
+"payroll/payroll_total_pay_review",
+"POST"
+],
+"set-session-payroll": [
+"payroll/set-session-payroll",
+"POST"
+],
+"payroll_new": [
+"payroll_new",
+"GET|HEAD"
+],
+"register_number": [
+"register-number",
+"POST"
+],
+"report": [
+"report",
+"GET|HEAD"
+],
+"attendance_report": [
+"report/attendance_report",
+"GET|HEAD"
+],
+"attendance_report_excel": [
+"report/attendance_report_excel",
+"GET|HEAD"
+],
+"attendance_report_list": [
+"report/attendance_report_list",
+"POST"
+],
+"attendance_report_new": [
+"report/attendance_report_new",
+"GET|HEAD"
+],
+"bulk_salary_pdf": [
+"report/bulk_salary_pdf",
+"GET|HEAD"
+],
+"bulk_salary_slip": [
+"report/bulk_salary_slip",
+"GET|HEAD"
+],
+"bulk_salary_slip_list": [
+"report/bulk_salary_slip_list",
+"POST"
+],
+"bulk_salary_slip_new": [
+"report/bulk_salary_slip_new",
+"GET|HEAD"
+],
+"report_payroll": [
+"report/report_payroll",
+"GET|HEAD"
+],
+"report_payroll_new": [
+"report/report_payroll_new",
+"GET|HEAD"
+],
+"report_user_list_export": [
+"report/report_user_list_export",
+"GET|HEAD"
+],
+"report_user_list_export_new": [
+"report/report_user_list_export_new",
+"GET|HEAD"
+],
+"salary_export": [
+"report/salary_export",
+"GET|HEAD"
+],
+"salary_report": [
+"report/salary_report",
+"GET|HEAD"
+],
+"salary_report_list": [
+"report/salary_report_list",
+"POST"
+],
+"salary_report_new": [
+"report/salary_report_new",
+"GET|HEAD"
+],
+"set_date_report_list": [
+"report/set_date_report_list",
+"POST"
+],
+"staff_payroll_report": [
+"report/staff_payroll_report",
+"GET|HEAD"
+],
+"staff_payroll_report_new": [
+"report/staff_payroll_report_new",
+"GET|HEAD"
+],
+"staff_report_download_list": [
+"report/staff_report_download_list",
+"POST"
+],
+"user_export": [
+"report/user_export",
+"GET|HEAD"
+],
+"user_report_list": [
+"report/user_report_list",
+"POST"
+],
+"report_new": [
+"report_new",
+"GET|HEAD"
+],
+"role_list": [
+"role_list",
+"POST"
+],
+"roles": [
+"roles",
+"GET|HEAD"
+],
+"add_role": [
+"roles/add-role",
+"GET|HEAD"
+],
+"delete_role": [
+"roles/delete-role",
+"POST"
+],
+"edit_role": [
+"roles/edit-role/{id}",
+"GET|HEAD"
+],
+"save_role": [
+"roles/save-role",
+"POST"
+],
+"sanctum.csrf-cookie": [
+"sanctum/csrf-cookie",
+"GET|HEAD"
+],
+"sendTestNotification": [
+"sendTestNotification",
+"GET|HEAD"
+],
+"staff-set-session": [
+"set-session",
+"POST"
+],
+"setting": [
+"setting",
+"GET|HEAD"
+],
+"setting-latest": [
+"setting-latest",
+"GET|HEAD"
+],
+"setting-new": [
+"setting-new",
+"GET|HEAD"
+],
+"account_setting": [
+"setting/account_setting",
+"GET|HEAD"
+],
+"account_setting_new": [
+"setting/account_setting_new",
+"GET|HEAD"
+],
+"addBusinessLogo": [
+"setting/addBusinessLogo",
+"POST"
+],
+"add_business": [
+"setting/add_business",
+"POST"
+],
+"add-department": [
+"setting/add_department",
+"POST"
+],
+"add_edit_holiday_template": [
+"setting/add_edit_holiday_template",
+"POST"
+],
+"add_edit_leave_policy": [
+"setting/add_edit_leave_policy",
+"POST"
+],
+"add_rotational_shift": [
+"setting/add_rotational_shift",
+"GET|HEAD"
+],
+"add_shift": [
+"setting/add_shift",
+"GET|HEAD"
+],
+"add_shift_new": [
+"setting/add_shift_new",
+"GET|HEAD"
+],
+"all_assign_staff": [
+"setting/all_assign_staff",
+"POST"
+],
+"all-department": [
+"setting/all_department",
+"POST"
+],
+"apply_break_to_staff": [
+"setting/apply_break_to_staff",
+"POST"
+],
+"apply_department_to_staff": [
+"setting/apply_department_to_staff",
+"POST"
+],
+"apply_early_exit_to_staff": [
+"setting/apply_early_exit_to_staff",
+"POST"
+],
+"apply_late_entry_to_staff": [
+"setting/apply_late_entry_to_staff",
+"POST"
+],
+"apply_overtime_to_staff": [
+"setting/apply_overtime_to_staff",
+"POST"
+],
+"assign-user-new": [
+"setting/assign-user-new/{id}",
+"GET|HEAD"
+],
+"assign-user": [
+"setting/assign-user/{id}",
+"GET|HEAD"
+],
+"assign_shift_staff": [
+"setting/assign_shift_staff/{id}",
+"GET|HEAD"
+],
+"assign_shift_staff_new": [
+"setting/assign_shift_staff_new/{id}",
+"GET|HEAD"
+],
+"department_assign_staff": [
+"setting/assign_staff",
+"GET|HEAD"
+],
+"assign_staff": [
+"setting/assign_staff",
+"POST"
+],
+"assign_staff_new": [
+"setting/assign_staff_new",
+"GET|HEAD"
+],
+"attendance_setting": [
+"setting/attendance_setting",
+"GET|HEAD"
+],
+"attendance_setting_store": [
+"setting/attendance_setting_store",
+"POST"
+],
+"automation_rules": [
+"setting/automation_rules",
+"GET|HEAD"
+],
+"automation_rules_new": [
+"setting/automation_rules_new",
+"GET|HEAD"
+],
+"break_rule": [
+"setting/break_rule",
+"GET|HEAD"
+],
+"break_rule_new": [
+"setting/break_rule_new",
+"GET|HEAD"
+],
+"break_staff_list": [
+"setting/break_staff_list",
+"POST"
+],
+"business_holiday": [
+"setting/business_holiday",
+"POST"
+],
+"business_info": [
+"setting/business_info",
+"GET|HEAD"
+],
+"delete_break": [
+"setting/delete_break",
+"POST"
+],
+"delete-department": [
+"setting/delete_department",
+"POST"
+],
+"delete_early_exit": [
+"setting/delete_early_exit",
+"POST"
+],
+"delete_holiday": [
+"setting/delete_holiday",
+"POST"
+],
+"delete_late_entry": [
+"setting/delete_late_entry",
+"POST"
+],
+"delete_leave_template": [
+"setting/delete_leave_template",
+"POST"
+],
+"delete_overtime": [
+"setting/delete_overtime",
+"POST"
+],
+"delete_shift": [
+"setting/delete_shift",
+"POST"
+],
+"delete_template": [
+"setting/delete_template",
+"POST"
+],
+"department_staff_list": [
+"setting/department_staff_list",
+"POST"
+],
+"departments": [
+"setting/departments",
+"GET|HEAD"
+],
+"departments_new": [
+"setting/departments_new",
+"GET|HEAD"
+],
+"early_exit_rules": [
+"setting/early_exit_rules",
+"GET|HEAD"
+],
+"early_exit_rules_new": [
+"setting/early_exit_rules_new",
+"GET|HEAD"
+],
+"early_exit_staff_list": [
+"setting/early_exit_staff_list",
+"POST"
+],
+"edit_account": [
+"setting/edit_account",
+"POST"
+],
+"edit_business": [
+"setting/edit_business",
+"POST"
+],
+"edit_business_info": [
+"setting/edit_business_info",
+"POST"
+],
+"edit-department": [
+"setting/edit_department",
+"POST"
+],
+"edit_shift": [
+"setting/edit_shift/{id}",
+"GET|HEAD"
+],
+"edit_shift_new": [
+"setting/edit_shift_new/{id}",
+"GET|HEAD"
+],
+"holiday_policy": [
+"setting/holiday_policy",
+"GET|HEAD"
+],
+"holiday_policy_new": [
+"setting/holiday_policy_new",
+"GET|HEAD"
+],
+"holiday_staff_list": [
+"setting/holiday_staff_list",
+"POST"
+],
+"holiday_template": [
+"setting/holiday_template",
+"GET|HEAD"
+],
+"holiday_template_list": [
+"setting/holiday_template_list",
+"POST"
+],
+"holiday_template_new": [
+"setting/holiday_template_new",
+"GET|HEAD"
+],
+"holiday_to_staff": [
+"setting/holiday_to_staff",
+"POST"
+],
+"late_entry_rules": [
+"setting/late_entry_rules",
+"GET|HEAD"
+],
+"late_entry_rules_new": [
+"setting/late_entry_rules_new",
+"GET|HEAD"
+],
+"late_entry_staff_list": [
+"setting/late_entry_staff_list",
+"POST"
+],
+"leave_manage_staff_list": [
+"setting/leave_manage_staff_list",
+"GET|HEAD"
+],
+"leave_manage_staff_list_new": [
+"setting/leave_manage_staff_list_new",
+"GET|HEAD"
+],
+"leave_policy": [
+"setting/leave_policy",
+"GET|HEAD"
+],
+"leave_policy_new": [
+"setting/leave_policy_new",
+"GET|HEAD"
+],
+"leave_template": [
+"setting/leave_template",
+"GET|HEAD"
+],
+"leave_template_list": [
+"setting/leave_template_list",
+"POST"
+],
+"leave_template_new": [
+"setting/leave_template_new",
+"GET|HEAD"
+],
+"leave_to_staff": [
+"setting/leave_to_staff",
+"POST"
+],
+"leave_to_staff_list": [
+"setting/leave_to_staff_list",
+"POST"
+],
+"live_location_setting": [
+"setting/live_location_setting",
+"GET|HEAD"
+],
+"live_location_setting_store": [
+"setting/live_location_setting_store",
+"POST"
+],
+"manage_business": [
+"setting/manage_business",
+"GET|HEAD"
+],
+"manage_business_new": [
+"setting/manage_business_new",
+"GET|HEAD"
+],
+"manage_staff_list": [
+"setting/manage_staff_list",
+"GET|HEAD"
+],
+"manage_staff_list_new": [
+"setting/manage_staff_list_new",
+"GET|HEAD"
+],
+"new_business_account": [
+"setting/new_business_account",
+"GET|HEAD"
+],
+"overtime_rule": [
+"setting/overtime_rule",
+"GET|HEAD"
+],
+"overtime_rule_new": [
+"setting/overtime_rule_new",
+"GET|HEAD"
+],
+"overtime_staff_list": [
+"setting/overtime_staff_list",
+"POST"
+],
+"pf_calculation": [
+"setting/pf_calculation",
+"GET|HEAD"
+],
+"pf_calculation_add_edit": [
+"setting/pf_calculation_add_edit",
+"POST"
+],
+"pf_calculation_new": [
+"setting/pf_calculation_new",
+"GET|HEAD"
+],
+"remove_shift_detail": [
+"setting/remove_shift_detail",
+"POST"
+],
+"remove_staff_shift": [
+"setting/remove_staff_shift",
+"POST"
+],
+"save_weekly_business_holiday": [
+"setting/save_weekly_business_holiday",
+"POST"
+],
+"shift_setting": [
+"setting/shift_setting",
+"GET|HEAD"
+],
+"shift_setting_new": [
+"setting/shift_setting_new",
+"GET|HEAD"
+],
+"staff_allowed_radius": [
+"setting/staff_allowed_radius",
+"GET|HEAD"
+],
+"staff_allowed_radius_store": [
+"setting/staff_allowed_radius_store",
+"POST"
+],
+"store_assign_shift_staff": [
+"setting/store_assign_shift_staff",
+"POST"
+],
+"store_break_rules": [
+"setting/store_break_rules",
+"POST"
+],
+"store_early_exit_rules": [
+"setting/store_early_exit_rules",
+"POST"
+],
+"store_late_entry_rules": [
+"setting/store_late_entry_rules",
+"POST"
+],
+"store_overtime_rules": [
+"setting/store_overtime_rules",
+"POST"
+],
+"store_shift": [
+"setting/store_shift",
+"POST"
+],
+"time_zone": [
+"setting/time-zone",
+"GET|HEAD"
+],
+"time_zone_store": [
+"setting/time-zone-store",
+"POST"
+],
+"update-department": [
+"setting/update_department",
+"POST"
+],
+"update_shift": [
+"setting/update_shift",
+"POST"
+],
+"uploadBusinessLogo": [
+"setting/uploadBusinessLogo",
+"POST"
+],
+"weekly_holiday_policy_business_level": [
+"setting/weekly_holiday_policy_business_level",
+"GET|HEAD"
+],
+"weekly_holiday_policy_business_level_new": [
+"setting/weekly_holiday_policy_business_level_new",
+"GET|HEAD"
+],
+"weekly_holiday_policy_staff_level": [
+"setting/weekly_holiday_policy_staff_level",
+"GET|HEAD"
+],
+"weekly_holiday_policy_staff_manage": [
+"setting/weekly_holiday_policy_staff_manage",
+"GET|HEAD"
+],
+"weekly_holiday_staff_list": [
+"setting/weekly_holiday_staff_list",
+"POST"
+],
+"weekly_holiday_to_staff": [
+"setting/weekly_holiday_to_staff",
+"POST"
+],
+"staff": [
+"staff",
+"GET|HEAD"
+],
+"staff-location": [
+"staff-location",
+"GET|HEAD"
+],
+"staff-new": [
+"staff-new",
+"GET|HEAD"
+],
+"staff-trial-expired": [
+"staff-trial-expired",
+"GET|HEAD"
+],
+"activate_staff": [
+"staff/activate_staff",
+"POST"
+],
+"add-record-staff": [
+"staff/add-record-staff",
+"POST"
+],
+"add-staff": [
+"staff/add-staff",
+"GET|HEAD"
+],
+"add-staff-new": [
+"staff/add-staff-new",
+"GET|HEAD"
+],
+"add_staff_note": [
+"staff/add_staff_note",
+"POST"
+],
+"all-staff": [
+"staff/all-staff",
+"POST"
+],
+"attendance_staff_on_date_change": [
+"staff/attendance_staff_on_date_change",
+"POST"
+],
+"bulk-excel-add-staff": [
+"staff/bulk_excel_add_staff",
+"GET|HEAD"
+],
+"bulk-excel-add-staff-new": [
+"staff/bulk_excel_add_staff_new",
+"GET|HEAD"
+],
+"bulk-excel-add-staff-onboarding": [
+"staff/bulk_excel_add_staff_onboarding",
+"GET|HEAD"
+],
+"bulk-excel-add-staff-onboarding-new": [
+"staff/bulk_excel_add_staff_onboarding_new",
+"GET|HEAD"
+],
+"deactivate_staff": [
+"staff/deactivate_staff",
+"POST"
+],
+"delete_staff": [
+"staff/delete_staff",
+"POST"
+],
+"download_template_excel": [
+"staff/download_template_excel",
+"GET|HEAD"
+],
+"excel-add-staff": [
+"staff/excel_add_staff",
+"POST"
+],
+"staff-profile-new": [
+"staff/staff-profile-new/{id}",
+"GET|HEAD"
+],
+"staff-profile": [
+"staff/staff-profile/{id}",
+"GET|HEAD"
+],
+"staff_attendance_change_status": [
+"staff/staff_attendance_change_status",
+"POST"
+],
+"staff_attendance_excel": [
+"staff/staff_attendance_excel",
+"GET|HEAD"
+],
+"staff_attendance_list": [
+"staff/staff_attendance_list",
+"POST"
+],
+"update_bank_details": [
+"staff/staff_bank_details",
+"POST"
+],
+"staff_display_note_data": [
+"staff/staff_display_note_data",
+"POST"
+],
+"staff_info": [
+"staff/staff_info",
+"POST"
+],
+"staff_info_export": [
+"staff/staff_info_export",
+"GET|HEAD"
+],
+"update_staff_profile": [
+"staff/update_staff_profile",
+"POST"
+],
+"uploadStaffDocument": [
+"staff/uploadStaffDocument",
+"POST"
+],
+"uploadStaffPhoto": [
+"staff/uploadStaffPhoto",
+"POST"
+],
+"upload-excel-add-staff": [
+"staff/upload_excel_add_staff",
+"POST"
+],
+"view_profile": [
+"staff/view_profile/{id}",
+"GET|HEAD"
+],
+"view_profile_new": [
+"staff/view_profile_new/{id}",
+"GET|HEAD"
+],
+"staff-live-location": [
+"staff_live_location",
+"POST"
+],
+"store_business": [
+"store_business",
+"POST"
+],
+"subscribe": [
+"subscribe",
+"POST"
+],
+"subscription.increase-seats": [
+"subscription/increase-seats",
+"POST"
+],
+"subscription.cancel": [
+"subscription/{subscription}/cancel",
+"GET|HEAD"
+],
+"subscription.updateAmount": [
+"subscription/{subscription}/update-amount",
+"POST"
+],
+"subscriptions": [
+"subscriptions",
+"GET|HEAD"
+],
+"superAdmin-all-businesses": [
+"super-admin/all-businesses",
+"POST"
+],
+"superAdmin-all-staff": [
+"super-admin/all-staff",
+"POST"
+],
+"superAdmin-all-users": [
+"super-admin/all-users",
+"POST"
+],
+"superAdmin-attendance-staff-on-date-change": [
+"super-admin/attendance-staff-on-date-change",
+"POST"
+],
+"superAdmin-business": [
+"super-admin/business",
+"GET|HEAD"
+],
+"superAdmin-business-details": [
+"super-admin/business/{id}",
+"GET|HEAD"
+],
+"superAdmin-extend-trial": [
+"super-admin/business/{id}/extend-trial",
+"POST"
+],
+"superAdmin-business-toggle-status": [
+"super-admin/business/{id}/toggle-status",
+"POST"
+],
+"superAdmin-dashboard": [
+"super-admin/dashboard",
+"GET|HEAD"
+],
+"superAdmin-delete-business": [
+"super-admin/delete-business",
+"POST"
+],
+"superAdmin-delete-staff": [
+"super-admin/delete-staff",
+"POST"
+],
+"superAdmin-display-note-and-log-data": [
+"super-admin/display-note-and-log-data",
+"POST"
+],
+"superAdmin-login": [
+"super-admin/login",
+"GET|HEAD"
+],
+"superAdmin-login-post": [
+"super-admin/login",
+"POST"
+],
+"superAdmin-reports": [
+"super-admin/reports",
+"GET|HEAD"
+],
+"superAdmin-reports-data": [
+"super-admin/reports-data",
+"POST"
+],
+"superAdmin-reports-export-payment": [
+"super-admin/reports/export-payment/{gateway}",
+"GET|HEAD"
+],
+"superAdmin-reports-export-periodic": [
+"super-admin/reports/export-periodic",
+"GET|HEAD"
+],
+"superAdmin-staff-attendance-list": [
+"super-admin/staff-attendance-list",
+"POST"
+],
+"superAdmin-staff-display-note-data": [
+"super-admin/staff-display-note-data",
+"POST"
+],
+"superAdmin-staff-list": [
+"super-admin/staff-list",
+"GET|HEAD"
+],
+"superAdmin-staff-live-location": [
+"super-admin/staff-live-location",
+"POST"
+],
+"superAdmin-staff-profile": [
+"super-admin/staff-profile/{id}",
+"GET|HEAD"
+],
+"superAdmin-all-subscription-payments": [
+"super-admin/subscription/all-payments",
+"POST"
+],
+"superAdmin-all-subscription-plans": [
+"super-admin/subscription/all-plans",
+"POST"
+],
+"superAdmin-subscription-payments": [
+"super-admin/subscription/payments",
+"GET|HEAD"
+],
+"superAdmin-subscription-plans": [
+"super-admin/subscription/plans",
+"GET|HEAD"
+],
+"superAdmin-users": [
+"super-admin/users",
+"GET|HEAD"
+],
+"superAdmin-verify-otp": [
+"super-admin/verify-otp",
+"POST"
+],
+"verify_otp": [
+"verify-otp",
+"POST"
+]
+}

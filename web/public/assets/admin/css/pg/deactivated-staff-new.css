@@ -1,0 +1,34 @@
+
+        .H_ib_body{
+            width: 140px!important;
+        }
+        .activate_staff_action_btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+        .activate_staff_action_btn:hover {
+            background-color: #218838;
+            color: #fff;
+        }
+        .deactivated-staff-btn {
+            width: auto !important;
+            min-width: 160px !important;
+            padding: 0 16px !important;
+            white-space: nowrap !important;
+            background-color: #2F8CFF !important;
+        }
+        .deactivated-staff-btn a {
+            white-space: nowrap !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+        .deactivated-staff-btn:hover {
+            background-color: #0066e6 !important;
+        }
+    

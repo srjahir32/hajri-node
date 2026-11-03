@@ -1,0 +1,12 @@
+
+        .create_department_table {
+            min-height: calc(100vh - 325px) !important;
+        }
+        .filter-sub-sec{
+            min-height: 0px !important;
+            height: 0!important;
+        }
+        .create_department_inner_form,.edit_department_inner_form {
+            min-height: calc(100vh - 200px)!important;
+        }
+    

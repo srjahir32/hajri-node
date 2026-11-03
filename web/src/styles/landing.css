@@ -1,0 +1,45 @@
+
+        .employee-button {
+            background-color: #2F8CFF;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #fff;
+            border: none;
+            height: 40px;
+            width: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        .employee-button:hover {
+            color: white !important;
+        }
+
+        .iti__country-list {
+            max-height: 200px !important;
+        }
+        .iti__search-container {
+            position: sticky !important;
+            top: 0 !important;
+            background-color: #fff !important;
+            padding: 8px 10px !important;
+            z-index: 100 !important;
+            border-bottom: 1px solid #e5e7eb !important;
+            list-style: none !important;
+            margin: 0 !important;
+        }
+        .iti__search-input {
+            width: 100% !important;
+            padding: 6px 12px !important;
+            font-size: 13px !important;
+            border: 1px solid #d1d5db !important;
+            border-radius: 6px !important;
+            outline: none !important;
+            box-sizing: border-box !important;
+        }
+        .iti__search-input:focus {
+            border-color: #2F8CFF !important;
+            box-shadow: 0 0 0 2px rgba(47, 140, 255, 0.2) !important;
+        }
+    

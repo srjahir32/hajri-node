@@ -1,0 +1,55 @@
+/* Responsive polish layered on top of the Laravel stylesheets (loaded last in the admin layout). */
+
+html[data-portal="admin"] .page-title-area .breadcrumbs-sub.staf-add-btn-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (max-width: 767.98px) {
+  /* Settings: menu and content stacked instead of squeezed side by side */
+  html[data-portal="admin"] .d-flex:has(> .card > #v-pills-tab) {
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+  html[data-portal="admin"] .d-flex:has(> .card > #v-pills-tab) > .card {
+    width: 100% !important;
+  }
+  html[data-portal="admin"] #v-pills-tab {
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 8px 8px !important;
+    gap: 4px;
+    scrollbar-width: none;
+  }
+  html[data-portal="admin"] #v-pills-tab::-webkit-scrollbar { display: none; }
+  html[data-portal="admin"] #v-pills-tab .nav-link {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    text-align: left;
+    border-right: 0 !important;
+    border-bottom: 3px solid transparent;
+    border-radius: 8px;
+  }
+  html[data-portal="admin"] #v-pills-tab .nav-link.active { border-bottom-color: #2f88ff; }
+  html[data-portal="admin"] main.p-8 { padding: 16px !important; }
+}
+
+@media (max-width: 575.98px) {
+  html[data-portal="admin"] .page-title-area .staff-summary-main.d-flex { width: 100%; flex-wrap: wrap; row-gap: 8px; }
+  html[data-portal="admin"] .page-title-area .staff-summary-main.d-flex > button { flex: 1 1 auto; margin-right: 0 !important; }
+  html[data-portal="admin"] .deactivated-staff-btn { min-width: 0 !important; }
+}
+
+@media (max-width: 767.98px) {
+  /* Payroll wizard steps: scroll sideways instead of clipping the last step */
+  html[data-portal="admin"] .approval-form-muti-step {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  html[data-portal="admin"] .approval-form-muti-step::-webkit-scrollbar { display: none; }
+  html[data-portal="admin"] .approval-form-muti-step > .staff-view-profile { flex: 0 0 auto; }
+}

@@ -1,0 +1,380 @@
+
+        .H_ib_content {
+            width: 180px !important;
+            min-width: 180px !important;
+            margin: 6px 10px !important;
+            padding: 4px 6px !important;
+        }
+        .H_ib {
+            pointer-events: none !important;
+        }
+        .H_ib_close {
+            display: none !important;
+        }
+        #fullscreen-btn i {
+            color: black;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(241, 241, 241, 0.79);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(136, 136, 136, 0.69);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        #fullscreen-btn {
+            justify-content: center;
+            display: flex;
+            margin: auto;
+            /* width: 100%; */
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            border-radius: 5px;
+            right: 25px;
+            z-index: 1000;
+            background: white;
+            border: none;
+            cursor: pointer;
+            width: 2em;
+            height: 2em;
+        }
+        .ios-fullscreen {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 9999 !important;
+            background: #fff !important;
+            min-height: 100% !important;
+            min-width: 100% !important;
+            transform: translateZ(0) !important;
+            -webkit-transform: translateZ(0) !important;
+        }
+        .dashboard-data-sub-list {
+            padding: 13px 0px 13px 0px !important;
+        }
+        .selectDropdown {
+            position: relative;
+            display: inline-block;
+            width: 12rem;
+            /* w-48 */
+        }
+        .selectDropdown select {
+            display: none !important;
+        }
+        .selectDropdown>span {
+            display: block;
+            width: 100%;
+            padding: 0.5rem 0;
+            font-weight: 500;
+            color: #374151;
+            cursor: pointer;
+            background: transparent;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            position: relative;
+            padding-right: 20px;
+            user-select: none;
+        }
+        .selectDropdown>span::after {
+            content: "\f0d7";
+            /* FontAwesome caret-down */
+            font-family: "FontAwesome";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+        }
+        .selectDropdown.open>span::after {
+            content: "\f0d8";
+            /* caret-up */
+        }
+        .selectDropdown ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: -40px;
+            min-width: 130%;
+            background: white;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 0.5rem;
+            z-index: 1000;
+            max-height: 250px;
+            overflow-y: auto;
+            margin-top: 8px;
+            padding: 4px 0;
+            list-style: none;
+        }
+        .selectDropdown.open ul {
+            display: block;
+        }
+        .selectDropdown ul li {
+            margin: 0;
+            padding: 0;
+        }
+        .selectDropdown ul li a {
+            display: block;
+            padding: 8px 16px;
+            color: #4b5563;
+            font-size: 0.875rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .selectDropdown ul li a:hover {
+            background-color: #f3f4f6;
+            color: #111827;
+        }
+        .selectDropdown ul li.active a {
+            background-color: #eff6ff;
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .locations-page-wrap {
+            height: calc(100vh - 120px);
+        }
+        .locations-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: visible;
+            border-radius: 0.5rem;
+        }
+        .locations-filter-bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            width: 100%;
+            overflow: visible;
+            position: relative;
+            z-index: 50;
+            flex-shrink: 0;
+        }
+        .locations-filter-controls {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            width: auto;
+            max-width: 100%;
+            overflow: visible;
+            position: relative;
+            z-index: 50;
+        }
+        .locations-staff-select {
+            position: relative;
+            z-index: 60;
+            flex: 0 1 auto;
+            min-width: 180px;
+        }
+        .locations-staff-select .selectDropdown,
+        .locations-staff-select.select-club-services,
+        .locations-staff-select .select-club-services {
+            width: 12rem !important;
+            min-width: 12rem;
+            max-width: 100%;
+            display: block;
+            position: relative;
+            z-index: 60;
+        }
+        .locations-staff-select .selectDropdown > span {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .locations-staff-select .selectDropdown ul {
+            right: auto;
+            min-width: 100%;
+            max-width: min(320px, 80vw);
+            z-index: 200;
+            width: 250px !important;
+            left: -40px;
+        }
+        .locations-staff-select select.select-club-services {
+            width: 12rem !important;
+            min-width: 12rem;
+        }
+        .locations-date-controls {
+            flex: 0 0 auto;
+        }
+        .locations-date-controls #date_filter {
+            width: 9rem;
+        }
+        .staff-manage-summary-btn{
+            border-radius: 0px 10px 10px 0px !important;
+        }
+        .locations-apply-btn.staff-manage-summary-btn,
+        .locations-apply-btn {
+            width: 80px !important;
+            min-width: 80px !important;
+            flex-shrink: 0;
+        }
+        .locations-body {
+            display: flex;
+            flex-direction: row;
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+        }
+        .locations-sidebar {
+            width: 450px;
+            min-width: 380px;
+            max-width: 450px;
+            overflow: hidden;
+        }
+        .locations-map-area {
+            min-width: 0;
+            flex: 1;
+            height: auto;
+            overflow: hidden;
+        }
+        .locations-map-canvas {
+            flex: 1;
+            width: 100%;
+            position: relative;
+            z-index: 0;
+            min-height: 280px;
+            overflow: hidden;
+        }
+        @media (max-width: 1399px) {
+            .locations-sidebar {
+                width: 360px;
+                min-width: 300px;
+                max-width: 360px;
+            }
+        }
+        @media (max-width: 1199px) {
+            .locations-filter-controls {
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .locations-staff-select {
+                flex: 1 1 auto;
+                min-width: 160px;
+            }
+            .locations-sidebar {
+                width: 300px;
+                min-width: 260px;
+                max-width: 300px;
+            }
+        }
+        @media (max-width: 991px) {
+            main.locations-main {
+                overflow-y: auto !important;
+            }
+            .locations-page-wrap {
+                height: auto;
+                min-height: calc(100vh - 120px);
+                overflow: visible;
+            }
+            .locations-layout {
+                height: auto;
+                overflow: visible;
+            }
+            .locations-body {
+                flex-direction: column;
+                overflow: visible;
+                height: auto;
+            }
+            .locations-sidebar {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                height: auto;
+                max-height: 42vh;
+                border-right: 0;
+                border-bottom: 0;
+                border-top: 1px solid #e5e7eb;
+                order: 2;
+            }
+            .locations-map-area {
+                width: 100%;
+                height: 55vh;
+                min-height: 360px;
+                order: 1;
+            }
+            .locations-filter-controls {
+                flex-wrap: wrap;
+                width: 100%;
+            }
+            .locations-staff-select {
+                flex: 1 1 100%;
+                min-width: 0;
+                border-right: 0 !important;
+                border-bottom: 1px solid #e5e7eb;
+                border-radius: 0.5rem 0.5rem 0 0 !important;
+            }
+            .locations-staff-select .selectDropdown,
+            .locations-staff-select .select-club-services,
+            .locations-staff-select select.select-club-services {
+                width: 100% !important;
+                min-width: 0;
+            }
+            .locations-staff-select .selectDropdown ul {
+                width: 100%;
+                max-width: none;
+            }
+            .locations-date-controls {
+                flex: 1 1 auto;
+                border-right: 0 !important;
+                justify-content: center;
+            }
+            .locations-apply-btn {
+                margin-left: auto;
+            }
+            .locations-map-canvas {
+                min-height: 300px;
+            }
+        }
+        @media (max-width: 575px) {
+            .locations-page-wrap {
+                min-height: calc(100vh - 100px);
+            }
+            .locations-sidebar {
+                max-height: 48vh;
+            }
+            .locations-map-area {
+                height: 50vh;
+                min-height: 280px;
+            }
+            .locations-filter-bar {
+                padding: 8px !important;
+            }
+            .locations-date-controls {
+                flex: 1 1 100%;
+                border-bottom: 1px solid #e5e7eb;
+                justify-content: space-between;
+            }
+            .locations-date-controls #date_filter {
+                width: auto;
+                flex: 1;
+                min-width: 0;
+            }
+            .locations-apply-btn.staff-manage-summary-btn,
+            .locations-apply-btn {
+                width: 100% !important;
+                min-width: 0 !important;
+                margin-left: 0;
+                border-radius: 0 0 0.5rem 0.5rem !important;
+            }
+        }
+    

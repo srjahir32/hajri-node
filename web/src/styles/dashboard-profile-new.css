@@ -1,0 +1,36 @@
+
+        /*.edit_profile_form_inner {*/
+        /*    min-height: calc(100vh - 360px) !important;*/
+        /*}*/
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #BBC6D8 !important;
+            border-radius: 10px !important;
+            height: 40px !important;
+            background-color: #fff;
+            padding: 0 15px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 40px !important;
+            right: 10px !important;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: #050E17 !important;
+            line-height: 40px !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .select2-dropdown {
+            border: 1px solid #BBC6D8 !important;
+            border-radius: 10px !important;
+            max-height: 300px !important;
+            overflow: auto;
+            width: 100% !important;
+        }
+
+        .select2-container {
+            width: 100% !important;
+        }
+    

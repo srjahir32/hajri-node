@@ -1,0 +1,8 @@
+
+        .review-table {
+            min-height: calc(100vh - 405px) !important;
+        }
+        .approve-salary .select-salary-data>span, .approve-punch-data .select-club-services>span{
+            background-color: transparent!important;
+        }
+    

@@ -1,0 +1,56 @@
+/** Permission keys (mirrors the Laravel PermissionSeeder). */
+export const PERMISSIONS = [
+  'view_attendance',
+  'view_attendance_details',
+  'view_punches',
+  'view_attendance_request',
+  'view_leave_management',
+  'approve_punches',
+  'rejected_punches',
+  'approve_attendance_request',
+  'rejected_attendance_request',
+  'approve_leave',
+  'rejected_leave',
+  'view_staff_management',
+  'add_staff',
+  'view_report',
+  'view_payroll',
+  'view_roles',
+  'add_role',
+  'edit_role',
+  'delete_role',
+  'view_subscription',
+  'view_locations',
+  'view_admin_user',
+  'add_admin_user',
+  'edit_admin_user',
+  'delete_admin_user',
+  'view_setting',
+] as const;
+
+export type Permission = (typeof PERMISSIONS)[number];
+
+/** Human readable groups for the role editor UI. */
+export const PERMISSION_GROUPS: Record<string, Permission[]> = {
+  Attendance: [
+    'view_attendance',
+    'view_attendance_details',
+    'view_punches',
+    'view_attendance_request',
+    'view_leave_management',
+    'approve_punches',
+    'rejected_punches',
+    'approve_attendance_request',
+    'rejected_attendance_request',
+    'approve_leave',
+    'rejected_leave',
+  ],
+  'Staff Management': ['view_staff_management', 'add_staff'],
+  Reports: ['view_report'],
+  Payroll: ['view_payroll'],
+  Roles: ['view_roles', 'add_role', 'edit_role', 'delete_role'],
+  Subscriptions: ['view_subscription'],
+  Locations: ['view_locations'],
+  'Admin Users': ['view_admin_user', 'add_admin_user', 'edit_admin_user', 'delete_admin_user'],
+  Settings: ['view_setting'],
+};

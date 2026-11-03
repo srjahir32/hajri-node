@@ -1,0 +1,8 @@
+
+        .approve_staff_data.holiday_policy_table {
+            min-height: calc(100vh - 385px) !important;
+        }
+        .hover\:text-gray-900:hover {
+            color: var(--color-gray-900) !important;
+        }
+    

@@ -1,0 +1,9 @@
+
+        .shift-inner-sub-label-edit,
+        .shift_hour_field {
+            max-width: none !important;
+        }
+        #accrual_type {
+            background-image: none;
+        }
+    

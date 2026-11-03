@@ -1,0 +1,81 @@
+
+        /* Base styles for desktop view */
+        .rotational-main {
+            position: relative;
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #DFDFDF;
+            border-radius: 12px;
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .total-delete-icon {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 0px 10px!important;
+        }
+        .shift-inner-sub-label-edit, .shift_hour_field{
+            max-width: none!important;
+        }
+        /* Table container */
+        .table-container {
+            display: flex;
+            gap: 20px;
+        }
+        /* Each input container */
+        .table-item {
+            width: 22%;
+            margin-bottom: 15px;
+        }
+        .table-item label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        /* Unpaid break input */
+        .break-container {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .break-container select {
+            flex: 1;
+        }
+        .shift-inner-time-sec {
+            margin-top: 25px;
+        }
+        .not-assign-shift{
+            left: 45%!important;
+        }
+        /* Responsive for tablets (768px and below) */
+        @media (max-width: 768px) {
+            .shift-inner-time-sec{
+                margin-top: -10px !important;
+                margin-right: 0px!important;
+                display: block;
+                text-align: center;
+            }
+            .table-container {
+                flex-wrap: wrap!important;
+                gap: 10px;
+            }
+            .rotational-main{
+                width: 100%!important;
+            }
+            .table-item {
+                width: 48%;  /* 2 items per row */
+            }
+        }
+        /* Responsive for mobile (480px and below) */
+        @media (max-width: 480px) {
+            .table-container {
+                gap: 0px;
+            }
+            .table-item {
+                width: 100%;  /* Full width for better UX */
+            }
+        }
+    

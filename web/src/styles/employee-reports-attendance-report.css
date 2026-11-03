@@ -1,0 +1,8 @@
+
+        .report_atten_right_data {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+        }
+    

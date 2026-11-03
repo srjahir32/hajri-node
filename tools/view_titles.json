@@ -1,0 +1,887 @@
+{
+"attendance::attendance": {
+"title": "Attendance",
+"fn": "index",
+"file": "AttendanceController.php"
+},
+"attendance::attendance-new": {
+"title": "Attendance",
+"fn": "attendance",
+"file": "AttendanceController.php"
+},
+"attendance::partials.attendance_card_list": {
+"title": "Attendance Details",
+"fn": "attendanceDetails",
+"file": "AttendanceController.php"
+},
+"attendance::attendance-details": {
+"title": "Attendance Details",
+"fn": "attendanceDetails",
+"file": "AttendanceController.php"
+},
+"attendance::attendance_request": {
+"title": "Attendance",
+"fn": "attendanceRequests",
+"file": "AttendanceController.php"
+},
+"attendance::attendance_request_new": {
+"title": "Attendance",
+"fn": "attendanceRequestsNew",
+"file": "AttendanceController.php"
+},
+"attendance::review_fine": {
+"title": "Attendance",
+"fn": "allAttendanceRequestApproveDecline",
+"file": "AttendanceController.php"
+},
+"attendance::review_overtime": {
+"title": "Attendance",
+"fn": "allAttendanceRequestApproveDecline",
+"file": "AttendanceController.php"
+},
+"attendance::attendance_punches": {
+"title": "Attendance",
+"fn": "attendancePunches",
+"file": "AttendanceController.php"
+},
+"attendance::attendance_punches_new": {
+"title": "Attendance",
+"fn": "attendancePunchesNew",
+"file": "AttendanceController.php"
+},
+"attendance::attendance_leave": {
+"title": "Attendance",
+"fn": "attendanceLeave",
+"file": "AttendanceController.php"
+},
+"attendance::attendance_leave_new": {
+"title": "Attendance",
+"fn": "attendanceLeaveNew",
+"file": "AttendanceController.php"
+},
+"attendance::attendance_settings": {
+"title": "Attendance",
+"fn": "attendanceSettings",
+"file": "AttendanceController.php"
+},
+"attendance::create": {
+"title": null,
+"fn": "create",
+"file": "AttendanceController.php"
+},
+"attendance::show": {
+"title": null,
+"fn": "show",
+"file": "AttendanceController.php"
+},
+"attendance::edit": {
+"title": null,
+"fn": "edit",
+"file": "AttendanceController.php"
+},
+"staffmanagement::staff": {
+"title": "Staff Management",
+"fn": "index",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::staff-new": {
+"title": "Staff Management",
+"fn": "staff",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::deactivated_staff": {
+"title": "Deactivated Staff",
+"fn": "deactivatedStaffIndex",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::deactivated_staff_new": {
+"title": "Deactivated Staff",
+"fn": "deactivatedStaffNew",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::staff-location": {
+"title": "Staff Management",
+"fn": "staffLocation",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::add-staff": {
+"title": "Staff Management",
+"fn": "addStaff",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::add-staff-new": {
+"title": "Staff Management",
+"fn": "addStaffNew",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::staff_profile": {
+"title": "Staff Profile",
+"fn": "staffProfile",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::staff_profile_new": {
+"title": "Staff Profile",
+"fn": "staffProfileNew",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::bulk_excel_add_staff": {
+"title": "Add Staff",
+"fn": "bulkExcelAddStaff",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::bulk_excel_add_staff_new": {
+"title": "Add Staff",
+"fn": "bulkExcelAddStaffNew",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::bulk_excel_add_staff_onboarding": {
+"title": "Add Staff",
+"fn": "bulkExcelAddStaffOnboarding",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::bulk_excel_add_staff_onboarding_new": {
+"title": "Add Staff",
+"fn": "bulkExcelAddStaffOnboardingNew",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::view_profile": {
+"title": "Edit Profile",
+"fn": "viewProfile",
+"file": "StaffManagementController.php"
+},
+"staffmanagement::view_profile_new": {
+"title": "Edit Profile",
+"fn": "viewProfileNew",
+"file": "StaffManagementController.php"
+},
+"subscriptions::subscriptions": {
+"title": "Subscriptions",
+"fn": "index",
+"file": "SubscriptionsController.php"
+},
+"subscriptions::staff_trial_expired": {
+"title": "Trial Expired",
+"fn": "staffTrialExpired",
+"file": "SubscriptionsController.php"
+},
+"dashboard::dashboard": {
+"title": "Dashboard",
+"fn": "index",
+"file": "DashboardController.php"
+},
+"dashboard::dashboard_new": {
+"title": "Dashboard",
+"fn": "dashboard",
+"file": "DashboardController.php"
+},
+"dashboard::profile": {
+"title": "My Profile",
+"fn": "profile",
+"file": "DashboardController.php"
+},
+"dashboard::profile-new": {
+"title": "My Profile",
+"fn": "profileNew",
+"file": "DashboardController.php"
+},
+"dashboard::approve_punches": {
+"title": "Dashboard",
+"fn": "approvePunches",
+"file": "DashboardController.php"
+},
+"dashboard::approve_overtime": {
+"title": "Dashboard",
+"fn": "approveOvertime",
+"file": "DashboardController.php"
+},
+"dashboard::review_fine": {
+"title": "Dashboard",
+"fn": "reviewFine",
+"file": "DashboardController.php"
+},
+"dashboard::manage_leave": {
+"title": "Dashboard",
+"fn": "manageLeave",
+"file": "DashboardController.php"
+},
+"dashboard::detailed_attendance_view": {
+"title": "Attendance",
+"fn": "detailedAttendanceView",
+"file": "DashboardController.php"
+},
+"dashboard::attendance-upcoming-leaves": {
+"title": "Attendance",
+"fn": "attendanceUpcomingLeaves",
+"file": "DashboardController.php"
+},
+"dashboard::attendance-daily-work-entries": {
+"title": "Attendance",
+"fn": "attendanceDailyWorkEntries",
+"file": "DashboardController.php"
+},
+"dashboard::on_time": {
+"title": "Dashboard",
+"fn": "onTime",
+"file": "DashboardController.php"
+},
+"dashboard::late": {
+"title": "Dashboard",
+"fn": "late",
+"file": "DashboardController.php"
+},
+"dashboard::absent": {
+"title": "Dashboard",
+"fn": "absent",
+"file": "DashboardController.php"
+},
+"dashboard::on-leave": {
+"title": "Dashboard",
+"fn": "leave",
+"file": "DashboardController.php"
+},
+"dashboard::notification": {
+"title": "Dashboard",
+"fn": "notification",
+"file": "DashboardController.php"
+},
+"dashboard::create": {
+"title": null,
+"fn": "create",
+"file": "DashboardController.php"
+},
+"dashboard::show": {
+"title": null,
+"fn": "show",
+"file": "DashboardController.php"
+},
+"dashboard::edit": {
+"title": null,
+"fn": "edit",
+"file": "DashboardController.php"
+},
+"locations::location": {
+"title": "Locations",
+"fn": "locations",
+"file": "LocationsController.php"
+},
+"report::reports": {
+"title": "Report",
+"fn": "index",
+"file": "ReportController.php"
+},
+"report::reports_new": {
+"title": "Report",
+"fn": "report",
+"file": "ReportController.php"
+},
+"report::reports_attendance_report": {
+"title": "Report",
+"fn": "attendanceReport",
+"file": "ReportController.php"
+},
+"report::reports_attendance_report_new": {
+"title": "Report",
+"fn": "attendanceReportNew",
+"file": "ReportController.php"
+},
+"report::reports_salary_report": {
+"title": "Report",
+"fn": "salaryReport",
+"file": "ReportController.php"
+},
+"report::reports_salary_report_new": {
+"title": "Report",
+"fn": "salaryReportNew",
+"file": "ReportController.php"
+},
+"report::reports_user_list_export": {
+"title": "Report",
+"fn": "reportUserListExport",
+"file": "ReportController.php"
+},
+"report::reports_user_list_export_new": {
+"title": "Report",
+"fn": "reportUserListExportNew",
+"file": "ReportController.php"
+},
+"report::reports_payroll": {
+"title": "Reports",
+"fn": "reportPayroll",
+"file": "ReportController.php"
+},
+"report::reports_payroll_new": {
+"title": "Reports",
+"fn": "reportPayrollNew",
+"file": "ReportController.php"
+},
+"report::bulk_salary_slip": {
+"title": "Payroll Reports",
+"fn": "bulkSalarySlip",
+"file": "ReportController.php"
+},
+"report::bulk_salary_slip_new": {
+"title": "Payroll Reports",
+"fn": "bulkSalarySlipNew",
+"file": "ReportController.php"
+},
+"report::staff_payroll_report": {
+"title": "Payroll Reports",
+"fn": "staffPayrollReport",
+"file": "ReportController.php"
+},
+"report::staff_payroll_report_new": {
+"title": "Payroll Reports",
+"fn": "staffPayrollReportNew",
+"file": "ReportController.php"
+},
+"report::create": {
+"title": null,
+"fn": "create",
+"file": "ReportController.php"
+},
+"report::show": {
+"title": null,
+"fn": "show",
+"file": "ReportController.php"
+},
+"report::edit": {
+"title": null,
+"fn": "edit",
+"file": "ReportController.php"
+},
+"setting::shift.shift": {
+"title": "Attendance Settings",
+"fn": "index",
+"file": "ShiftController.php"
+},
+"setting::shift.shift_new": {
+"title": "Attendance Settings",
+"fn": "shiftSetting",
+"file": "ShiftController.php"
+},
+"setting::shift.add-shift": {
+"title": "Shift Settings",
+"fn": "addShift",
+"file": "ShiftController.php"
+},
+"setting::shift.add-shift-new": {
+"title": "Shift Settings",
+"fn": "addShiftNew",
+"file": "ShiftController.php"
+},
+"setting::shift.edit-shift": {
+"title": "Shift Settings",
+"fn": "editShift",
+"file": "ShiftController.php"
+},
+"setting::shift.edit-shift-new": {
+"title": "Shift Settings",
+"fn": "editShiftNew",
+"file": "ShiftController.php"
+},
+"setting::shift.assign-shift-staff": {
+"title": "Edit Shift",
+"fn": "assignShiftStaff",
+"file": "ShiftController.php"
+},
+"setting::shift.assign-shift-staff-new": {
+"title": "Edit Shift",
+"fn": "assignShiftStaffNew",
+"file": "ShiftController.php"
+},
+"setting::shift.assign-staff": {
+"title": "Edit Shift",
+"fn": "assignUser",
+"file": "ShiftController.php"
+},
+"setting::shift.assign-staff-new": {
+"title": "Edit Shift",
+"fn": "assignUserNew",
+"file": "ShiftController.php"
+},
+"setting::attendance_settings.attendance_setting": {
+"title": "Attendance Settings",
+"fn": "index",
+"file": "AttendanceSettingController.php"
+},
+"setting::accountsetting.account_setting_login_details": {
+"title": "Account Setting",
+"fn": "index",
+"file": "AccountSettingController.php"
+},
+"setting::accountsetting.account_setting_login_details_new": {
+"title": "Account Setting",
+"fn": "accountSettingNew",
+"file": "AccountSettingController.php"
+},
+"setting::accountsetting.account_setting_login_details_manage_business": {
+"title": "Business Setting",
+"fn": "manageBusiness",
+"file": "AccountSettingController.php"
+},
+"setting::accountsetting.account_setting_login_details_manage_business_new": {
+"title": "Business Setting",
+"fn": "manageBusinessNew",
+"file": "AccountSettingController.php"
+},
+"setting::accountsetting.account_setting_login_details_add_new_business": {
+"title": "Manage Business",
+"fn": "newBusinessAccount",
+"file": "AccountSettingController.php"
+},
+"setting::accountsetting.business_info": {
+"title": "Business Info",
+"fn": "BusinessInfo",
+"file": "AccountSettingController.php"
+},
+"setting::pf.pf_calculation": {
+"title": "PF Calculation",
+"fn": "pfCalculation",
+"file": "AccountSettingController.php"
+},
+"setting::pf.pf_calculation_new": {
+"title": "PF Calculation",
+"fn": "pfCalculationNew",
+"file": "AccountSettingController.php"
+},
+"setting::create": {
+"title": null,
+"fn": "create",
+"file": "AccountSettingController.php"
+},
+"setting::show": {
+"title": null,
+"fn": "show",
+"file": "AccountSettingController.php"
+},
+"setting::edit": {
+"title": null,
+"fn": "edit",
+"file": "AccountSettingController.php"
+},
+"setting::weeklyholidaypolicy.business_settings_weekly_holiday_policy_business_level": {
+"title": "Business Settings",
+"fn": "index",
+"file": "WeeklyHolidayPolicyController.php"
+},
+"setting::weeklyholidaypolicy.business_settings_weekly_holiday_policy_business_level_new": {
+"title": "Business Settings",
+"fn": "indexNew",
+"file": "WeeklyHolidayPolicyController.php"
+},
+"setting::weeklyholidaypolicy.business_settings_weekly_holiday_policy_staff_level": {
+"title": "Business Settings",
+"fn": "staffLevel",
+"file": "WeeklyHolidayPolicyController.php"
+},
+"setting::weeklyholidaypolicy.business_settings_weekly_holiday_policy_manage_staff_list": {
+"title": "Business Settings",
+"fn": "staffManage",
+"file": "WeeklyHolidayPolicyController.php"
+},
+"setting::time_zones.time_zone": {
+"title": "Time Zone Settings",
+"fn": "index",
+"file": "TimeZoneController.php"
+},
+"setting::automationRules.automation_rules": {
+"title": "Attendance Settings",
+"fn": "index",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.automation_rules_new": {
+"title": "Attendance Settings",
+"fn": "automationRules",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.overtime_rules": {
+"title": "Automation Rules",
+"fn": "overtimeRule",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.overtime_rules_new": {
+"title": "Automation Rules",
+"fn": "overtimeRuleNew",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.break_rules": {
+"title": "Automation Rules",
+"fn": "breakRule",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.break_rules_new": {
+"title": "Automation Rules",
+"fn": "breakRuleNew",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.late_entry_rules": {
+"title": "Automation Rules",
+"fn": "lateEntryRules",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.late_entry_rules_new": {
+"title": "Automation Rules",
+"fn": "lateEntryRulesNew",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.early_exit_rules": {
+"title": "Automation Rules",
+"fn": "earlyExitRules",
+"file": "AutomationRuleController.php"
+},
+"setting::automationRules.early_exit_rules_new": {
+"title": "Automation Rules",
+"fn": "earlyExitRulesNew",
+"file": "AutomationRuleController.php"
+},
+"setting::holidaypolicy.business_settings_holiday_policy": {
+"title": "Business Settings",
+"fn": "index",
+"file": "HolidayPolicyController.php"
+},
+"setting::holidaypolicy.business_settings_holiday_policy_new": {
+"title": "Business Settings",
+"fn": "holidayPolicy",
+"file": "HolidayPolicyController.php"
+},
+"setting::holidaypolicy.business_settings_edit_template": {
+"title": "Holiday Policy",
+"fn": "holidayTemplate",
+"file": "HolidayPolicyController.php"
+},
+"setting::holidaypolicy.business_settings_edit_template_new": {
+"title": "Holiday Policy",
+"fn": "holidayTemplateNew",
+"file": "HolidayPolicyController.php"
+},
+"setting::holidaypolicy.business_settings_manage_staff_list": {
+"title": "Holiday Policy",
+"fn": "addEditHolidayTemplate",
+"file": "HolidayPolicyController.php"
+},
+"setting::holidaypolicy.business_settings_manage_staff_list_new": {
+"title": "Holiday Policy",
+"fn": "manageStaffListNew",
+"file": "HolidayPolicyController.php"
+},
+"setting::setting": {
+"title": "Settings",
+"fn": "index",
+"file": "SettingController.php"
+},
+"setting::setting-latest": {
+"title": "Settings",
+"fn": "settingNew",
+"file": "SettingController.php"
+},
+"setting::index": {
+"title": null,
+"fn": "index",
+"file": "DepartmentController.php"
+},
+"setting::department.department": {
+"title": "Business Settings",
+"fn": "department",
+"file": "DepartmentController.php"
+},
+"setting::department.department_new": {
+"title": "Business Settings",
+"fn": "departmentNew",
+"file": "DepartmentController.php"
+},
+"setting::department.business_settings_show_departments_assign_staff": {
+"title": "Business Settings",
+"fn": "AssignStaff",
+"file": "DepartmentController.php"
+},
+"setting::department.business_settings_show_departments_assign_staff_new": {
+"title": "Business Settings",
+"fn": "AssignStaffNew",
+"file": "DepartmentController.php"
+},
+"setting::live_location_settings.live_location_setting": {
+"title": "Live Location Settings",
+"fn": "index",
+"file": "LiveLocationSettingController.php"
+},
+"setting::leavepolicy.leave_policy": {
+"title": "Business Settings",
+"fn": "index",
+"file": "LeavePolicyController.php"
+},
+"setting::leavepolicy.leave_policy_new": {
+"title": "Business Settings",
+"fn": "leavePolicy",
+"file": "LeavePolicyController.php"
+},
+"setting::leavepolicy.add_leave_policy": {
+"title": "Business Settings",
+"fn": "leaveTemplate",
+"file": "LeavePolicyController.php"
+},
+"setting::leavepolicy.add_leave_policy_new": {
+"title": "Business Settings",
+"fn": "leaveTemplateNew",
+"file": "LeavePolicyController.php"
+},
+"setting::leavepolicy.leave_manage_staff_list": {
+"title": "Leave Policy",
+"fn": "leaveManageStaffList",
+"file": "LeavePolicyController.php"
+},
+"setting::leavepolicy.leave_manage_staff_list_new": {
+"title": "Leave Policy",
+"fn": "leaveManageStaffListNew",
+"file": "LeavePolicyController.php"
+},
+"setting::staff_allowed.staff_allowed_radius": {
+"title": "Staff Allowed Radius",
+"fn": "index",
+"file": "MapAllowedRadiusController.php"
+},
+"payroll::payroll-info": {
+"title": "Payroll",
+"fn": "index",
+"file": "PayrollController.php"
+},
+"payroll::payroll-info-new": {
+"title": "Payroll",
+"fn": "payrollNew",
+"file": "PayrollController.php"
+},
+"payroll::payroll": {
+"title": "Payroll",
+"fn": "payroll",
+"file": "PayrollController.php"
+},
+"payroll::payroll-approvals": {
+"title": "Payroll Approvals",
+"fn": "payrollApprovals",
+"file": "PayrollController.php"
+},
+"payroll::payroll-approvals-new": {
+"title": "Payroll Approvals",
+"fn": "payrollApprovalsNew",
+"file": "PayrollController.php"
+},
+"payroll::approvals-punches": {
+"title": "Approve",
+"fn": "approvalPunches",
+"file": "PayrollController.php"
+},
+"payroll::approvals-punches-new": {
+"title": "Approve",
+"fn": "approvalPunchesNew",
+"file": "PayrollController.php"
+},
+"payroll::approvals-review": {
+"title": "Approve Approvals",
+"fn": "payrollReview",
+"file": "PayrollController.php"
+},
+"payroll::attendance-review-details": {
+"title": "Review Details",
+"fn": "payrollReviewDetail",
+"file": "PayrollController.php"
+},
+"payroll::attendance-review-details-new": {
+"title": "Review Details",
+"fn": "payrollReviewDetailNew",
+"file": "PayrollController.php"
+},
+"payroll::total-pay-review": {
+"title": "Review Details",
+"fn": "payrollTotalPay",
+"file": "PayrollController.php"
+},
+"payroll::total-pay-review-new": {
+"title": "Review Details",
+"fn": "payrollTotalPayNew",
+"file": "PayrollController.php"
+},
+"payroll::approvals-overtime": {
+"title": "Approve",
+"fn": "approveOvertime",
+"file": "PayrollController.php"
+},
+"payroll::approvals-leaves": {
+"title": "Approve",
+"fn": "approveLeaves",
+"file": "PayrollController.php"
+},
+"payroll::approvals-leaves-new": {
+"title": "Approve",
+"fn": "approveLeavesNew",
+"file": "PayrollController.php"
+},
+"payroll::payroll-summary": {
+"title": "Payroll",
+"fn": "payrollSummary",
+"file": "PayrollController.php"
+},
+"payroll::payroll-summary-new": {
+"title": "Payroll",
+"fn": "payrollSummaryNew",
+"file": "PayrollController.php"
+},
+"rolepermission::roles": {
+"title": "Roles",
+"fn": "index",
+"file": "RolePermissionController.php"
+},
+"rolepermission::add_role": {
+"title": "Edit Role",
+"fn": "create",
+"file": "RolePermissionController.php"
+},
+"adminuser::admin-users": {
+"title": "Admin Users",
+"fn": "index",
+"file": "AdminUserController.php"
+},
+"adminuser::add-admin-user": {
+"title": "Edit Admin User",
+"fn": "addAdminUser",
+"file": "AdminUserController.php"
+},
+"super-admin.pages.dashboard.dashboard": {
+"title": "Dashboard",
+"fn": "index",
+"file": "DashboardController.php"
+},
+"super-admin.pages.users.users": {
+"title": "Business Owners",
+"fn": "users",
+"file": "DashboardController.php"
+},
+"super-admin.pages.business.business": {
+"title": "Business",
+"fn": "business",
+"file": "DashboardController.php"
+},
+"super-admin.pages.business.details": {
+"title": "Business Details",
+"fn": "businessDetails",
+"file": "DashboardController.php"
+},
+"super-admin.pages.staff.staff-list": {
+"title": "Staff List",
+"fn": "staffList",
+"file": "DashboardController.php"
+},
+"super-admin.pages.subscription.plans": {
+"title": "Subscription Plans",
+"fn": "subscriptionPlans",
+"file": "DashboardController.php"
+},
+"super-admin.pages.subscription.payments": {
+"title": "Subscription Payments",
+"fn": "subscriptionPayments",
+"file": "DashboardController.php"
+},
+"super-admin.pages.reports.index": {
+"title": "Revenue Reports",
+"fn": "reports",
+"file": "DashboardController.php"
+},
+"super-admin.pages.staff.profile": {
+"title": "Staff Profile",
+"fn": "staffProfile",
+"file": "DashboardController.php"
+},
+"super-admin.login": {
+"title": null,
+"fn": "index",
+"file": "SuperAdminLoginController.php"
+},
+"admin.landing": {
+"title": null,
+"fn": "landingPage",
+"file": "LoginController.php"
+},
+"admin.login": {
+"title": null,
+"fn": "index",
+"file": "LoginController.php"
+},
+"front.pages.notification.index": {
+"title": "Notifications",
+"fn": "index",
+"file": "NotificationController.php"
+},
+"front.pages.dashboard.trial_expired": {
+"title": "Trial Expired",
+"fn": "userTrialExpired",
+"file": "UserDashboardController.php"
+},
+"front.pages.dashboard.dashboard": {
+"title": "Dashboard",
+"fn": "index",
+"file": "UserDashboardController.php"
+},
+"front.pages.view_profile": {
+"title": "Edit Profile",
+"fn": "editProfile",
+"file": "UserDashboardController.php"
+},
+"front.pages.reports.report": {
+"title": "Reports",
+"fn": "index",
+"file": "ReportController.php"
+},
+"front.pages.reports.attendance-report": {
+"title": "Attendance Reports",
+"fn": "attendanceReport",
+"file": "ReportController.php"
+},
+"front.pages.attendance.attendance": {
+"title": "Attendance",
+"fn": "index",
+"file": "UserAttendanceController.php"
+},
+"front.pages.attendance.partials.attendance_card": {
+"title": "Attendance",
+"fn": "userAttendanceDetails",
+"file": "UserAttendanceController.php"
+},
+"front.pages.attendance.attendance-details": {
+"title": "Attendance",
+"fn": "userAttendanceDetails",
+"file": "UserAttendanceController.php"
+},
+"front.login": {
+"title": null,
+"fn": "index",
+"file": "UserLoginController.php"
+},
+"front.map": {
+"title": null,
+"fn": "getMap",
+"file": "UserLoginController.php"
+},
+"front.pages.attendance.attendance-request": {
+"title": "Attendance Requests",
+"fn": "index",
+"file": "AttendanceRequestController.php"
+},
+"front.pages.attendance.add-attendance-request": {
+"title": "Add Attendance Request",
+"fn": "addAttendanceRequest",
+"file": "AttendanceRequestController.php"
+},
+"front.pages.leave.leaves": {
+"title": "Leaves",
+"fn": "index",
+"file": "UserLeaveController.php"
+},
+"front.pages.leave.add-leave": {
+"title": "Add Leave",
+"fn": "addLeave",
+"file": "UserLeaveController.php"
+},
+"front.pages.holiday.index": {
+"title": "Holidays",
+"fn": "index",
+"file": "UserHolidayController.php"
+}
+}

@@ -1,0 +1,179 @@
+
+        .holiday-page-container {
+            padding: 30px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Calendar Styles */
+        .calendar-wrapper {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .month-year-label {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #718096;
+        }
+
+        .nav-btn:hover {
+            background-color: #f7fafc;
+            color: #2d3748;
+            border-color: #cbd5e0;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background-color: #e2e8f0;
+            /* Border color */
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .day-header {
+            background-color: #f8fafc;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .day-cell {
+            background-color: #fff;
+            min-height: 100px;
+            padding: 10px;
+            position: relative;
+            transition: background-color 0.2s;
+        }
+
+        .day-cell.other-month {
+            background-color: #fcfcfc;
+            color: #cbd5e0;
+        }
+
+        .day-number {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .current-day .day-number {
+            background-color: #3182ce;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .event-badge {
+            background-color: #ebf8ff;
+            color: #2F8CFF;
+            border-left: 3px solid #2F8CFF;
+            padding: 4px 6px;
+            border-radius: 4px;
+            font-size: 13px;
+            margin-top: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: block;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+
+        .event-badge:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .weekly-holiday-badge {
+            /*background-color: #f7fafc;*/
+            /*color: #a0aec0;*/
+            /*border-left: 3px solid #cbd5e0;*/
+            background-color: #f5e0e0;
+            color: #ff8484;
+            border-left: 3px solid #ff4e4e;
+        }
+        /* Holiday Policy List */
+        .policy-list-wrapper {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+        }
+        .policy-header {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 10px;
+        }
+        .policy-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f7fafc;
+        }
+        .policy-item:last-child {
+            border-bottom: none;
+        }
+        .policy-date {
+            width: 150px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+        .policy-name {
+            flex: 1;
+            color: #2d3748;
+            font-weight: 500;
+        }
+        .policy-day {
+            color: #718096;
+            font-size: 13px;
+            background: #edf2f7;
+            padding: 2px 8px;
+            border-radius: 12px;
+        }
+    

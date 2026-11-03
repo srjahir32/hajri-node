@@ -1,0 +1,195 @@
+table.dataTable {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+/* Subscription Pages CSS */
+.stat-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #f0f0f0;
+    transition: box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.stat-icon.blue {
+    background: rgba(47, 140, 255, 0.12);
+    color: #2F8CFF;
+}
+
+.stat-icon.green {
+    background: rgba(54, 179, 126, 0.12);
+    color: #36B37E;
+}
+
+.stat-icon.orange {
+    background: rgba(255, 171, 0, 0.12);
+    color: #FFAB00;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #6c757d;
+    margin: 2px 0 0;
+}
+
+.badge-status {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Shared/Combined Statuses */
+.badge-status.active,
+.badge-status.paid,
+.badge-status.success {
+    background: rgba(54, 179, 126, 0.12);
+    color: #36B37E;
+}
+
+.badge-status.pending {
+    background: rgba(255, 171, 0, 0.12);
+    color: #FFAB00;
+}
+
+.badge-status.expired,
+.badge-status.failed {
+    background: rgba(255, 86, 48, 0.12);
+    color: #FF5630;
+}
+
+.badge-status.inactive,
+.badge-status.other {
+    background: rgba(108, 117, 125, 0.12);
+    color: #6c757d;
+}
+
+
+
+.filter-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.filter-select {
+    padding: 7px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #495057;
+    outline: none;
+    cursor: pointer;
+}
+
+.filter-select:focus {
+    border-color: #2F8CFF;
+}
+
+.user-cell {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-name-link {
+    font-weight: 600;
+    color: #2F8CFF;
+    font-size: 13px;
+}
+
+.user-name-main {
+    font-weight: 600;
+    color: #1a1a2e;
+    font-size: 13px;
+}
+
+.user-sub-text {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 2px;
+}
+
+.order-id-text {
+    font-size: 11px;
+    color: #6554C0;
+    font-family: monospace;
+}
+
+div#sub_plans_data_paginate,
+div#sub_payments_data_paginate {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: flex-end;
+}
+
+.dataTables_wrapper .dataTables_paginate #sub_plans_data_previous,
+.dataTables_wrapper .dataTables_paginate #sub_plans_data_next,
+.dataTables_wrapper .dataTables_paginate #sub_payments_data_previous,
+.dataTables_wrapper .dataTables_paginate #sub_payments_data_next {
+    font-size: 0 !important;
+    line-height: 0 !important;
+    color: transparent !important;
+    width: 25px;
+    height: 25px;
+}
+
+#sub_plans_data_previous,
+#sub_plans_data_next,
+#sub_payments_data_previous,
+#sub_payments_data_next {
+    border: 1px solid #BBC6D8;
+    border-radius: 8px !important;
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sub_plans_data_next,
+#sub_payments_data_next {
+    margin-left: 10px;
+}
+
+.approve-datas {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.staff-right-length {
+    margin-top: 0 !important;
+}
+
+#sub_plans_data th,
+#sub_payments_data th {
+    background-color: #F5F8FF !important;
+}

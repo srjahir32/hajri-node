@@ -1,0 +1,11 @@
+
+        .automation {
+            padding-left: 20px !important;
+        }
+        @media (max-width: 767px) {
+            .automation-border {
+                border-right: none !important;
+                padding-right: 0px !important;
+            }
+        }
+    
