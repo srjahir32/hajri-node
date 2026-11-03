@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useStaff } from '@/lib/query';
+import { useStaffSession } from '@/lib/auth';
 import { esc } from '@/lib/bs';
 import { fmtHm, fmtTime12, monthStr } from '@/lib/format';
 import { BackCrumb } from '@/components/shell/BackCrumb';
@@ -9,23 +10,43 @@ import { CustomDropdown } from '@/components/widgets/CustomDropdown';
 import { DataTable } from '@/components/widgets/DataTable';
 import { MonthPicker } from '@/components/widgets/MonthPicker';
 
-interface Punch { in_time: string | null; out_time: string | null }
+interface Punch { in_time: string | null; out_time: string | null; attendance_status?: number | null }
 interface Day { date: string; status: string; behavior: string | null; approval: number | null; break_seconds: number; total_seconds: number; overtime_seconds: number; punches: Punch[] }
-const BADGE: Record<string, string> = { Present: 'bg-success', Absent: 'bg-danger', 'Half Day': 'bg-warning', Holiday: 'bg-info' };
+// every status the API can return (DayStatus); `.badge` text is white, so each needs a background class to be visible
+const BADGE: Record<string, string> = { Present: 'bg-success', Absent: 'bg-danger', 'Half Day': 'bg-warning', Holiday: 'bg-info', 'Paid Leave': 'bg-info', Leave: 'bg-info', Pending: 'bg-warning text-dark', 'Not Marked': 'bg-secondary' };
 const BEH: Record<string, string> = { Late: 'bg-red-500', Early: 'bg-orange-500', Regular: 'bg-green-500' };
 const STATUS = [{ value: 'all', label: 'All' }, { value: 'Present', label: 'Present' }, { value: 'Absent', label: 'Absent' }, { value: 'Half Day', label: 'Half Day' }];
 const PER_PAGE = [{ value: 'all', label: 'All' }, { value: '10perpage', label: '10 Per Page' }, { value: '50perpage', label: '50 Per Page' }, { value: '100perpage', label: '100 Per Page' }];
 const style = 'color: #00365E; font-weight: 500; font-size: 14px;';
 const lines = (xs: (string | null)[]) => (xs.length ? xs.map((t) => `<span style="${style}">${t ? fmtTime12(t) : '-'}</span>`).join('<br>') : '-');
 const APPROVAL = ['Pending', 'Approved', 'Rejected'];
+// punches the admin rejected (attendance_status 2) are left out of the day's totals and status by the server, so they are not listed either
+const livePunches = (r: Day) => r.punches.filter((p) => p.attendance_status !== 2);
+// no attendance that day (approval null: future, holiday or unmarked day) → nothing was recorded, so "-" rather than 00:00
+const dayTime = (sec: number, r: Day) => (r.approval == null ? '-' : fmtHm(sec));
+/** today's date (YYYY-MM-DD) in `tz`; an unknown zone counts as UTC, like the server's normalizeTz */
+const todayIn = (tz: string, at = new Date()) => {
+  try {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: tz }).format(at);
+  } catch {
+    return new Intl.DateTimeFormat('en-CA', { timeZone: 'UTC' }).format(at);
+  }
+};
 
 export default function Body() {
   const [ym, setYm] = useState(monthStr());
   const [search, setSearch] = useState('');
   const [status, setStatus] = useState('all');
   const [perPage, setPerPage] = useState('10perpage');
+  const { staff } = useStaffSession();
   const q = useStaff<Day[]>('/employee/attendance', { month: Number(ym.slice(5)), year: Number(ym.slice(0, 4)) }, { keepPrevious: true });
-  const rows = useMemo(() => (q.data?.data ?? []).filter((d) => (status === 'all' || d.status === status) && (!search.trim() || d.date.includes(search.trim()))).reverse(), [q.data, status, search]);
+  // the API returns every day of the month; days after today carry no attendance, so the list starts at today, newest
+  // first. "Today" uses the timezone the server builds those dates in (api staffTz): the employee's own timezone,
+  // otherwise the business timezone — read from GET /employee/company only when the employee has none.
+  const company = useStaff<{ timezone: string }>(staff.timezone ? null : '/employee/company');
+  const tz = staff.timezone || company.data?.data?.timezone;
+  const today = tz ? todayIn(tz) : null;
+  const rows = useMemo(() => (today ? (q.data?.data ?? []) : []).filter((d) => d.date <= today! && (status === 'all' || d.status === status) && (!search.trim() || d.date.includes(search.trim()))).reverse(), [q.data, status, search, today]);
   const pageLen = perPage === 'all' ? -1 : parseInt(perPage);
   return (
     <main className="flex-1 p-md-5 overflow-y-auto">
@@ -65,11 +86,11 @@ export default function Body() {
                 pageLength: pageLen,
                 columns: [
                   { data: 'date' },
-                  { data: null, render: (_d: unknown, _t: string, r: Day) => lines(r.punches.map((p) => p.in_time)) },
-                  { data: null, render: (_d: unknown, _t: string, r: Day) => lines(r.punches.map((p) => p.out_time)) },
-                  { data: 'break_seconds', render: (d: number) => (d ? fmtHm(d) : '00:00') },
-                  { data: 'total_seconds', render: (d: number) => (d ? fmtHm(d) : '00:00') },
-                  { data: 'status', render: (d: string) => `<span class="badge ${BADGE[d] ?? 'bg-label-primary'}">${esc(d)}</span>` },
+                  { data: null, render: (_d: unknown, _t: string, r: Day) => lines(livePunches(r).map((p) => p.in_time)) },
+                  { data: null, render: (_d: unknown, _t: string, r: Day) => lines(livePunches(r).map((p) => p.out_time)) },
+                  { data: 'break_seconds', render: (d: number, _t: string, r: Day) => dayTime(d, r) },
+                  { data: 'total_seconds', render: (d: number, _t: string, r: Day) => dayTime(d, r) },
+                  { data: 'status', render: (d: string) => `<span class="badge ${BADGE[d] ?? 'bg-secondary'}">${esc(d)}</span>` },
                   { data: 'behavior', render: (d: string | null) => (d && BEH[d] ? `<span class="px-3 py-1 behavior rounded-full text-xs font-semibold ${BEH[d]} text-white shadow-sm ring-1 ring-white/20">${d}</span>` : '-') },
                   { data: 'overtime_seconds', render: (d: number) => (d ? fmtHm(d) : '-') },
                   { data: 'approval', render: (d: number | null) => (d == null ? '-' : APPROVAL[d] ?? '-') },
