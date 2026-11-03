@@ -444,3 +444,16 @@
             }
         }
     
+        /* deactivate / delete: same size as the Edit Profile button beside them */
+        .staff-action-btns .reject-btn,
+        .staff-action-btns .staff-profile-activate-btn {
+            width: auto !important;
+            min-width: 100px !important;
+            height: 30px !important;
+            padding: 0 14px !important;
+            font-size: 14px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            white-space: nowrap !important;
+        }

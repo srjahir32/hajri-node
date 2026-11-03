@@ -39,22 +39,20 @@ export default function Body() {
             </div>
             <div className="calendar-grid">
               {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => <div className="day-header" key={d}>{d}</div>)}
-              <div id="calendarBody" className="calendar-grid">
-                {Array.from({ length: first }, (_, i) => <div className="day-cell other-month" key={`p${i}`}><div className="day-number">{prevDim - first + i + 1}</div></div>)}
-                {Array.from({ length: dim }, (_, i) => {
-                  const day = i + 1;
-                  const ds = `${cur.y}-${pad(cur.m + 1)}-${pad(day)}`;
-                  const isToday = day === today.getDate() && cur.m === today.getMonth() && cur.y === today.getFullYear();
-                  return (
-                    <div className={`day-cell ${isToday ? 'current-day' : ''}`} key={day}>
-                      <div className="day-number">{day}</div>
-                      {holidays.filter((h) => h.date === ds).map((h) => <div className="event-badge" title={h.name} key={h.id}>{h.name}</div>)}
-                      {weekly.includes(new Date(cur.y, cur.m, day).getDay()) && <div className="event-badge weekly-holiday-badge" title="Weekly Holiday">Weekend</div>}
-                    </div>
-                  );
-                })}
-                {Array.from({ length: after }, (_, i) => <div className="day-cell other-month" key={`n${i}`}><div className="day-number">{i + 1}</div></div>)}
-              </div>
+              {Array.from({ length: first }, (_, i) => <div className="day-cell other-month" key={`p${i}`}><div className="day-number">{prevDim - first + i + 1}</div></div>)}
+              {Array.from({ length: dim }, (_, i) => {
+                const day = i + 1;
+                const ds = `${cur.y}-${pad(cur.m + 1)}-${pad(day)}`;
+                const isToday = day === today.getDate() && cur.m === today.getMonth() && cur.y === today.getFullYear();
+                return (
+                  <div className={`day-cell ${isToday ? 'current-day' : ''}`} key={day}>
+                    <div className="day-number">{day}</div>
+                    {holidays.filter((h) => h.date === ds).map((h) => <div className="event-badge" title={h.name} key={h.id}>{h.name}</div>)}
+                    {weekly.includes(new Date(cur.y, cur.m, day).getDay()) && <div className="event-badge weekly-holiday-badge" title="Weekly Holiday">Weekend</div>}
+                  </div>
+                );
+              })}
+              {Array.from({ length: after }, (_, i) => <div className="day-cell other-month" key={`n${i}`}><div className="day-number">{i + 1}</div></div>)}
             </div>
           </div>
           <div className="policy-list-wrapper">

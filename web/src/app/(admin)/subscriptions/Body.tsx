@@ -203,7 +203,6 @@ export default function Body() {
                               <label key={p.key} className={`plan-card ${planKey === p.key ? 'selected' : ''}`} id={`card-${p.key}`} style={{ '--plan-color': m.color } as React.CSSProperties} onClick={() => setPlanKey(p.key)}>
                                 {m.popular && <div className="plan-best-badge">⭐ Best Value</div>}
                                 <div className="d-flex justify-content-start align-items-center mb-1">
-                                  <input type="radio" name="plan_radio" className="plan-radio" checked={planKey === p.key} onChange={() => setPlanKey(p.key)} />
                                   <div>
                                     <div className="plan-name">{p.label}</div>
                                     <div className="plan-desc">{m.desc}</div>
