@@ -1,0 +1,5 @@
+/* The per-page `.dropdown-options` and the month picker are both z-index 999 (style.css). When the toolbar wraps, the
+   picker lands under the open list and, coming later in the DOM, paints over it. Keep the picker one level below. */
+.report_atten_right_data .calender-picker {
+    z-index: 998;
+}

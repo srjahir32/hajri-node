@@ -182,7 +182,7 @@ function StaffHeader({ title }: { title: string }) {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img className="rounded-circle me-3" style={{ width: 40, height: 40, objectFit: 'cover' }} src={staff.photo ?? '/assets/admin/images/dummy/dummy-user.svg'} alt="avatar" />
                       <div className="d-flex flex-column text-truncate" style={{ maxWidth: 170 }}>
-                        <span className="proxima_nova_bold text-dark text-truncate" style={{ fontSize: 15, lineHeight: 1.2 }}>{staff.name}</span>
+                        <span className="proxima_nova_bold text-dark text-truncate" style={{ fontSize: 15, lineHeight: 1.2 }}>{name}</span>
                         <span className="text-muted text-truncate" style={{ fontSize: 13 }}>{staff.email ?? staff.phone_number}</span>
                       </div>
                     </div>

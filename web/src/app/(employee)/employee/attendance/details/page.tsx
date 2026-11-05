@@ -5,7 +5,7 @@ import Body from './Body';
 
 export default function Page() {
   return (
-    <StaffPage title="Attendance" css={["setting.css", "pg/attendance-attendance-details.css"]}>
+    <StaffPage title="Attendance Details" css={["setting.css", "pg/attendance-attendance-details.css", "pg/employee-attendance-details.css"]}>
       <Body />
     </StaffPage>
   );

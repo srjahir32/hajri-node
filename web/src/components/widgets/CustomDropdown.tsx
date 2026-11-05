@@ -22,7 +22,7 @@ export function CustomDropdown({ options, value, onChange, prefix, className = '
   }, []);
   const cur = options.find((o) => o.value === value) ?? options[0];
   return (
-    <div className={`custom-dropdown ${className}`} ref={ref}>
+    <div className={`custom-dropdown ${className}`} ref={ref} data-react-dropdown="">
       <div className="dropdown-trigger" onClick={() => setOpen((o) => !o)}>
         {prefix ? <span className="sort_by_text">{prefix}</span> : null}
         <span className="selected-value">{cur?.label}</span>

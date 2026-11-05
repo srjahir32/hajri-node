@@ -2,4 +2,12 @@
         .approve-salary .select-salary-data>span, .approve-punch-data .select-club-services>span{
             background: none!important;
         }
+        /* The department filter is a React .custom-dropdown that also carries the legacy .select-club-services class, whose
+           style.css rule hides its <ul> (opacity 0, visibility hidden, z-index 1) until an .open class that React never sets.
+           React shows/hides the list itself, so restore the list's own .dropdown-options stacking and visibility. */
+        .approve-punch-data .custom-dropdown.select-club-services > .dropdown-options {
+            opacity: 1;
+            visibility: visible;
+            z-index: 999;
+        }
     

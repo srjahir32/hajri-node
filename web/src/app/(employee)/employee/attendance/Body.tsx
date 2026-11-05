@@ -15,7 +15,7 @@ const BADGE: Record<string, string> = { Present: 'bg-success', Absent: 'bg-dange
 const BEH: Record<string, string> = { Late: 'bg-red-500', Early: 'bg-orange-500', Regular: 'bg-green-500' };
 const STATUS = [{ value: 'all', label: 'All' }, { value: 'Present', label: 'Present' }, { value: 'Absent', label: 'Absent' }, { value: 'Half Day', label: 'Half Day' }];
 const PER_PAGE = [{ value: 'all', label: 'All' }, { value: '10perpage', label: '10 Per Page' }, { value: '50perpage', label: '50 Per Page' }, { value: '100perpage', label: '100 Per Page' }];
-const style = 'color: #00365E; font-weight: 500; font-size: 14px;';
+const style = 'font-weight: 500; font-size: 14px; white-space: nowrap;';
 const lines = (xs: (string | null)[]) => (xs.length ? xs.map((t) => `<span style="${style}">${t ? fmtTime12(t) : '-'}</span>`).join('<br>') : '-');
 const APPROVAL = ['Pending', 'Approved', 'Rejected'];
 

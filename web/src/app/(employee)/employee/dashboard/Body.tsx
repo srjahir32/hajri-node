@@ -45,6 +45,7 @@ export default function Body() {
   const first_attendance = d ? { behavior: d.summary.behavior, in_time: d.summary.first_in } : null;
   const today_records = d?.summary.punches ?? [];
   const today_logs: { detail: string; created_at: string }[] = [];
+  const has_recent_activity = today_logs.length > 0 || today_records.some((r) => r.in_time || r.out_time != null);
   const worked = d?.summary.total_seconds ?? 0;
   const payable = d?.summary.payable_seconds ?? 0;
   const days = month.data?.data ?? [];
@@ -451,6 +452,8 @@ export default function Body() {
                                                     
                                                 
                                         </div>
+                                        {/* Shown only once the dashboard data has loaded (not while loading or on error) and there is nothing to list. */}
+                                        {(d && !has_recent_activity) && (<p className="text-sm text-muted-foreground mb-0">No recent activity</p>)}
                                         
                                             
                                              
