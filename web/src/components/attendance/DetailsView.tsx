@@ -104,7 +104,7 @@ export function DetailsView({ scope }: { scope: 'admin' | 'staff' }) {
                     <div className="flex-1 flex flex-col items-center justify-center p-6 bg-white">
                       <div className="relative mb-3">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={c.photo ?? `https://ui-avatars.com/api/?name=${encodeURIComponent(c.name)}&background=EBF4FF&color=7F9CF5`} className="w-16 h-16 rounded-full object-cover border-2 border-green-500 p-0.5" alt="Profile" />
+                        <img src={c.photo ?? '/assets/admin/images/dummy/dummy-user.svg'} className="w-16 h-16 rounded-full object-cover border-2 border-green-500 p-0.5" alt="Profile" />
                       </div>
                       <div className="text-center">
                         <div className="text-blue-500 font-semibold text-base">{c.name}</div>

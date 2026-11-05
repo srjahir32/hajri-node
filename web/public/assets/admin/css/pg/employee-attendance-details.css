@@ -1,0 +1,16 @@
+/* The day columns scroll sideways, but the shared 4px #e2e8f0 scrollbar (attendance-attendance-details.css) is almost
+   invisible on white, so the extra days go unnoticed. Show a taller, visible bar with a track (native; only drawn on overflow). */
+#attendance-card-container .custom-scrollbar::-webkit-scrollbar {
+    height: 8px !important;
+}
+#attendance-card-container .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 20px;
+}
+#attendance-card-container .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #94a3b8;
+    border-radius: 20px;
+}
+#attendance-card-container .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #64748b;
+}

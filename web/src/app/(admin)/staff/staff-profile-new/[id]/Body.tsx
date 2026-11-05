@@ -9,7 +9,7 @@ import { useAdminSession } from '@/lib/auth';
 import { useAdmin } from '@/lib/query';
 import { toast } from '@/lib/toast';
 import { alertSwal } from '@/lib/swal';
-import { employeeCode, fmtDuration, fmtHm } from '@/lib/format';
+import { fmtDuration, fmtHm } from '@/lib/format';
 import { clearErrors } from '@/lib/formkit';
 import svgStrings from '@/lib/svgStrings.json';
 import { DataTable } from '@/components/widgets/DataTable';
@@ -247,6 +247,7 @@ export default function Body() {
     }
   };
 
+  const prefix = (business?.name ?? '').slice(0, 3).toUpperCase();
   const hasPhoto = !!staff?.photo;
   const deactivated = staff?.is_deactivate === 1;
 
@@ -296,7 +297,7 @@ export default function Body() {
                                     <p className="staff-user-skill section_sub_title">
                                         {staff?.department?.name}
                                     </p>
-                                    <span className="staff-number section_sub_title">{employeeCode(business?.name, staff?.id)}</span>
+                                    <span className="staff-number section_sub_title">{prefix}{staff?.id}</span>
                                 </div>
                                 <div className="staff-action-btns">
                                     <div className="staff_edit_profile theme_btn_hover_color">

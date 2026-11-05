@@ -188,9 +188,8 @@ model BusinessPf {
 
 model Department {
   id         Int       @id @default(autoincrement())
-  businessId  Int?      // null = shared department visible to every business
-  name        String
-  description String?   @db.VarChar(500)
+  businessId Int?      // null = shared department visible to every business
+  name       String
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   deletedAt  DateTime?

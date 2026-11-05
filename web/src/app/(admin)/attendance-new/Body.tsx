@@ -44,6 +44,8 @@ export default function Body() {
   }, [q.data, search]);
   const c = ((q.data as unknown as { count?: Counts })?.count ?? { staff_count: 0, present_count: 0, absent_count: 0, halfday_count: 0, leave_count: 0 }) as Counts;
   const pageLen = perPage === 'all' ? -1 : parseInt(perPage);
+  // The table is drawn before /admin/attendance first answers; until it has, show that instead of the empty-table text.
+  const tableStatus = q.isPending ? 'Loading...' : q.isError && !q.data ? esc(q.error.message) : null;
 
   const [sel, setSel] = useState<Row | null>(null);
   const [note, setNote] = useState('');
@@ -162,7 +164,7 @@ export default function Body() {
               <div className="approve_staff_data">
                 <DataTable
                   id="staff_datas"
-                  deps={[rows, pageLen]}
+                  deps={[rows, pageLen, tableStatus]}
                   head={<tr><th>Name</th><th>In Time</th><th>Out Time</th><th>Break Time</th><th>Work Time</th><th className="data_list_check">Status</th><th>Behavior</th><th>Overtime</th><th className="data_list_check">Action</th></tr>}
                   options={() => ({
                     data: rows,
@@ -172,6 +174,7 @@ export default function Body() {
                     responsive: true,
                     order: [],
                     pageLength: pageLen,
+                    ...(tableStatus ? { language: { emptyTable: tableStatus } } : {}),
                     columnDefs: [{ width: '95px', targets: [1, 2] }, { targets: [5, 7], orderable: false }],
                     columns: [
                       { data: 'full_name', render: (d: string, _t: string, r: Row) => `<a href="/staff/staff-profile-new/${r.id}" class="staff-edit"><div class="user-images"><div><img src="${esc(r.photo ?? '/assets/admin/images/dummy/dummy-user.svg')}" class="approve-user-img" alt=""></div><div>${esc(d)}<p class="data-sub-field">${r.department ? esc(r.department.name) : "<span style='color: red!important;'>No Department Assigned</span>"}</p></div></div></a>` },

@@ -9,11 +9,9 @@ import { toast } from '@/lib/toast';
 export interface Department {
   id: number;
   name: string;
-  description?: string | null;
 }
 
 const NAME_MAX = 120;
-const DESC_MAX = 500;
 
 type Props = { open: boolean; onClose: () => void; onCreated: (d: Department) => void; existing: Department[] };
 
@@ -29,7 +27,6 @@ export function AddDepartmentModal(props: Props) {
 function Dialog({ onClose, onCreated, existing }: Props) {
   const qc = useQueryClient();
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
   const [touched, setTouched] = useState(false);
   const [serverError, setServerError] = useState('');
 
@@ -38,12 +35,12 @@ function Dialog({ onClose, onCreated, existing }: Props) {
   const nameError =
     serverError ||
     (duplicate ? 'A department with this name already exists.' : trimmed.length > NAME_MAX ? `Department name must be at most ${NAME_MAX} characters.` : touched && !trimmed ? 'Department name is required.' : '');
-  const valid = !!trimmed && !duplicate && trimmed.length <= NAME_MAX && description.length <= DESC_MAX;
+  const valid = !!trimmed && !duplicate && trimmed.length <= NAME_MAX;
 
   const save = async () => {
     setServerError('');
     try {
-      const res = await adminApi.post<Department>('/admin/departments', { name: trimmed, description: description.trim() || undefined });
+      const res = await adminApi.post<Department>('/admin/departments', { name: trimmed });
       addToCachedList(qc, '/admin/departments', res.data, (a, b) => a.name.localeCompare(b.name));
       toast.success('Department added successfully');
       onCreated(res.data);
@@ -82,24 +79,6 @@ function Dialog({ onClose, onCreated, existing }: Props) {
             {nameError}
           </p>
         )}
-      </div>
-
-      <div className="quick-add-field">
-        <label htmlFor="add_dept_description">
-          Description <span className="quick-add-optional">(optional)</span>
-        </label>
-        <textarea
-          id="add_dept_description"
-          className="quick-add-input quick-add-textarea"
-          placeholder="Enter department description"
-          rows={3}
-          value={description}
-          maxLength={DESC_MAX}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <div className="quick-add-counter">
-          {description.length}/{DESC_MAX}
-        </div>
       </div>
     </QuickAddModal>
   );

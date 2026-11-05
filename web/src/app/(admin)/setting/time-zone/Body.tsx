@@ -29,7 +29,7 @@ export default function Body() {
   return (
     <SettingsCard title="Time Zone Settings" crumbs={['Settings', 'Time Zone Settings']} busy={save.isPending} onSave={() => value && save.mutate()}>
       <SettingRow label="Business Time Zone" hint="Select the timezone for your business. All employee attendance records, shift timing constraints, check-in logs, and salary calculations will align with this selected timezone.">
-        <div className="custom-dropdown" id="timezone-dropdown-container" ref={box}>
+        <div className="custom-dropdown" id="timezone-dropdown-container" ref={box} data-react-dropdown="">
           <div className="dropdown-trigger cursor-pointer flex items-center justify-between w-full" onClick={() => setOpen((o) => !o)}>
             <div className="flex items-center">
               <span className="sort_by_text text-blue-500">TimeZone:</span>

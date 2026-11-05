@@ -10,10 +10,7 @@ import { dateOnly } from '../../lib/time';
 export const departmentRouter = Router();
 departmentRouter.use(can('view_setting', 'view_staff_management'));
 
-const body = z.object({
-  name: z.string().trim().min(1, 'Department name is required').max(120, 'Department name must be at most 120 characters'),
-  description: z.preprocess((v) => (v === '' || v === null ? undefined : v), z.string().trim().max(500, 'Description must be at most 500 characters').optional()),
-});
+const body = z.object({ name: z.string().trim().min(1, 'Department name is required').max(120) });
 
 async function nameTaken(businessId: number, name: string, exceptId?: number) {
   return prisma.department.findFirst({
@@ -28,25 +25,25 @@ departmentRouter.get('/', wrap(async (req, res) => {
     include: { _count: { select: { staff: { where: { businessId, deletedAt: null, isDeactivated: false } } } } },
     orderBy: { name: 'asc' },
   });
-  ok(res, rows.map((d) => ({ id: d.id, name: d.name, description: d.description, is_shared: d.businessId === null, staff_count: d._count.staff })));
+  ok(res, rows.map((d) => ({ id: d.id, name: d.name, is_shared: d.businessId === null, staff_count: d._count.staff })));
 }));
 
 departmentRouter.post('/', wrap(async (req, res) => {
   const businessId = adminBusinessId(req);
-  const { name, description } = body.parse(req.body);
+  const { name } = body.parse(req.body);
   if (await nameTaken(businessId, name)) throw conflict('Department name already exists.');
-  const d = await prisma.department.create({ data: { businessId, name, description: description ?? null } });
-  ok(res, { id: d.id, name: d.name, description: d.description }, 'Insert successfully');
+  const d = await prisma.department.create({ data: { businessId, name } });
+  ok(res, { id: d.id, name: d.name }, 'Insert successfully');
 }));
 
 departmentRouter.put('/:id', wrap(async (req, res) => {
   const businessId = adminBusinessId(req);
   const { id } = idParams.parse(req.params);
-  const { name, description } = body.parse(req.body);
+  const { name } = body.parse(req.body);
   const dep = await prisma.department.findFirst({ where: { id, businessId, deletedAt: null } });
   if (!dep) throw notFound('Department not found');
   if (await nameTaken(businessId, name, id)) throw conflict('Department name already exists.');
-  await prisma.department.update({ where: { id }, data: { name, ...(description !== undefined ? { description } : {}) } });
+  await prisma.department.update({ where: { id }, data: { name } });
   ok(res, null, 'Update successfully');
 }));
 

@@ -18,12 +18,29 @@ export async function installLegacyBehaviors() {
   const mod: any = await import('bootstrap/dist/js/bootstrap.bundle.min.js' as string);
   (window as any).bootstrap ??= mod.default ?? mod;
 
-  // `.custom-dropdown` (trigger / options list / hidden <select>)
+  // The header profile menus (`.header_user_dropdown`) are Bootstrap-styled `.dropdown-menu` lists that React opens and
+  // closes, without a [data-bs-toggle="dropdown"] toggle. Bootstrap's dropdown keydown handler (delegated on document,
+  // capture phase) still runs for Arrow/Escape inside them, finds no toggle and throws. Window capture sees the key
+  // first: do exactly what that handler did before throwing (preventDefault + stopPropagation) so nothing else changes.
+  window.addEventListener('keydown', (e) => {
+    if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown' && e.key !== 'Escape') return;
+    if (!(e.target instanceof Element) || (/input|textarea/i.test(e.target.tagName) && e.key !== 'Escape')) return;
+    const menu = e.target.closest('.header_user_dropdown > .dropdown-menu');
+    if (!menu || (e.key === 'Escape' && !menu.classList.contains('show'))) return;
+    e.preventDefault();
+    e.stopPropagation();
+  }, true);
+
+  // `.custom-dropdown` (trigger / options list / hidden <select>). Dropdowns React opens and closes itself carry
+  // `data-react-dropdown`; toggling those here as well closed them again right after React opened them.
+  const reactOwned = (el: Element) => !!el.closest('[data-react-dropdown]');
   $(document).on('click', '.dropdown-trigger', function (this: HTMLElement, e: Event) {
+    if (reactOwned(this)) return;
     e.stopPropagation();
     ($(this).siblings('.dropdown-options') as any).slideToggle(100);
   });
   $(document).on('click', '.dropdown-options li', function (this: HTMLElement) {
+    if (reactOwned(this)) return;
     const value = this.getAttribute('data-value');
     const text = this.textContent ?? '';
     const box = $(this).closest('.custom-dropdown');
@@ -39,7 +56,7 @@ export async function installLegacyBehaviors() {
     ($(this).parent() as any).slideUp(100);
   });
   $(document).on('click', () => {
-    ($('.dropdown-options') as any).slideUp(100);
+    ($('.dropdown-options').not('[data-react-dropdown] .dropdown-options') as any).slideUp(100);
   });
 
   // tooltips on [data-bs-toggle="tooltip"]

@@ -19,7 +19,8 @@ interface Punch {
 }
 const hm12 = (t: string | null) => (t ? t.slice(0, 5) : '-');
 
-export function PunchTable({ mode }: { mode: 'punches' | 'requests' }) {
+/** `showLoading`: while the first request is pending (or after it failed) show that in the table instead of the empty-table text. */
+export function PunchTable({ mode, showLoading = false }: { mode: 'punches' | 'requests'; showLoading?: boolean }) {
   const requests = mode === 'requests';
   const { can } = useAdminSession();
   const [date, setDate] = useState(todayStr());
@@ -31,6 +32,7 @@ export function PunchTable({ mode }: { mode: 'punches' | 'requests' }) {
     const t = search.trim().toLowerCase();
     return (q.data?.data ?? []).filter((r) => (!requests || r.date === date) && (!requests || !dept || String(r.staff.department_id) === dept) && (!t || r.staff.full_name.toLowerCase().includes(t)));
   }, [q.data, search, date, dept, requests]);
+  const tableStatus = !showLoading ? null : q.isPending ? 'Loading...' : q.isError && !q.data ? esc(q.error.message) : null;
   const rowsRef = useRef(rows);
   rowsRef.current = rows;
   const checked = useRef(new Set<number>());
@@ -85,7 +87,7 @@ export function PunchTable({ mode }: { mode: 'punches' | 'requests' }) {
                 <DataTable
                   id="staff_datas"
                   className="display attendance_view_punch"
-                  deps={[rows]}
+                  deps={[rows, tableStatus]}
                   head={
                     <tr>
                       {!requests && <th><input type="checkbox" id="selectAllCheckbox" /></th>}
@@ -105,6 +107,7 @@ export function PunchTable({ mode }: { mode: 'punches' | 'requests' }) {
                     info: false,
                     responsive: true,
                     order: [],
+                    ...(tableStatus ? { language: { emptyTable: tableStatus } } : {}),
                     columnDefs: requests ? [] : [{ width: '10px', targets: 0, orderable: false }],
                     columns: [
                       ...(requests ? [] : [{ data: 'id', orderable: false, render: (_d: number, _t: string, r: Punch) => `<input type="checkbox" class="selectCheckbox_model" value="${r.id}" ${checked.current.has(r.id) ? 'checked' : ''}>` }]),

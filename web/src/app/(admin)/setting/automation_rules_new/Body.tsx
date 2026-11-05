@@ -51,7 +51,7 @@ export default function Body() {
                                             </div>
                                         </div>
                                     </div>
-                                    <p className="report-inner-content proxima_nova_regular">Automate late fine for employees who are coming late to work</p>
+                                    <p className="report-inner-content proxima_nova_regular">Automate break fine for employees who are taking more break time than allowed</p>
                                 </div>
                             </a>
                             <a className="report-list" href={"/setting/early_exit_rules_new"}>

@@ -7485,7 +7485,7 @@ tbody.itemRowSingle tr td {
 }
 
 .dropdown-trigger::after {
-    content: url(https://admin.hajri.app/assets/admin/images/staff_manage/ic_Arrow.svg) !important;
+    content: url(../images/staff_manage/ic_Arrow.svg) !important;
     position: absolute;
     right: 12px;
     top: 12px;

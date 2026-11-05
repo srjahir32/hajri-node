@@ -40,6 +40,8 @@ export default function Body() {
   }, [list.data, search, sort, applied]);
 
   const pageLen = perPage === 'all' ? -1 : parseInt(perPage);
+  // The table is drawn before /admin/staff answers; until it has, show that instead of the "no data" text.
+  const tableStatus = list.isPending ? 'Loading...' : list.isError && !list.data ? esc(list.error.message) : null;
   const clearSelection = () => setSelected([]);
   const deleteSelected = async () => {
     try {
@@ -157,7 +159,7 @@ export default function Body() {
                     <div className="approve_staff_data">
                         <DataTable
                             id="staff_datas"
-                            deps={[rows, pageLen]}
+                            deps={[rows, pageLen, tableStatus]}
                             head={<tr>
                                 <th className="data_list_check"><input type="checkbox" id="selectAllCheckbox" /></th>
                                 <th>Staff Name</th>
@@ -173,7 +175,7 @@ export default function Body() {
                                 responsive: true,
                                 order: [],
                                 pageLength: pageLen,
-                                language: { emptyTable: '<div class="no_data_found"><div class=""><img src="/assets/admin/images/staff_manage/no_data.svg" alt="Advertisement"></div><div class="proxima_nova_semibold section_title">No data found, add staff</div></div>' },
+                                language: { emptyTable: tableStatus ?? '<div class="no_data_found"><div class=""><img src="/assets/admin/images/staff_manage/no_data.svg" alt="Advertisement"></div><div class="proxima_nova_semibold section_title">No data found, add staff</div></div>' },
                                 columns: [
                                     { data: 'id', orderable: false, render: (_d: unknown, _t: string, row: Row) => `<input type="checkbox" class="selectCheckbox_model" id="selectCheckbox_model" value="${row.id}">` },
                                     { data: 'full_name', render: (data: string, _t: string, row: Row) => `<a href="/staff/staff-profile-new/${row.id}" class="staff-edit"><div class="user-images"><div><img src="${esc(row.photo ?? '/assets/admin/images/dummy/dummy-user.svg')}" class="approve-user-img" alt=""></div><div>${esc(data)}<p class="data-sub-field">${esc(row.department?.name ?? 'N/A')}</p></div></div></a>` },

@@ -8,7 +8,7 @@ import { staffApi } from '@/lib/api';
 import { StaffProvider, useStaffSession } from '@/lib/auth';
 import { useStaff } from '@/lib/query';
 import { pathIs } from '@/lib/nav';
-import { employeeCode, timeAgo } from '@/lib/format';
+import { timeAgo } from '@/lib/format';
 import { PageMeta, SetTitleContext } from './PageMeta';
 import { installLegacyBehaviors } from '@/lib/legacy';
 import '@/styles/admin-shell.css';
@@ -182,9 +182,8 @@ function StaffHeader({ title }: { title: string }) {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img className="rounded-circle me-3" style={{ width: 40, height: 40, objectFit: 'cover' }} src={staff.photo ?? '/assets/admin/images/dummy/dummy-user.svg'} alt="avatar" />
                       <div className="d-flex flex-column text-truncate" style={{ maxWidth: 170 }}>
-                        <span className="proxima_nova_bold text-dark text-truncate" style={{ fontSize: 15, lineHeight: 1.2 }}>{staff.name}</span>
+                        <span className="proxima_nova_bold text-dark text-truncate" style={{ fontSize: 15, lineHeight: 1.2 }}>{name}</span>
                         <span className="text-muted text-truncate" style={{ fontSize: 13 }}>{staff.email ?? staff.phone_number}</span>
-                        <span className="text-muted text-truncate" style={{ fontSize: 12 }}>Employee ID: <span className="text-dark proxima_nova_semibold">{employeeCode(staff.business?.name, staff.id)}</span></span>
                       </div>
                     </div>
                     <div className="px-2 pb-2">

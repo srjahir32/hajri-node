@@ -299,10 +299,6 @@ export async function updateStaff(
   if (b.email && (await prisma.staff.findFirst({ where: { businessId, email: b.email, id: { not: id }, deletedAt: null } }))) {
     throw conflict('Email should not be duplicate (two employees can not have same email)');
   }
-  if (b.department_id) {
-    const dep = await prisma.department.findFirst({ where: { id: b.department_id, OR: [{ businessId }, { businessId: null }], deletedAt: null } });
-    if (!dep) throw badRequest('Selected department does not exist');
-  }
 
   const today = dateOnly(new Date());
   const removedPhotos = files.removePhotoIds?.length ? await prisma.staffPhoto.findMany({ where: { id: { in: files.removePhotoIds }, staffId: id } }) : [];
