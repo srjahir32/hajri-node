@@ -94,7 +94,7 @@ export default function Body() {
                     columns: [
                       { data: 'name' },
                       { data: 'staff_count', render: (d: number) => `${d} Staff` },
-                      { data: null, render: (_d: unknown, _t: string, row: Dept) => `<a href="/assign_staff_new?id=${row.id}">Assign Staff</a>` },
+                      { data: null, render: (_d: unknown, _t: string, row: Dept) => `<a href="/setting/assign_staff_new?id=${row.id}">Assign Staff</a>` },
                       {
                         data: null,
                         render: (_d: unknown, _t: string, row: Dept) =>

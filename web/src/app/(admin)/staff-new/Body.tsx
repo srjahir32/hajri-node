@@ -57,7 +57,7 @@ export default function Body() {
   const exportSelected = async () => {
     try {
       await adminApi.download('/admin/staff/export', { ids: selected.join(',') }, 'staff.xlsx');
-      toast.success('Your files is being downloaded');
+      toast.success('Your file is being downloaded.');
       clearSelection();
     } catch {
       toast.error('Somthing went wrong.');

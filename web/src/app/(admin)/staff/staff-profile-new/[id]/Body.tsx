@@ -244,7 +244,7 @@ export default function Body() {
   const exportExcel = async () => {
     try {
       await adminApi.download(`/admin/staff/${id}/attendance-export`, { start: iso(startD), end: iso(endD) }, 'attendance.xlsx');
-      toast.success('Your files is being downloaded');
+      toast.success('Your file is being downloaded.');
     } catch {
       toast.error('Somthing went wrong.');
     }

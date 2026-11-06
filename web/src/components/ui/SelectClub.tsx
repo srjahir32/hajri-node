@@ -40,6 +40,8 @@ interface Props {
   onChange?: (e: { target: { value: string; name?: string } }, value: string) => void;
   /** Extra row pinned below the options (e.g. "+ Add Department"); clicking it closes the list and runs `onSelect`. */
   action?: { label: ReactNode; onSelect: () => void };
+  /** Opt-in (off by default): Escape closes the open list without changing the value. */
+  closeOnEscape?: boolean;
   children?: ReactNode;
 }
 
@@ -48,7 +50,7 @@ interface Props {
  * and FormData still work) with a styled `span` label + `ul` list. Used as a drop-in for <select> with <option> children.
  * `<option hidden>` stays in the native select (e.g. an empty placeholder value) but is left out of the list.
  */
-export function SelectClub({ id, name, className = '', placeholder, value, defaultValue, disabled, onChange, action, children }: Props) {
+export function SelectClub({ id, name, className = '', placeholder, value, defaultValue, disabled, onChange, action, closeOnEscape = false, children }: Props) {
   const opts: Opt[] = [];
   collect(children, opts);
   const controlled = value !== undefined;
@@ -64,6 +66,14 @@ export function SelectClub({ id, name, className = '', placeholder, value, defau
     document.addEventListener('click', close);
     return () => document.removeEventListener('click', close);
   }, []);
+  useEffect(() => {
+    if (!closeOnEscape || !open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [closeOnEscape, open]);
   const chosen = opts.find((o) => o.value === cur && o.value !== '');
   const label = chosen?.label ?? placeholder ?? opts.find((o) => o.value === '')?.label ?? '';
   const pick = (v: string) => {

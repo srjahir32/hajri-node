@@ -45,9 +45,9 @@ export default function Body() {
             </div>
             <div className="col-md-6 col-sm-6 staff-right-length">
               <div className="business_selct_box select_mate_option staff-option_select">
-                <CustomDropdown options={STATUS} value={status} onChange={setStatus} prefix="Sort by " selectClassName="mySelect_sort status_filter" />
+                <CustomDropdown options={STATUS} value={status} onChange={setStatus} prefix="Sort by " selectClassName="mySelect_sort status_filter" closeOnEscape />
               </div>
-              <CustomDropdown className="business_selct_box" options={PER_PAGE} value={perPage} onChange={setPerPage} selectClassName="mySelect_pagi number_page_sorting" />
+              <CustomDropdown className="business_selct_box" options={PER_PAGE} value={perPage} onChange={setPerPage} selectClassName="mySelect_pagi number_page_sorting" closeOnEscape />
             </div>
           </div>
           <div className="approve_staff_data">

@@ -105,8 +105,17 @@ function StaffHeader({ title }: { title: string }) {
     const close = (e: MouseEvent) => {
       if (!ref.current?.contains(e.target as Node)) { setNOpen(false); setUOpen(false); }
     };
+    // Escape closes whichever header menu is open (only one can be). Window capture phase: legacy.ts stops Escape from
+    // propagating when focus is inside the open profile menu, which only spares listeners on the window itself.
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { setNOpen(false); setUOpen(false); }
+    };
     document.addEventListener('click', close);
-    return () => document.removeEventListener('click', close);
+    window.addEventListener('keydown', onKey, true);
+    return () => {
+      document.removeEventListener('click', close);
+      window.removeEventListener('keydown', onKey, true);
+    };
   }, []);
   const refresh = () => qc.invalidateQueries({ queryKey: ['staff'] });
   const markAll = async (e: React.MouseEvent) => { e.preventDefault(); await staffApi.post('/employee/notifications/read-all'); refresh(); };

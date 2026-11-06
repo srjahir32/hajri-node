@@ -53,7 +53,7 @@ export default function Body() {
   const download = async () => {
     try {
       await adminApi.download('/admin/payroll/export', { month, year }, 'payroll.xlsx');
-      toast.success('Your files is being downloaded');
+      toast.success('Your file is being downloaded.');
     } catch (e) {
       toast.error(e instanceof Error ? e.message : 'Somthing went wrong.');
     }

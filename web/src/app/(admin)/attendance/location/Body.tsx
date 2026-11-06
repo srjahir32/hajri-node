@@ -56,7 +56,7 @@ export default function Body() {
               <div className="locations-filter-controls rounded-lg  border border-gray-200 text-sm bg-white">
                 <div className="locations-staff-select px-3 border-r border-gray-200 flex items-center bg-gray-50 hover:bg-gray-100 transition-colors rounded-l-lg py-0.5 h-full">
                   <i className="fa fa-user text-gray-400 mr-2 shrink-0"></i>
-                  <SelectClub id="staff_filter" className="select-club-services border-0 bg-transparent py-2 font-medium focus:ring-0 text-gray-700 w-48 cursor-pointer outline-none" placeholder="Select Staff..." value={staffId} onChange={(_e, v) => { setStaffId(v); }}>
+                  <SelectClub id="staff_filter" className="select-club-services border-0 bg-transparent py-2 font-medium focus:ring-0 text-gray-700 w-48 cursor-pointer outline-none" placeholder="Select Staff..." value={staffId} onChange={(_e, v) => { setStaffId(v); }} closeOnEscape>
                     <option value="">Select Staff...</option>
                     {staff.map((s) => <option key={s.id} value={s.id}>{s.full_name}</option>)}
                   </SelectClub>

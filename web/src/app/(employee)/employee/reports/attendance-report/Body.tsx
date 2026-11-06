@@ -28,7 +28,7 @@ export default function Body() {
   const exportIt = async () => {
     try {
       await staffApi.download('/employee/attendance/export', { month, year }, 'attendance.xlsx');
-      toast.success('Your files is being downloaded');
+      toast.success('Your file is being downloaded.');
     } catch {
       toast.error('Somthing went wrong.');
     }

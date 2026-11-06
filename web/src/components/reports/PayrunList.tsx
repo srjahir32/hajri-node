@@ -28,7 +28,7 @@ export function PayrunList({ title, kind }: { title: string; kind: 'slips' | 'pa
     try {
       if (kind === 'slips') await adminApi.download('/admin/reports/salary-slips', { month, year }, 'salary-slips.pdf');
       else await adminApi.download('/admin/payroll/export', { month, year }, 'payroll.xlsx');
-      toast.success('Your files is being downloaded');
+      toast.success('Your file is being downloaded.');
     } catch (e) {
       toast.error(e instanceof Error ? e.message : 'Somthing went wrong.');
     }

@@ -9,8 +9,9 @@ export interface Opt {
 
 /**
  * The Laravel `.custom-dropdown` (trigger + `ul.dropdown-options`). `prefix` renders the static "Sort by " label.
+ * `closeOnEscape` (opt-in, off by default): Escape closes the open list without changing the value.
  */
-export function CustomDropdown({ options, value, onChange, prefix, className = '', selectClassName = '' }: { options: Opt[]; value: string; onChange: (v: string) => void; prefix?: string; className?: string; selectClassName?: string }) {
+export function CustomDropdown({ options, value, onChange, prefix, className = '', selectClassName = '', closeOnEscape = false }: { options: Opt[]; value: string; onChange: (v: string) => void; prefix?: string; className?: string; selectClassName?: string; closeOnEscape?: boolean }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -20,6 +21,14 @@ export function CustomDropdown({ options, value, onChange, prefix, className = '
     document.addEventListener('click', close);
     return () => document.removeEventListener('click', close);
   }, []);
+  useEffect(() => {
+    if (!closeOnEscape || !open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [closeOnEscape, open]);
   const cur = options.find((o) => o.value === value) ?? options[0];
   return (
     <div className={`custom-dropdown ${className}`} ref={ref} data-react-dropdown="">

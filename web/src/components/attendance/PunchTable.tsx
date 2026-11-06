@@ -68,7 +68,7 @@ export function PunchTable({ mode, showLoading = false }: { mode: 'punches' | 'r
             <div className="main-content-inner">
               <div className="shifts-data review-approve-time">
                 <div className="filters sidebar-select approve-punch-data">
-                  <CustomDropdown className="select-club-services" options={[{ value: '', label: 'All Department' }, ...depts.map((d) => ({ value: String(d.id), label: d.name }))]} value={dept} onChange={setDept} />
+                  <CustomDropdown className="select-club-services" options={[{ value: '', label: 'All Department' }, ...depts.map((d) => ({ value: String(d.id), label: d.name }))]} value={dept} onChange={setDept} closeOnEscape={!requests} />
                 </div>
               </div>
               <div className="approve-datas row">

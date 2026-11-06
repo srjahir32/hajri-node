@@ -48,7 +48,7 @@ export function ReportTable<T>({ cfg }: { cfg: ReportCfg<T> }) {
   const exportIt = async () => {
     try {
       await adminApi.download(cfg.exportPath, cfg.exportQuery(month, [...checked.current]), cfg.exportName);
-      toast.success('Your files is being downloaded');
+      toast.success('Your file is being downloaded.');
     } catch (e) {
       toast.error(e instanceof Error ? e.message : 'Somthing went wrong.');
     }
