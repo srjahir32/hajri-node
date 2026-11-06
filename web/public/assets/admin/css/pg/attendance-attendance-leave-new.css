@@ -10,4 +10,38 @@
             visibility: visible;
             z-index: 999;
         }
+        /* Leave toolbar: Department and Search share one row (Sort by stays on the right). The generic margins on the right column
+           offset Sort by from Search, and the month picker's 8px margins push it off the table edge and against the table. */
+        .leave-filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+        .leave-filter-group .shifts-data {
+            flex: none;
+            width: 242px;
+        }
+        .leave-filter-group form {
+            flex: 1 1 200px;
+            max-width: 250px;
+            margin: 0;
+        }
+        .leave-filter-group .input-search-rounded {
+            background-position: 15px 50%;
+        }
+        @media (max-width: 480px) {
+            .leave-filter-group form {
+                flex-basis: 100%;
+                max-width: none;
+            }
+        }
+        .approve-datas > .approve-right-data {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        .dashboard_current_day_txt #datepicker {
+            margin-right: 0;
+            margin-bottom: 12px;
+        }
     

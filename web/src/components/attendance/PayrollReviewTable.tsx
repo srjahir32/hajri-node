@@ -54,6 +54,7 @@ export function PayrollReviewTable({ kind }: { kind: 'attendance' | 'total_pay' 
               <form onSubmit={(e) => e.preventDefault()}>
                 <input className="input-search-rounded search-input" type="text" id="staff_data_find" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
               </form>
+            </div>
               <div className="approve-main-content">
                 <div className="approve_staff_data reports_attendance_table review-table">
                   <DataTable
@@ -118,7 +119,6 @@ export function PayrollReviewTable({ kind }: { kind: 'attendance' | 'total_pay' 
               <div className="staff-profile-btn  review-details-btn">
                 <button type="button" id="approve_step2_btn" className={`create-staff-btn staff-next-btn proxima_nova_semibold ${PRIMARY_BTN}`} disabled={save.isPending} onClick={() => (rows.length ? save.mutate() : toast.error('No staff to review'))}>Next</button>
               </div>
-            </div>
           </div>
         </div>
       </div>

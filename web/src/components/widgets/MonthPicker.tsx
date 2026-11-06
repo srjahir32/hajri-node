@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { toggleOnReclick } from '@/lib/datepickerToggle';
 
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const toLabel = (ym: string) => {
@@ -37,6 +38,7 @@ export function MonthPicker({ value, onChange, className = '', id, name, maxMont
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ($el as any).datepicker(opts);
+      toggleOnReclick($el);
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ($el as any).datepicker('update', value ? toLabel(value) : '');
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -47,8 +49,11 @@ export function MonthPicker({ value, onChange, className = '', id, name, maxMont
     })();
     return () => {
       disposed = true;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      if ($el) ($el as any).datepicker('destroy');
+      if ($el) {
+        $el.off('.reclick');
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ($el as any).datepicker('destroy');
+      }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxMonth, minMonth]);

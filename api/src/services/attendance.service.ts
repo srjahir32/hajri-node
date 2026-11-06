@@ -397,8 +397,12 @@ export async function decideAttendance(businessId: number, ids: number[], approv
   });
   if (!rows.length) throw notFound('Attendance entries not found');
   const value = approve ? 1 : 2;
-  await prisma.attendance.updateMany({ where: { id: { in: rows.map((r) => r.id) } }, data: { approval: value } });
   for (const r of rows) {
+    // Log + notify only when this request actually changes the row. Re-sending the same decision (double click, clicking the
+    // already-active button, the Punches page sending every row of the staff's day) used to notify again each time. The
+    // conditional update is atomic, so of two concurrent identical requests only one sees count = 1.
+    const changed = await prisma.attendance.updateMany({ where: { id: r.id, approval: { not: value } }, data: { approval: value } });
+    if (!changed.count) continue;
     const tz = await staffTz(r.staff);
     await logStaff(r.staffId, byUserId, `Attendance entry for ${fmtDate(r.date)} was ${approve ? 'approved' : 'rejected'}`);
     await notifyStaff(r.staffId, {

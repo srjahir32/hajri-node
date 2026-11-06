@@ -36,18 +36,25 @@ a {
 /* .imageUpload:hover{
     background-color: #136DDC;
 } */
+/* neutral, low-key "change photo" badge on the avatar (same centre as before: 36px circle at the avatar's lower right) */
 .imageUpload {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     position: absolute;
-    border-radius: 20px;
-    background-color: #2F8CFF;
-    bottom: 2px;
-    right: 70px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #E4E7EC;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.14);
+    bottom: 4px;
+    right: 72px;
     z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #475467;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 /* .avatar-edit {
@@ -57,13 +64,25 @@ a {
     top: 10px;
 } */
 
+/* visually hidden rather than display:none, so the file input stays keyboard-focusable (Tab, Space/Enter open the picker) */
 .avatar-edit input {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.avatar-edit input:focus-visible + .imageUpload {
+    outline: 2px solid #344054;
+    outline-offset: 2px;
 }
 
 .avatar-edit label:hover {
-    background: #136DDC;
-    border-color: #136DDC;
+    background: #F9FAFB;
+    border-color: #D0D5DD;
+    color: #1D2939;
 }
 
 /* .avatar-edit label:after {
@@ -1634,8 +1653,8 @@ span a.paginate_button {
     color: #809FB8 !important;
 }
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+div.dataTables_wrapper div.dataTables_paginate a.paginate_button.current,
+div.dataTables_wrapper div.dataTables_paginate a.paginate_button.current:hover {
     color: #fff !important;
 }
 
@@ -2291,6 +2310,15 @@ td.active.day {
 
 .approve_success:hover svg path {
     fill: #17B643;
+}
+
+/* approved / rejected state: the icon strings are grey, colour the active one as the original markup did */
+.approve_success_btn svg path {
+    fill: #17B643;
+}
+
+.reject_danger_btn svg path {
+    fill: #FF5E5E;
 }
 
 .atten-coming-btn {
@@ -6512,6 +6540,22 @@ select#business_salary_cal,
     /* max-width: 190px; */
 }
 
+/* Payroll filter toolbar: centre the search icon, give the label room before the arrow and a gap before Search */
+.main-payroll-sec .input-search-rounded {
+    background-position: 15px 50%;
+}
+
+@media (min-width: 481px) {
+    .main-payroll-sec .shifts-data {
+        flex: none;
+        width: 170px;
+    }
+
+    .main-payroll-sec > form {
+        margin-left: 10px;
+    }
+}
+
 .approve-salary .select-salary-data>span {
     font-size: 14px;
     width: 72px !important;
@@ -6809,6 +6853,12 @@ button[disabled] {
     top: 190px;
     height: 40px;
 } */
+
+/* the icon wrapper is stretched to the 40px Export button; centre the icon in it instead of leaving it at the top */
+.report_down_img {
+    display: flex;
+    align-items: center;
+}
 
 .report_down_img img {
     padding-left: 10px;

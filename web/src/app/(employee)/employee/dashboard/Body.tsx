@@ -215,10 +215,8 @@ export default function Body() {
                                 <div className="max-w-5xl w-full mx-auto space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="rounded-xl border bg-card text-card-foreground md:col-span-2 border overflow-hidden relative">
-                            <div className="absolute right-0 top-0 h-full w-1/3 bg-blue-50/50 -skew-x-12 translate-x-12 z-0">
-                            </div>
                             <div className="p-6 relative z-10">
-                                <div className="flex justify-between items-start mb-6">
+                                <div className="flex justify-between items-start mb-6 current-time-row">
                                     <div>
                                         <div className="flex items-center gap-2 mb-1">
                                             <div className="h-2 w-2 rounded-full bg-orange-400 animate-pulse"></div>
@@ -229,7 +227,7 @@ export default function Body() {
                                             <span className="text-xl font-normal text-muted-foreground" id="live-period">{(part('dayPeriod'))}</span>
                                         </h1>
                                     </div>
-                                    <div className="flex flex-col items-end" style={{ marginTop: "35px" }}>
+                                    <div className="flex flex-col items-end current-date-block">
                                         {(last_attendance && last_attendance.in_time && first_attendance) && (<>
                                             <div className="flex items-center">
                                                 {(first_attendance.behavior === 'Late') ? (<>

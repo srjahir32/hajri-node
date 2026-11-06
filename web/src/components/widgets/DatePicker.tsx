@@ -2,6 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from 'react';
+import { toggleOnReclick } from '@/lib/datepickerToggle';
 
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const DOW = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -48,12 +49,14 @@ export function DatePicker({ value, onChange, className = '', id, name, placehol
       if (disposed || !ref.current) return;
       $el = $(ref.current);
       $el.datepicker({ format, autoclose: true, orientation: 'bottom auto', startDate: min ? toDate(min) : false, endDate: max ? toDate(max) : false });
+      toggleOnReclick($el);
       if (value) $el.datepicker('setDate', toDate(value));
       $el.on('changeDate', (e: any) => e.date && cb.current(toIso(e.date)));
       $el.on('clearDate', () => cb.current(''));
     })();
     return () => {
       disposed = true;
+      $el?.off('.reclick');
       $el?.datepicker('destroy');
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

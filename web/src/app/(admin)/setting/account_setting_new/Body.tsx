@@ -72,8 +72,8 @@ export default function Body() {
                 <div className="">
                   <div className="avatar-upload">
                     <div className="avatar-edit">
-                      <input type="file" id="imageUpload" accept=".png, .jpg, .jpeg" onChange={pick} />
-                      <label htmlFor="imageUpload" className="imageUpload"></label>
+                      <input type="file" id="imageUpload" aria-label="Upload profile photo" accept=".png, .jpg, .jpeg" onChange={pick} />
+                      <label htmlFor="imageUpload" className="imageUpload" title="Upload profile photo"><i className="fas fa-camera" aria-hidden="true"></i></label>
                     </div>
                     <div className="avatar-preview">
                       <div className="half-image">

@@ -227,43 +227,54 @@
             }
         }
 
-        /* Punch Buttons */
-        .btn-punch {
-            padding: 10px 24px !important;
-            border: none !important;
-            border-radius: 8px !important;
-            color: #fff !important;
-            font-size: 15px !important;
-            font-weight: 500 !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 8px !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-            text-decoration: none;
-            /* In case it's an anchor tag */
-        }
+        /* Punch Buttons. dashboard-new.css ships a Tailwind reset (button { border-radius: 0 !important; font-size: inherit !important;
+           font-weight: inherit !important }) inside @layer base, and a layered !important declaration beats an unlayered one, so the
+           rules below were ignored (square corners, 16px/400 text). Declared in the same layer, specificity decides again. */
+        @layer base {
+            .btn-punch {
+                min-width: 140px;
+                padding: 10px 24px !important;
+                border: none !important;
+                border-radius: 8px !important;
+                color: #fff !important;
+                font-size: 15px !important;
+                font-weight: 500 !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                cursor: pointer !important;
+                transition: filter 0.2s ease, box-shadow 0.2s ease !important;
+                box-shadow: 0 1px 2px rgba(16, 24, 40, 0.12) !important;
+                text-decoration: none;
+                /* In case it's an anchor tag */
+            }
 
-        .btn-punch:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
-            color: #fff !important;
-        }
+            .btn-punch:hover {
+                filter: brightness(0.95);
+                box-shadow: 0 2px 4px rgba(16, 24, 40, 0.16) !important;
+                color: #fff !important;
+            }
 
-        .btn-punch-in {
-            background: linear-gradient(135deg, #3AC74B 0%, #2DA53C 100%) !important;
-        }
+            .btn-punch:focus-visible {
+                outline: 2px solid #344054;
+                outline-offset: 2px;
+            }
 
-        .btn-punch-out {
-            background: linear-gradient(135deg, #FA6028 0%, #DE4B15 100%) !important;
-        }
+            .btn-punch-in {
+                background: linear-gradient(135deg, #3AC74B 0%, #2DA53C 100%) !important;
+            }
 
-        .btn-punch:disabled {
-            cursor: not-allowed !important;
-            opacity: 0.7;
-            transform: none !important;
-            box-shadow: none !important;
+            .btn-punch-out {
+                background: linear-gradient(135deg, #FA6028 0%, #DE4B15 100%) !important;
+            }
+
+            .btn-punch:disabled {
+                cursor: not-allowed !important;
+                opacity: 0.7;
+                filter: none;
+                box-shadow: none !important;
+            }
         }
 
         #fullscreen-btn {
@@ -287,5 +298,23 @@
             position: absolute;
             right: 0;
             top: 24px;
+        }
+
+        /* Current Time card: the date badge sits level with the time (it was 3px low) and keeps its text on one line; on phones it drops
+           under the time instead of wrapping and touching it. */
+        .current-time-row {
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .current-date-block {
+            margin-top: 32px;
+        }
+        .current-date-block > div:last-child {
+            white-space: nowrap;
+        }
+        @media (max-width: 480px) {
+            .current-date-block {
+                margin-top: 0;
+            }
         }
     

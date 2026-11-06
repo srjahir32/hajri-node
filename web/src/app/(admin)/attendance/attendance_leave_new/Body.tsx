@@ -58,18 +58,18 @@ export default function Body() {
           <div className="space-y-6">
             <BackCrumb title="Leave management" crumbs={['Attendance', 'Leave management']} />
             <div className="main-content-inner">
-              <div className="shifts-data review-approve-time">
-                <div className="filters sidebar-select approve-punch-data">
-                  <CustomDropdown className="select-club-services" options={[{ value: '', label: 'Select Department' }, ...depts.map((d) => ({ value: String(d.id), label: d.name }))]} value={dept} onChange={setDept} />
-                </div>
-              </div>
               <div className="approve-datas row">
-                <div className="approve-data-search col-md-6 col-sm-6">
+                <div className="approve-data-search leave-filter-group col-md-8 col-sm-8">
+                  <div className="shifts-data review-approve-time">
+                    <div className="filters sidebar-select approve-punch-data">
+                      <CustomDropdown className="select-club-services" options={[{ value: '', label: 'Select Department' }, ...depts.map((d) => ({ value: String(d.id), label: d.name }))]} value={dept} onChange={setDept} />
+                    </div>
+                  </div>
                   <form onSubmit={(e) => e.preventDefault()}>
                     <input className="input-search-rounded search-input" type="text" id="staff_data_find" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
                   </form>
                 </div>
-                <div className="approve-right-data col-md-6 col-sm-6">
+                <div className="approve-right-data col-md-4 col-sm-4">
                   <div className="business_selct_box select_mate_option staff-option_select">
                     <CustomDropdown options={STATUS} value={status} onChange={setStatus} prefix="Sort by " selectClassName="mySelect_sort status_filter" />
                   </div>

@@ -68,6 +68,7 @@ export function PayrollApproveTable({ kind }: { kind: 'punches' | 'leaves' }) {
               <form onSubmit={(e) => e.preventDefault()}>
                 <input className="input-search-rounded search-input" type="text" id="staff_data_find" placeholder="Search" value={search} onChange={(e) => setSearch(e.target.value)} />
               </form>
+            </div>
               <div className="approve-main-content">
                 <div className={`approve_staff_data reports_attendance_table${leaves ? ' review-table' : ''}`}>
                   <DataTable
@@ -140,7 +141,6 @@ export function PayrollApproveTable({ kind }: { kind: 'punches' | 'leaves' }) {
                   <button type="button" id="approve_step2_btn" className={`create-staff-btn staff-next-btn proxima_nova_semibold ${PRIMARY_BTN}`}>Next</button>
                 </a>
               </div>
-            </div>
           </div>
         </div>
       </div>

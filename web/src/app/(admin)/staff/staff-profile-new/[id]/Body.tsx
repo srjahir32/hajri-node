@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'next/navigation';
 import * as I from '@/components/icons';
 import { adminApi } from '@/lib/api';
+import { toggleOnReclick } from '@/lib/datepickerToggle';
 import { useAdminSession } from '@/lib/auth';
 import { useAdmin } from '@/lib/query';
 import { toast } from '@/lib/toast';
@@ -101,6 +102,8 @@ function useRangePicker(start: string, end: string, onChange: (s: string, e: str
       const opts = { format: 'dd M yyyy', autoclose: true, todayHighlight: false, endDate: today };
       s.datepicker(opts);
       e.datepicker(opts);
+      toggleOnReclick(s);
+      toggleOnReclick(e);
       const is = s.datepicker('getDate');
       const ie = e.datepicker('getDate');
       if (is) e.datepicker('setStartDate', is);
@@ -121,8 +124,8 @@ function useRangePicker(start: string, end: string, onChange: (s: string, e: str
         fire();
       });
       dispose = () => {
-        s.off('changeDate').datepicker('destroy');
-        e.off('changeDate').datepicker('destroy');
+        s.off('changeDate').off('.reclick').datepicker('destroy');
+        e.off('changeDate').off('.reclick').datepicker('destroy');
       };
     })();
     return () => dispose();
