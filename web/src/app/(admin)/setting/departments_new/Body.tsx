@@ -79,7 +79,7 @@ export default function Body() {
                   head={
                     <tr>
                       <th>Departments</th>
-                      <th>Assign Staff</th>
+                      <th>Staff</th>
                       <th>Assign Staff</th>
                       <th>Action</th>
                     </tr>

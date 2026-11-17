@@ -220,15 +220,15 @@ export default function Body() {
                             <div className="checkout-title">🛒 Configure Your Subscription</div>
                             <div className="seat-slider-wrap">
                               <div className="seat-slider-label">
-                                <label className="form-label text-gray-700">Number of Staffs</label>
-                                <div className="seat-count-display"><span>{seats}</span> <span>staffs</span></div>
+                                <label className="form-label text-gray-700">Number of Staff</label>
+                                <div className="seat-count-display"><span>{seats}</span> <span>staff</span></div>
                               </div>
                               <input type="range" id="seatSlider" min={plan?.min_seats ?? 1} max={plan?.max_seats ?? 500} value={seats} step={1} onChange={(e) => setSeats(Number(e.target.value))} />
                               <div className="d-flex justify-content-between text-muted" style={{ fontSize: 12 }}><span>{plan?.min_seats ?? 1}</span><span>{plan?.max_seats ?? 500}</span></div>
                             </div>
                             <div className="price-breakdown">
                               <div className="price-row"><span>Plan</span><span>{plan?.label}</span></div>
-                              <div className="price-row"><span>Staffs</span><span>{seats}</span></div>
+                              <div className="price-row"><span>Staff</span><span>{seats}</span></div>
                               <div className="price-row"><span>Price per staff</span><span>{india ? '₹' : '$'}{number_format(india ? price : ov?.kelviq.prices[planKey] ?? 0)} / {planKey === 'yearly' ? 'yr' : 'mo'}</span></div>
                               <div className="price-row total"><span className="total-label">Total</span><span>{india ? '₹' : '$'}{number_format((india ? price : ov?.kelviq.prices[planKey] ?? 0) * seats)}</span></div>
                             </div>

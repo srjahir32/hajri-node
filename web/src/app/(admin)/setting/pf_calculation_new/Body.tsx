@@ -42,13 +42,13 @@ export default function Body() {
                 <div className="flex flex-col gap-1">
                     <button onClick={() => history.back()} className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors w-fit group">
                         <I.I145b1c />
-                        <span className="font-semibold text-lg">Pf Calculations</span>
+                        <span className="font-semibold text-lg">PF Calculation</span>
                     </button>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground ml-1"><span>Settings</span>
                         <I.I8b8a74 />
                         <span>Business info</span>
                         <I.I8b8a74 />
-                        <span className="text-foreground font-medium">Pf Calculations</span></div>
+                        <span className="text-foreground font-medium">PF Calculation</span></div>
                     </div>
                     
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

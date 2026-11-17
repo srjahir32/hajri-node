@@ -22,7 +22,7 @@ export default function Body() {
         {err && <span className="error error_message proxima_nova_semibold">{err}</span>}
         <div className="flex items-start gap-8 mt-3">
           <div className="flex flex-col items-center gap-2">
-            <span className="px-3 py-1 behavior rounded-full text-xs font-semibold bg-orange-500 text-white shadow-sm ring-1 ring-white/20">Early</span>
+            <span className="px-3 py-1 behavior rounded-full text-xs font-semibold bg-orange-500 text-white shadow-sm ring-1 ring-white/20" style={{ backgroundColor: '#fc6510' }}>Early</span>
             <span className="text-xs text-gray-400 font-medium whitespace-nowrap">Before on time</span>
           </div>
           <div className="flex flex-col items-center gap-2">

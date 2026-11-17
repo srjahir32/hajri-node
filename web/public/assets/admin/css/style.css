@@ -5391,6 +5391,11 @@ table.dataTable>tbody>tr.child ul.dtr-details {
     max-width: 320px;
 }
 
+/* keep the Shift Time pickers at their width; the Template Name column absorbs the squeeze instead */
+.holiday-policy-edit #shift_time {
+    flex-shrink: 0;
+}
+
 .weekly-policy-level {
     width: 100%;
     max-width: 144px;

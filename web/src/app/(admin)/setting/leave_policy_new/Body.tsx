@@ -21,7 +21,7 @@ export default function Body() {
               head={
                 <tr>
                   <th>Template Name</th>
-                  <th>Number of Holiday</th>
+                  <th>Number of Leaves</th>
                   <th>Apply to</th>
                   <th>Action</th>
                 </tr>

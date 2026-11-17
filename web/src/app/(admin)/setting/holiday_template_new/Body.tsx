@@ -116,7 +116,7 @@ function Editor({ id, policy }: { id: number | null; policy?: Policy }) {
                   </div>
                 </div>
                 <div className="holiday-policy-edit-sec">
-                  <h2 className="section_title proxima_nova_semibold">Holiday&apos;s</h2>
+                  <h2 className="section_title proxima_nova_semibold">Holidays</h2>
                   <div id="add_holiday" onClick={() => setHolidays((h) => [...h, { name: '', date: '' }])}>+ Add Holiday</div>
                 </div>
                 <div className="holiday-policy-edit-third">
