@@ -42,6 +42,8 @@ interface Props {
   action?: { label: ReactNode; onSelect: () => void };
   /** Opt-in (off by default): Escape closes the open list without changing the value. */
   closeOnEscape?: boolean;
+  /** Opt-in (off by default): the open list closes when focus lands outside it (e.g. Tab to the next field), without changing the value. */
+  closeOnFocusOut?: boolean;
   children?: ReactNode;
 }
 
@@ -50,7 +52,7 @@ interface Props {
  * and FormData still work) with a styled `span` label + `ul` list. Used as a drop-in for <select> with <option> children.
  * `<option hidden>` stays in the native select (e.g. an empty placeholder value) but is left out of the list.
  */
-export function SelectClub({ id, name, className = '', placeholder, value, defaultValue, disabled, onChange, action, closeOnEscape = false, children }: Props) {
+export function SelectClub({ id, name, className = '', placeholder, value, defaultValue, disabled, onChange, action, closeOnEscape = false, closeOnFocusOut = false, children }: Props) {
   const opts: Opt[] = [];
   collect(children, opts);
   const controlled = value !== undefined;
@@ -67,13 +69,21 @@ export function SelectClub({ id, name, className = '', placeholder, value, defau
     return () => document.removeEventListener('click', close);
   }, []);
   useEffect(() => {
-    if (!closeOnEscape || !open) return;
+    if (!open || (!closeOnEscape && !closeOnFocusOut)) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false);
     };
-    document.addEventListener('keydown', onKey);
-    return () => document.removeEventListener('keydown', onKey);
-  }, [closeOnEscape, open]);
+    // the hidden native select and the href-less option links are not focusable, so any focus change while open lands outside
+    const onFocus = (e: FocusEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    if (closeOnEscape) document.addEventListener('keydown', onKey);
+    if (closeOnFocusOut) document.addEventListener('focusin', onFocus);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('focusin', onFocus);
+    };
+  }, [closeOnEscape, closeOnFocusOut, open]);
   const chosen = opts.find((o) => o.value === cur && o.value !== '');
   const label = chosen?.label ?? placeholder ?? opts.find((o) => o.value === '')?.label ?? '';
   const pick = (v: string) => {
