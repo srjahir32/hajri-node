@@ -166,7 +166,7 @@ function StaffHeader({ title }: { title: string }) {
                           </a>
                         </li>
                       ))}
-                      <li><div className="notification-text"><a href="/employee/notifications" className="section_sub_title proxima_nova_bold">See All Notifications</a></div></li>
+                      <li><div className="notification-text"><a href="/employee/notifications" className="section_sub_title proxima_nova_bold" onClick={() => setNOpen(false)}>See All Notifications</a></div></li>
                     </ul>
                   </>
                 ) : (

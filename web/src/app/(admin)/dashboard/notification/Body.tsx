@@ -5,14 +5,14 @@ import { useAction, useAdmin } from '@/lib/query';
 import { timeAgo } from '@/lib/format';
 import { BackCrumb } from '@/components/shell/BackCrumb';
 
-interface N { id: number; title?: string | null; message: string; is_read: boolean | number; read_at?: string | null; created_at: string }
+interface N { id: number; title?: string | null; message: string; read: boolean; created_at: string }
 
 export default function Body() {
   const q = useAdmin<N[]>('/admin/notifications', { size: 100 });
   const list = q.data?.data ?? [];
   const read = useAction((id: number) => adminApi.post(`/admin/notifications/${id}/read`), { invalidate: ['/admin/notifications'], success: false });
   const readAll = useAction(() => adminApi.post('/admin/notifications/read-all'), { invalidate: ['/admin/notifications'], success: 'All notifications marked as read' });
-  const unread = (n: N) => !n.is_read && !n.read_at;
+  const unread = (n: N) => !n.read;
   return (
     <main className="flex-1 p-md-5 overflow-y-auto">
       <div className="max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">

@@ -52,8 +52,8 @@ export default function Body() {
                   order: [],
                   columns: [
                     { data: 'name' },
-                    { data: 'holiday_count', render: (n: number) => `${n} Holiday’s` },
-                    { data: 'staff_count', render: (n: number) => `Applied to ${n} Staff’s` },
+                    { data: 'holiday_count', render: (n: number) => `${n} ${n === 1 ? 'Holiday' : 'Holidays'}` },
+                    { data: 'staff_count', render: (n: number) => `Applied to ${n} Staff` },
                     {
                       data: null,
                       orderable: false,

@@ -5,7 +5,7 @@ import Body from './Body';
 
 export default function Page() {
   return (
-    <AdminPage title="Edit Admin User" css={["setting.css", "pg/admin-users-add-admin-user.css"]}>
+    <AdminPage title="Add Admin User" css={["setting.css", "pg/admin-users-add-admin-user.css"]}>
       <Body />
     </AdminPage>
   );

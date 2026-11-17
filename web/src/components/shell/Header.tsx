@@ -209,7 +209,7 @@ function NotificationMenu({ list, unread, variant, onChange }: { list: Notif[]; 
               ))}
               <li>
                 <div className="notification-text">
-                  <a href="/dashboard/notification" className="section_sub_title proxima_nova_bold">
+                  <a href="/dashboard/notification" className="section_sub_title proxima_nova_bold" onClick={() => setOpen(false)}>
                     See All Notifications
                   </a>
                 </div>
