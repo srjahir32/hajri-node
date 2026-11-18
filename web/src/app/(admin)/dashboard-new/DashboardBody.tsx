@@ -413,12 +413,12 @@ export default function Body() {
                                             <div className="flex items-center justify-between gap-4">
                                                 <div className="flex items-center gap-4">
                                                     <div className="relative">
-                                                        <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl flex flex-col items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300">
+                                                        <div className="w-12 h-12 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-xl flex flex-col items-center justify-center shadow-sm group-hover:shadow-md group-hover:scale-105 transition-all duration-300" style={{ backgroundImage: 'linear-gradient(to bottom right, #e0e7ff, #f3e8ff)' }}>
                                                             
                                                             <span className="text-xs font-bold text-indigo-600 uppercase leading-none">{MONTH_NAMES[new Date(holidays.holiday_date + 'T00:00:00').getMonth()].slice(0, 3)}</span>
                                                             <span className="text-lg font-bold text-gray-900 leading-none">{holidays.holiday_date.slice(8, 10)}</span>
                                                         </div>
-                                                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full border-2 border-white shadow-sm">
+                                                        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full border-2 border-white shadow-sm" style={{ top: '-4px', right: '-4px', backgroundImage: 'linear-gradient(to right, #6366f1, #a855f7)' }}>
                                                         </div>
                                                     </div>
                                                     <div>
@@ -636,10 +636,10 @@ export default function Body() {
                                 </Fragment>))}
                             </>) : (<>
                                 <div className="flex flex-col items-center justify-center py-16 text-center h-full">
-                                    <div className="w-20 h-20 bg-purple-50 rounded-2xl border border-purple-100 flex items-center justify-center mb-4 relative overflow-hidden group">
+                                    <div className="w-20 h-20 bg-purple-50 rounded-2xl border border-purple-100 flex items-center justify-center mb-4 relative overflow-hidden group" style={{ backgroundColor: '#faf5ff', borderColor: '#f3e8ff', flexShrink: 0 }}>
                                         <div className="absolute inset-0 bg-purple-100/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                                         </div>
-                                        <I.I85568d />
+                                        <I.I85568d style={{ color: '#d8b4fe' }} />
                                     </div>
                                     <p className="text-sm font-semibold text-gray-900">No Data Available</p>
                                     <p className="text-xs text-gray-400 mt-1 max-w-[150px]">No staff marked as Late today yet.</p>

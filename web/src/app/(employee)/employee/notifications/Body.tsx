@@ -8,7 +8,7 @@ import { BackCrumb } from '@/components/shell/BackCrumb';
 interface N { id: number; title?: string | null; message: string | null; read: boolean; created_at: string }
 
 export default function Body() {
-  const q = useStaff<N[]>('/employee/notifications', { size: 100 });
+  const q = useStaff<N[]>('/employee/notifications', { per_page: 100 });
   const list = q.data?.data ?? [];
   const read = useAction((id: number) => staffApi.post(`/employee/notifications/${id}/read`), { invalidate: ['/employee/notifications'], success: false });
   const readAll = useAction(() => staffApi.post('/employee/notifications/read-all'), { invalidate: ['/employee/notifications'], success: 'All notifications marked as read' });

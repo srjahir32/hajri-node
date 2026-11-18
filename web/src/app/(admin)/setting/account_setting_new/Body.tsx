@@ -65,7 +65,7 @@ export default function Body() {
     <main className="flex-1 p-8 overflow-y-auto">
       <div className="max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
         <div className="space-y-6">
-          <BackCrumb title="Profile Details" crumbs={['Settings', 'Account settings', 'Login details']} />
+          <BackCrumb title="Profile Details" crumbs={['Settings', 'Account Settings', 'Profile Details']} />
           <form id="edit_profile" noValidate className="space-y-8" onSubmit={submit}>
             <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-8">
               <div className="col-sm-6 profile-form-images">

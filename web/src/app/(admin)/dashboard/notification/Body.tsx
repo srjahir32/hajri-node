@@ -8,7 +8,7 @@ import { BackCrumb } from '@/components/shell/BackCrumb';
 interface N { id: number; title?: string | null; message: string; read: boolean; created_at: string }
 
 export default function Body() {
-  const q = useAdmin<N[]>('/admin/notifications', { size: 100 });
+  const q = useAdmin<N[]>('/admin/notifications', { per_page: 100 });
   const list = q.data?.data ?? [];
   const read = useAction((id: number) => adminApi.post(`/admin/notifications/${id}/read`), { invalidate: ['/admin/notifications'], success: false });
   const readAll = useAction(() => adminApi.post('/admin/notifications/read-all'), { invalidate: ['/admin/notifications'], success: 'All notifications marked as read' });

@@ -429,6 +429,65 @@ h3.topbar_title {
     }
 }
 
+/* Employee portal: its header has no mobile variant, so keep the bell + profile menu (and Logout) visible below 1041px */
+@media(max-width:1040px) {
+    [data-portal="employee"] .top-bar .desktop-screen {
+        display: flex !important;
+    }
+}
+
+/* Employee portal, phones: let the title give up room (ellipsis) and open both header panels inside the screen */
+@media(max-width:575px) {
+    [data-portal="employee"] .top-bar .topbar_left {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 0;
+    }
+
+    [data-portal="employee"] .top-bar .topbar_right {
+        flex: 0 0 auto;
+        width: auto;
+    }
+
+    [data-portal="employee"] .top-bar .topbar_title {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+    }
+
+    [data-portal="employee"] .top-bar .header_title {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    [data-portal="employee"] .top-bar .header_user_dropdown .user-name > span {
+        max-width: 90px;
+    }
+
+    [data-portal="employee"] .top-bar .dropdown-content {
+        position: fixed;
+        top: 72px;
+        left: 12px;
+        right: 12px !important;
+        width: auto;
+    }
+
+    [data-portal="employee"] .top-bar .dropdown-content::before {
+        display: none;
+    }
+
+    [data-portal="employee"] .top-bar .custom-account-dropdown {
+        position: fixed;
+        top: 72px !important;
+        right: 12px;
+        left: auto;
+        transform: none;
+        margin-top: 0 !important;
+    }
+}
+
 .breadcrumbs-area-details {
     padding-top: 30px;
 }

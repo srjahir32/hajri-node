@@ -47,7 +47,7 @@ export default function Body() {
                 return (
                   <div className={`day-cell ${isToday ? 'current-day' : ''}`} key={day}>
                     <div className="day-number">{day}</div>
-                    {holidays.filter((h) => h.date === ds).map((h) => <div className="event-badge" title={h.name} key={h.id}>{h.name}</div>)}
+                    {holidays.filter((h) => h.date === ds).map((h) => <div className="event-badge capitalize" title={h.name.replace(/(^|\s)(\S)/g, (_m, s: string, c: string) => s + c.toUpperCase())} key={h.id}>{h.name}</div>)}
                     {weekly.includes(new Date(cur.y, cur.m, day).getDay()) && <div className="event-badge weekly-holiday-badge" title="Weekly Holiday">Weekend</div>}
                   </div>
                 );
@@ -63,7 +63,7 @@ export default function Body() {
                 return (
                   <div className="policy-item" key={h.id}>
                     <div className="policy-date">{pad(d.getDate())} {MONTHS[d.getMonth()].slice(0, 3)} {d.getFullYear()}</div>
-                    <div className="policy-name">{h.name}</div>
+                    <div className="policy-name capitalize">{h.name}</div>
                     <div className="policy-day">{DOW[d.getDay()]}</div>
                   </div>
                 );

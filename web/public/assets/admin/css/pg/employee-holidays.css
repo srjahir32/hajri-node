@@ -66,6 +66,13 @@
             overflow: hidden;
         }
 
+        /* narrow screens: the seven day columns are wider than the card, so let the grid scroll sideways instead of cutting days off */
+        @media (max-width: 767px) {
+            .calendar-grid {
+                overflow-x: auto;
+            }
+        }
+
         .day-header {
             background-color: #f8fafc;
             padding: 12px;

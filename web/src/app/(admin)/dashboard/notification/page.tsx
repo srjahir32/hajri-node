@@ -5,7 +5,7 @@ import Body from './Body';
 
 export default function Page() {
   return (
-    <AdminPage title="Dashboard" css={["setting.css"]}>
+    <AdminPage title="Notifications" css={["setting.css"]}>
       <Body />
     </AdminPage>
   );

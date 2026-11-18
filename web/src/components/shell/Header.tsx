@@ -164,6 +164,14 @@ function NotificationMenu({ list, unread, variant, onChange }: { list: Notif[]; 
     document.addEventListener('click', close);
     return () => document.removeEventListener('click', close);
   }, []);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, [open]);
 
   const markAll = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -239,6 +247,15 @@ function UserMenu({ session, businessId, switchBusiness, logout, mobile }: { ses
     document.addEventListener('click', close);
     return () => document.removeEventListener('click', close);
   }, []);
+  useEffect(() => {
+    if (!open) return;
+    // window capture phase: legacy.ts stops Escape from propagating inside the open profile menu, which only spares window listeners
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKey, true);
+    return () => window.removeEventListener('keydown', onKey, true);
+  }, [open]);
   const user = session.user;
   const avatar = user.photo ? user.photo : '/assets/admin/images/dummy/dummy-user.svg';
   const name = user.name ? user.name[0].toUpperCase() + user.name.slice(1) : '';

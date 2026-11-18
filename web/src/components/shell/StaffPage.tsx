@@ -197,7 +197,7 @@ function StaffHeader({ title }: { title: string }) {
                     </div>
                     <div className="px-2 pb-2">
                       <a className="dropdown-item proxima_nova_semibold" href="/employee/edit-profile">Edit Profile</a>
-                      <a className="dropdown-item proxima_nova_semibold text-danger" href="#" onClick={(e) => { e.preventDefault(); void logout(); }}>Logout</a>
+                      <a className="dropdown-item d-flex align-items-center proxima_nova_semibold text-danger" href="#" onClick={(e) => { e.preventDefault(); void logout(); }}><I.Ib787f5 />Logout</a>
                     </div>
                   </div>
                 </ul>
